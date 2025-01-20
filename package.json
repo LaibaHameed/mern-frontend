@@ -9,9 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+<<<<<<< HEAD
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "next": "15.1.5"
+=======
+    "react": "^18",
+    "react-dom": "^18",
+    "next": "14.2.6"
+>>>>>>> 1c35deb (Commit: Setup Next.js app updated version)
   },
   "devDependencies": {
     "postcss": "^8",

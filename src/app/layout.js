@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -10,6 +11,12 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+=======
+import { Inter } from "next/font/google";
+import "./globals.css";
+
+const inter = Inter({ subsets: ["latin"] });
+>>>>>>> 1c35deb (Commit: Setup Next.js app updated version)
 
 export const metadata = {
   title: "Create Next App",
@@ -19,11 +26,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+<<<<<<< HEAD
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
       </body>
+=======
+      <body className={inter.className}>{children}</body>
+>>>>>>> 1c35deb (Commit: Setup Next.js app updated version)
     </html>
   );
 }
