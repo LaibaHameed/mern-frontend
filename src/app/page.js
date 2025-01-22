@@ -1,10 +1,11 @@
 import Header from "@/components/header";
-import Image from "next/image";
+import Carousel from "@/components/home/Carousel";
 
 export default function Home() {
   return(
     <>
     <Header/>
+    <Carousel/>
     </>
   )
 }

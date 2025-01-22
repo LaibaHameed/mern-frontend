@@ -4,7 +4,7 @@ import { FiPhone } from "react-icons/fi";
 import { BsCart3 } from "react-icons/bs";
 import { GoSearch } from "react-icons/go";
 import { LuCircleUser } from "react-icons/lu";
-import { NAV_LIST } from "@/general";
+import { NAV_LIST } from "@/constants/general";
 
 
 import Image from 'next/image';
