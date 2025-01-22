@@ -3,7 +3,7 @@
 import { AiOutlineVerticalLeft, AiOutlineVerticalRight } from "react-icons/ai";
 import { FaArrowRight } from "react-icons/fa";
 import { ROOT_ROUTE } from '@/utils/PATHS';
-import SLIDES from "@/general";
+import SLIDES from "@/constants/general";
 import useSlider from '@/hooks/useSlider';
 import Link from 'next/link';
 
