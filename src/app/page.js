@@ -1,4 +1,5 @@
 import Header from "@/components/header";
+import AboutInfo from "@/components/home/AboutInfo";
 import Carousel from "@/components/home/Carousel";
 
 export default function Home() {
@@ -6,6 +7,7 @@ export default function Home() {
     <>
     <Header/>
     <Carousel/>
+    <AboutInfo/>
     </>
   )
 }
