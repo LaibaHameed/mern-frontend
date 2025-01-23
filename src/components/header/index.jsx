@@ -4,12 +4,11 @@ import { FiPhone } from "react-icons/fi";
 import { BsCart3 } from "react-icons/bs";
 import { GoSearch } from "react-icons/go";
 import { LuCircleUser } from "react-icons/lu";
-import { NAV_LIST } from "@/constants/general";
-
 
 import Image from 'next/image';
 import React, { useState } from 'react';
 import Link from "next/link";
+import { NAV_LIST } from "@/utils/PATHS";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

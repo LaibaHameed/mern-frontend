@@ -2,16 +2,6 @@ import { BsGift, BsTruck } from "react-icons/bs";
 import { GrPowerCycle } from "react-icons/gr";
 import { FiPhone } from "react-icons/fi";
 
-const NAV_ROUTES = {
-    home: { value: 'home', label: 'HOME', path: '/' },
-    store: { value: 'store', label: 'STORE', path: '/store' },
-    about: { value: 'about', label: 'ABOUT', path: '/about' },
-    blog: { value: 'blog', label: 'BLOG', path: '/blog' },
-    contact: { value: 'contact', label: 'CONTACT', path: '/contact' },
-};
-
-export const NAV_LIST = Object.values(NAV_ROUTES)
-
 
 const SLIDES = [
     {
@@ -39,21 +29,25 @@ export default SLIDES;
 
 const INFO_LIST = {
     shipping: {
+        value: "shipping",
         logo: <BsTruck />,
         title: "Free shipping order",
         discreption: "On orders over $100"
     },
     gift: {
+        value: "gift",
         logo: <BsGift/>,
         title: "Special gift card",
         discreption: "The perfect gift idea"
     },
     exchange: {
+        value: "exchange",
         logo: <GrPowerCycle />,
         title: "Return & exchange",
         discreption: "Free return within 3 days"
     },
     support: {
+        value: "support",
         logo: <FiPhone />,
         title: "Support 24 / 7",
         discreption: "Customer support"

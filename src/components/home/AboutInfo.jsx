@@ -6,10 +6,10 @@ const AboutInfo = () => {
     return (
         <div className='flex flex-col items-center justify-center mb-24 mt-6'>
             <div className="my-28 flex flex-wrap items-center justify-center gap-6 w-full">
-                {INFO.map((item, index) => (
+                {INFO.map((item) => (
                     <div
                         className="flex flex-col sm:flex-row items-center justify-center gap-3 border rounded-full w-2/3 sm:w-2/5 lg:w-1/5 bg-gray-100 sm:py-6 py-3"
-                        key={index}
+                        key={item.value}
                     >
                         <div className="text-green-800 text-3xl">{item.logo}</div>
                         <div className="text-center sm:text-left text-sm">
