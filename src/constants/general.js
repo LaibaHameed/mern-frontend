@@ -57,35 +57,52 @@ const INFO_LIST = {
     },
 }
 
-// New Arrival Products List
 export const INFO = Object.values(INFO_LIST)
 
+// New Arrival Products List
 export const NEW_ARRIVAL = [
     {
+        id: 1,
         title: "Sit voluptatem",
         price: 68.0,
         image: "/assets/img1.jpg",
         badge: null,
     },
     {
+        id: 2,
         title: "Pellentesque aliquet",
         price: 58.0,
         image: "/assets/img2.jpg",
         badge: null,
     },
     {
+        id: 3,
         title: "Pellentesque aliquet",
         price: 60.0,
         image: "/assets/img3.jpg",
-        badge: "HOT",
+        badge: "hot",
     },
     {
+        id: 4,
         title: "Pellentesque aliquet",
         price: 65.0,
         image: "/assets/img4.jpg",
-        badge: "SALE",
+        badge: "sale",
     },
 ];
+
+export const TYPES = {
+    sale: {
+        value: 'sale',
+        label: 'sale',
+        bgColor: 'bg-green-600'
+    },
+    hot: {
+        value: 'hot',
+        label: 'hot',
+        bgColor: 'bg-orange-500'
+    },
+} 
 
 // Product card Icons
 const PRODUCT_ICONS = {
@@ -95,4 +112,4 @@ const PRODUCT_ICONS = {
     switch: { icon: <TbSwitchHorizontal size={20} />, name: "switch" },
 };
 
-export const ICONS =  Object.values(PRODUCT_ICONS)
+export const ICONS = Object.values(PRODUCT_ICONS)

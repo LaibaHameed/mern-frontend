@@ -11,8 +11,8 @@ const NewArrival = () => {
                 There are many variations of passages of lorem ipsum available
             </p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:px-24 px-12 my-6">
-                {NEW_ARRIVAL.map((item, index) => (
-                    <ProductCard key={index} product={item} />
+                {NEW_ARRIVAL.map((item) => (
+                    <ProductCard key={item.id} product={item} />
                 ))}
             </div>
         </div>
