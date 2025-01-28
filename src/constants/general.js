@@ -94,13 +94,9 @@ export const NEW_ARRIVAL = [
 // badge types
 export const TYPES = {
     sale: {
-        value: 'sale',
-        label: 'sale',
         bgColor: 'bg-green-600'
     },
     hot: {
-        value: 'hot',
-        label: 'hot',
         bgColor: 'bg-orange-500'
     },
 } 
