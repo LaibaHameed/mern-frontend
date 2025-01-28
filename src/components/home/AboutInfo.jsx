@@ -20,7 +20,7 @@ const AboutInfo = () => {
                 ))}
             </div>
             
-            <p className='font-serif text-gray-700 text-2xl italic text-center '>
+            <p className='font-serif text-gray-700 sm:text-2xl italic text-center px-6'>
                 We ship healthy potted plants right to your doorstep. <br/> Each plant comes with simple care instructions from <br/> our plant experts.
             </p>
 

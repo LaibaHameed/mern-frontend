@@ -12,7 +12,7 @@ const NewArrival = () => {
                 <p className="m-5 text-gray-600">
                     There are many variations of passages of lorem ipsum available
                 </p>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:px-24 sm:px-12 my-6">
+                <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:px-24 sm:px-12 my-6">
                     {NEW_ARRIVAL.map((item) => (
                         <ProductCard key={item.id} product={item} />
                     ))}
@@ -23,7 +23,7 @@ const NewArrival = () => {
                     {GALLERY_ITEMS.map((item) => (
                         <div key={item.id} className={`image-wrapper ${item.class}`}>
                             <div className="image-title ">
-                                <h1 className="capitalize lg:text-xl md:text-lg text-2xl font-serif font-semibold text-gray-800">{item.title}</h1>
+                                <h1 className="capitalize lg:text-xl md:text-lg  font-serif font-semibold text-gray-800">{item.title}</h1>
                                 <p className="text-gray-500">( {item.items} item)</p>
                             </div>
                             <Image
