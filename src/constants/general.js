@@ -153,3 +153,36 @@ export const GALLERY_ITEMS = [
         class: "img-5"
     },
 ]
+
+
+// New Arrival Products List
+export const BEST_SELLER = [
+    {
+        id: 1,
+        title: "Pellentesque aliquet",
+        price: 68.0,
+        image: "/assets/bestSeller1.jpg",
+        badge: "sale",
+    },
+    {
+        id: 2,
+        title: "Pellentesque aliquet",
+        price: 58.0,
+        image: "/assets/bestSeller2.jpg",
+        badge: null,
+    },
+    {
+        id: 3,
+        title: "Pellentesque aliquet",
+        price: 60.0,
+        image: "/assets/bestSeller3.jpg",
+        badge: "hot",
+    },
+    {
+        id: 4,
+        title: "Pellentesque aliquet",
+        price: 65.0,
+        image: "/assets/bestSeller4.jpg",
+        badge: "sale",
+    },
+];
