@@ -91,6 +91,7 @@ export const NEW_ARRIVAL = [
     },
 ];
 
+// badge types
 export const TYPES = {
     sale: {
         value: 'sale',
@@ -113,3 +114,42 @@ const PRODUCT_ICONS = {
 };
 
 export const ICONS = Object.values(PRODUCT_ICONS)
+
+// gallery items 
+export const GALLERY_ITEMS = [
+    {
+        id: 1,
+        title: "cactus plant",
+        items: 56,
+        image: "/assets/galleryimg1.jpg",
+        class: "img-1"
+    },
+    {
+        id: 2,
+        title: "indoor plant",
+        items: 36,
+        image: "/assets/galleryimg2.jpg",
+        class: "img-2"
+    },
+    {
+        id: 3,
+        title: "tropical plant",
+        items: 21,
+        image: "/assets/galleryimg3.jpg",
+        class: "img-3"
+    },
+    {
+        id: 4,
+        title: "floor plant",
+        items: 18,
+        image: "/assets/galleryimg4.jpg",
+        class: "img-4"
+    },
+    {
+        id: 5,
+        title: "table plant",
+        items: 36,
+        image: "/assets/galleryimg5.jpg",
+        class: "img-5"
+    },
+]
