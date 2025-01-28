@@ -57,35 +57,49 @@ const INFO_LIST = {
     },
 }
 
-// New Arrival Products List
 export const INFO = Object.values(INFO_LIST)
 
+// New Arrival Products List
 export const NEW_ARRIVAL = [
     {
+        id: 1,
         title: "Sit voluptatem",
         price: 68.0,
         image: "/assets/img1.jpg",
         badge: null,
     },
     {
+        id: 2,
         title: "Pellentesque aliquet",
         price: 58.0,
         image: "/assets/img2.jpg",
         badge: null,
     },
     {
+        id: 3,
         title: "Pellentesque aliquet",
         price: 60.0,
         image: "/assets/img3.jpg",
-        badge: "HOT",
+        badge: "hot",
     },
     {
+        id: 4,
         title: "Pellentesque aliquet",
         price: 65.0,
         image: "/assets/img4.jpg",
-        badge: "SALE",
+        badge: "sale",
     },
 ];
+
+// badge types
+export const TYPES = {
+    sale: {
+        bgColor: 'bg-green-600'
+    },
+    hot: {
+        bgColor: 'bg-orange-500'
+    },
+} 
 
 // Product card Icons
 const PRODUCT_ICONS = {
@@ -95,4 +109,43 @@ const PRODUCT_ICONS = {
     switch: { icon: <TbSwitchHorizontal size={20} />, name: "switch" },
 };
 
-export const ICONS =  Object.values(PRODUCT_ICONS)
+export const ICONS = Object.values(PRODUCT_ICONS)
+
+// gallery items 
+export const GALLERY_ITEMS = [
+    {
+        id: 1,
+        title: "cactus plant",
+        items: 56,
+        image: "/assets/galleryimg1.jpg",
+        class: "img-1"
+    },
+    {
+        id: 2,
+        title: "indoor plant",
+        items: 36,
+        image: "/assets/galleryimg2.jpg",
+        class: "img-2"
+    },
+    {
+        id: 3,
+        title: "tropical plant",
+        items: 21,
+        image: "/assets/galleryimg3.jpg",
+        class: "img-3"
+    },
+    {
+        id: 4,
+        title: "floor plant",
+        items: 18,
+        image: "/assets/galleryimg4.jpg",
+        class: "img-4"
+    },
+    {
+        id: 5,
+        title: "table plant",
+        items: 36,
+        image: "/assets/galleryimg5.jpg",
+        class: "img-5"
+    },
+]
