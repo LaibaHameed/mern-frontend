@@ -12,7 +12,7 @@ const NewArrival = () => {
                 <p className="m-5 text-gray-600">
                     There are many variations of passages of lorem ipsum available
                 </p>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:px-24 sm:px-12 my-6">
+                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:px-24 sm:px-12 px-0 grid-cols-1 my-6">
                     {NEW_ARRIVAL.map((item) => (
                         <ProductCard key={item.id} product={item} />
                     ))}
