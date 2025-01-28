@@ -4,15 +4,15 @@ import Image from "next/image";
 
 const ProductCard = ({ product }) => {
     return (
-        <div className="relative group border border-gray-300 overflow-hidden">
+        <div className="relative group border border-gray-300 overflow-hidden w-full max-w-[300px] mx-auto sm:max-w-none">
             {/* Badge */}
             {product.badge && <Badge text={product.badge} type={product.badge} />}
 
             {/* Image */}
             <Image
                 src={product.image}
-                width={270}
-                height={250}
+                width={400}
+                height={370}
                 alt={product.title}
                 className="w-full h-auto"
             />
@@ -20,18 +20,20 @@ const ProductCard = ({ product }) => {
             {/* Hover Buttons */}
             <div className="absolute bottom-24 left-0 w-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="flex items-center justify-center py-3 gap-3">
-                    {
-                        ICONS.map((icon, index) => (
-                            <button
-                                key={icon.name}
-                                className={`px-3 py-3 bg-white shadow-md text-gray-900 hover:bg-green-600 hover:text-white transition ${index === 0 ? "rounded-l-full" : index === Object.values(ICONS).length - 1 ? "rounded-r-full" : ""
-                                    }`}
-                                aria-label={icon.name}
-                            >
-                                {icon.icon}
-                            </button>
-                        ))
-                    }
+                    {ICONS.map((icon, index) => (
+                        <button
+                            key={icon.name}
+                            className={`px-3 py-3 bg-white shadow-md text-gray-900 hover:bg-green-600 hover:text-white transition ${index === 0
+                                    ? "rounded-l-full"
+                                    : index === Object.values(ICONS).length - 1
+                                        ? "rounded-r-full"
+                                        : ""
+                                }`}
+                            aria-label={icon.name}
+                        >
+                            {icon.icon}
+                        </button>
+                    ))}
                 </div>
             </div>
 
@@ -43,5 +45,6 @@ const ProductCard = ({ product }) => {
         </div>
     );
 };
+
 
 export default ProductCard;
