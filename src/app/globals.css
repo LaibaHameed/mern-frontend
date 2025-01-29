@@ -11,17 +11,17 @@
 /* Home gallery section */
 .gallery {
   margin: 0;
-  margin-top: 6rem;
-  margin-bottom: 6rem;
-  margin-left: 6rem;
-  margin-right: 6rem;
+  margin-top: 96px;
+  margin-bottom: 96px;
+  margin-left: 96px;
+  margin-right: 96px;
 }
 
 .grid-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr); 
   grid-template-rows: repeat(2, auto); 
-  gap: 2rem; 
+  gap: 16px; 
 }
 
 .grid-container > .img-1 {
@@ -61,8 +61,8 @@
 
 .image-title {
   position: absolute;
-  top: 2rem; 
-  left: 1rem; 
+  top: 16px; 
+  left: 8px; 
   z-index: 10; 
 }
 
@@ -81,11 +81,19 @@
 
 
 /* Tablet view: Adjust grid for 2 columns */
+@media (max-width: 1024px){
+  .gallery {
+    margin-left: 48px;
+    margin-right: 48px;
+  }
+}
+
 @media (max-width: 768px) {
+
   .grid-container {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(5, auto);
-    gap: 1rem;
+    gap: 16px;
   }
 
   .grid-container > .img-4 {
@@ -118,7 +126,7 @@
 
 @media (max-width: 640px){
   .grid-container {
-    gap: .5rem; 
+    gap: 5px; 
   }
 }
 
@@ -126,8 +134,8 @@
 /* Mobile view */
 @media (max-width: 480px) {
   .gallery {
-    margin-left: 2rem;
-    margin-right: 2rem;
+    margin-left: 20px;
+    margin-right: 20px  ;
   }
 
   .grid-container > div {
@@ -135,8 +143,8 @@
   }
 
   .image-title {
-    top: 1rem; 
-    left: 0.5rem; 
+    top: 16px; 
+    left: 8px; 
 
   }
 }
