@@ -5,7 +5,7 @@ const SectionList = ({ title, items }) => {
     return (
         <div className="space-y-3">
             <h1 className="font-bold uppercase">{title}</h1>
-            {items.map((item) => (
+            {Object.values(items).map((item) => (
                 <Link 
                     href={item.link} 
                     key={item.id}

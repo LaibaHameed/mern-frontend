@@ -210,24 +210,24 @@ export const CUSTOMER_REVIEWS = [
 ];
 
 // footer sections
-export const INFORMATION_ITEMS = [
-    { label: "New Products", link: "#new-products", id: "new-products" },
-    { label: "Top Seller", link: "#top-seller", id: "top-seller" },
-    { label: "About our shop", link: "#about-us", id: "about-us" },
-    { label: "Privacy policy", link: "#privacy-policy", id: "privacy-policy" }
-];
+export const INFORMATION_ITEMS = {
+    newProducts: { label: "New Products", link: "#new-products", id: "new-products" },
+    topSeller: { label: "Top Seller", link: "#top-seller", id: "top-seller" },
+    aboutUs: { label: "About our shop", link: "#about-us", id: "about-us" },
+    privacyPolicy: { label: "Privacy policy", link: "#privacy-policy", id: "privacy-policy" }
+};
 
-export const ACCOUNT_ITEMS = [
-    { label: "My account", link: "#my-account", id: "my-account" },
-    { label: "Discount", link: "#discount", id: "discount" },
-    { label: "Orders History", link: "#orders-history", id: "orders-history" },
-    { label: "Personal Information", link: "#personal-info", id: "personal-info" }
-];
+export const ACCOUNT_ITEMS = {
+    myAccount: { label: "My account", link: "#my-account", id: "my-account" },
+    discount: { label: "Discount", link: "#discount", id: "discount" },
+    ordersHistory: { label: "Orders History", link: "#orders-history", id: "orders-history" },
+    personalInfo: { label: "Personal Information", link: "#personal-info", id: "personal-info" }
+};
 
-export const PRODUCT_ITEMS = [
-    { label: "Delivery", link: "#delivery", id: "delivery" },
-    { label: "Legal Notice", link: "#legal-notice", id: "legal-notice" },
-    { label: "Prices Drop", link: "#prices-drop", id: "prices-drop" },
-    { label: "New Products", link: "#new-products", id: "new-products" },
-    { label: "Best Sales", link: "#best-sales", id: "best-sales" }
-];
+export const PRODUCT_ITEMS = {
+    delivery: { label: "Delivery", link: "#delivery", id: "delivery" },
+    legalNotice: { label: "Legal Notice", link: "#legal-notice", id: "legal-notice" },
+    pricesDrop: { label: "Prices Drop", link: "#prices-drop", id: "prices-drop" },
+    newProducts: { label: "New Products", link: "#new-products", id: "new-products" },
+    bestSales: { label: "Best Sales", link: "#best-sales", id: "best-sales" }
+};
