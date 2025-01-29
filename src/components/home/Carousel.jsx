@@ -6,7 +6,7 @@ import { ROOT_ROUTE } from '@/utils/PATHS';
 import SLIDES from "@/constants/general";
 import useSlider from '@/hooks/useSlider';
 import Link from 'next/link';
-import Container from "../reuseableComponents/Container";
+import Container from "../shared/Container";
 
 const Carousel = () => {
 

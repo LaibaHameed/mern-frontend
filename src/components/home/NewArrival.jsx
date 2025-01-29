@@ -1,7 +1,7 @@
 "use client";
 import { GALLERY_ITEMS, NEW_ARRIVAL } from "@/constants/general";
 import Image from "next/image";
-import ProductCard from "../reuseableComponents/ProductCard";
+import ProductCard from "../shared/ProductCard";
 
 const NewArrival = () => {
     return (

@@ -1,7 +1,7 @@
 import { BEST_SELLER } from '@/constants/general'
 import Image from 'next/image'
 import React from 'react'
-import ProductCard from '../reuseableComponents/ProductCard'
+import ProductCard from '../shared/ProductCard'
 
 const BestSeller = () => {
   return (
