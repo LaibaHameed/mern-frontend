@@ -17,12 +17,13 @@ const Carousel = () => {
         <div className="flex items-center justify-center">
             <Container>
                 <section
-                    className="relative bg-cover bg-center bg-no-repeat"
+                    className="relative bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-in-out"
                     style={{
                         backgroundImage: `url(${SLIDES[currentSlide].image})`,
+                        opacity: 1, // Make sure the opacity is animated
                     }}
                 >
-                    <div className="absolute inset-0"></div>
+                    <div className="absolute inset-0 transition-opacity duration-1000 ease-in-out" style={{ opacity: currentSlide === currentSlide ? 1 : 0 }}></div>
 
                     <div className="relative mx-auto max-w-screen-xl md:px-20 px-10 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8">
                         <div className="max-w-xxl text-slate-800 text-left">

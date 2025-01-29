@@ -19,7 +19,7 @@ const ProductCard = ({ product }) => {
 
             {/* Hover Buttons */}
             <div className="absolute bottom-24 left-0 w-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="flex items-center justify-center py-3 gap-3">
+                <div className="flex items-center justify-center py-3 gap-3 transition-all ">
                     {ICONS.map((icon, index) => (
                         <button
                             key={icon.name}
