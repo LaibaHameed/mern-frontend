@@ -1,5 +1,5 @@
 "use client";
-import { FiAlignJustify } from "react-icons/fi";
+import { FiAlignJustify, FiX } from "react-icons/fi";
 import { FiPhone } from "react-icons/fi";
 import { BsCart3 } from "react-icons/bs";
 import { GoSearch } from "react-icons/go";
@@ -53,9 +53,15 @@ const Header = () => {
 
         <div className='flex justify-between'>
           {/* Mobile Menu Button */}
+          {/* Mobile Menu Button */}
           <div className="lg:hidden flex items-center sm:mx-6" onClick={toggleMenu}>
-            <FiAlignJustify className="cursor-pointer text-gray-600" size={25} />
+            {isMenuOpen ? (
+              <FiX className="cursor-pointer text-gray-600" size={25} />
+            ) : (
+              <FiAlignJustify className="cursor-pointer text-gray-600" size={25} />
+            )}
           </div>
+
 
           {/* Icons Section */}
           <div className="hidden sm:flex items-center sm:gap-4">
@@ -80,7 +86,12 @@ const Header = () => {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`lg:hidden ${isMenuOpen ? 'block' : 'hidden'} text-gray-700 my-4`}>
+
+      {/* Mobile Menu */}
+      <div
+        className={`lg:hidden ${isMenuOpen ? 'block' : 'hidden'} text-gray-700 py-2 my-4 absolute top-20 left-0 w-full bg-white bg-opacity-90 z-50`}
+        style={{ transition: 'all 0.3s ease-in-out' }}
+      >
         <nav className="flex flex-col">
           {NAV_LIST.map((route) => (
             <Link
@@ -93,6 +104,7 @@ const Header = () => {
           ))}
         </nav>
       </div>
+
     </div>
   );
 };

@@ -1,7 +1,7 @@
 "use client";
 import { GALLERY_ITEMS, NEW_ARRIVAL } from "@/constants/general";
 import Image from "next/image";
-import ProductCard from "../reuseableComponents/ProductCard";
+import ProductCard from "../shared/ProductCard";
 
 const NewArrival = () => {
     return (
@@ -25,7 +25,7 @@ const NewArrival = () => {
                     {GALLERY_ITEMS.map((item) => (
                         <div key={item.id} className={`image-wrapper ${item.class}`}>
                             <div className="image-title ">
-                                <h1 className="capitalize lg:text-xl md:text-lg  font-serif font-semibold text-gray-800">{item.title}</h1>
+                                <h1 className="capitalize lg:text-xl md:text-lg  font-serif font-semibold text-gray-800 cursor-pointer hover:text-green-600 transition-all duration-300 ease-in-out">{item.title}</h1>
                                 <p className="text-gray-500">( {item.items} item)</p>
                             </div>
                             <Image
