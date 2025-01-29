@@ -1,3 +1,4 @@
+import Footer from "@/components/footer";
 import Header from "@/components/header";
 import AboutInfo from "@/components/home/AboutInfo";
 import BestSeller from "@/components/home/BestSeller";
@@ -14,6 +15,7 @@ export default function Home() {
     <NewArrival/>
     <BestSeller/>
     <CustomerReviews/>
+    <Footer/>
     </>
   )
 }

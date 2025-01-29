@@ -208,3 +208,26 @@ export const CUSTOMER_REVIEWS = [
         title: "Tech Enthusiast",
     },
 ];
+
+// footer sections
+export const INFORMATION_ITEMS = [
+    { label: "New Products", link: "#new-products", id: "new-products" },
+    { label: "Top Seller", link: "#top-seller", id: "top-seller" },
+    { label: "About our shop", link: "#about-us", id: "about-us" },
+    { label: "Privacy policy", link: "#privacy-policy", id: "privacy-policy" }
+];
+
+export const ACCOUNT_ITEMS = [
+    { label: "My account", link: "#my-account", id: "my-account" },
+    { label: "Discount", link: "#discount", id: "discount" },
+    { label: "Orders History", link: "#orders-history", id: "orders-history" },
+    { label: "Personal Information", link: "#personal-info", id: "personal-info" }
+];
+
+export const PRODUCT_ITEMS = [
+    { label: "Delivery", link: "#delivery", id: "delivery" },
+    { label: "Legal Notice", link: "#legal-notice", id: "legal-notice" },
+    { label: "Prices Drop", link: "#prices-drop", id: "prices-drop" },
+    { label: "New Products", link: "#new-products", id: "new-products" },
+    { label: "Best Sales", link: "#best-sales", id: "best-sales" }
+];
