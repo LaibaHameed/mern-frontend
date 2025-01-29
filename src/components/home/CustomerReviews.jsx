@@ -1,18 +1,10 @@
 'use client'
 import { CUSTOMER_REVIEWS } from '@/constants/general';
-import React, { useEffect } from 'react';
+import React from 'react';
 import useSlider from '@/hooks/useSlider';
 
 const CustomerReviews = () => {
-    const { currentSlide, nextSlide } = useSlider({ dataLength: CUSTOMER_REVIEWS.length });
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            nextSlide(); 
-        }, 3000);
-
-        return () => clearInterval(interval); 
-    }, [nextSlide]);
+    const { currentSlide } = useSlider({ dataLength: CUSTOMER_REVIEWS.length });
 
     return (
         <div className='bg-gray-100 sm:py-20 my-20 py-10 lg:m-24 mx-12'>
@@ -29,13 +21,15 @@ const CustomerReviews = () => {
 
                 {/* Dots for indicating slides */}
                 <div className='flex mt-6 space-x-2'>
-                    {CUSTOMER_REVIEWS.map((_, index) => (
+                    {CUSTOMER_REVIEWS.map((customer) => (
                         <div
-                            key={index}
-                            className={`w-3 h-3 rounded-full ${currentSlide === index ? 'bg-green-500' : 'bg-gray-400'}`}
+                            key={customer.name} 
+                            className={`w-3 h-3 rounded-full transition-all duration-300 ${CUSTOMER_REVIEWS[currentSlide].name === customer.name ? 'bg-green-500 scale-125' : 'bg-gray-400'
+                                }`}
                         />
                     ))}
                 </div>
+
             </div>
         </div>
     );
