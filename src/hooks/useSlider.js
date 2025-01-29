@@ -1,7 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-const useSlider = ({ dataLength }) => {
-
+const useSlider = ({ dataLength, intervalTime = 3000 }) => {
     const [currentSlide, setCurrentSlide] = useState(0);
 
     const nextSlide = () => {
@@ -12,7 +11,13 @@ const useSlider = ({ dataLength }) => {
         setCurrentSlide((prev) => (prev - 1 + dataLength) % dataLength);
     };
 
-    return { currentSlide, nextSlide, prevSlide }
-}
+    useEffect(() => {
+        const interval = setInterval(nextSlide, intervalTime);
 
-export default useSlider
+        return () => clearInterval(interval);
+    }, [dataLength]); 
+
+    return { currentSlide, nextSlide, prevSlide };
+};
+
+export default useSlider;

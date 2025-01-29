@@ -9,7 +9,7 @@ const NewArrival = () => {
             <div className="flex flex-col items-center justify-center">
                 <h1 className="text-4xl font-semibold font-serif my-4 tracking-tighter">New Arrival</h1>
                 <Image src="/assets/HeadingImg.png" width={350} height={100} alt="Heading" />
-                <p className="m-5 text-gray-600">
+                <p className="m-5 text-gray-600 text-center">
                     There are many variations of passages of lorem ipsum available
                 </p>
 

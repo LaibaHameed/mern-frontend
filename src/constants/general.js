@@ -99,7 +99,7 @@ export const TYPES = {
     hot: {
         bgColor: 'bg-orange-500'
     },
-} 
+}
 
 // Product card Icons
 const PRODUCT_ICONS = {
@@ -180,5 +180,27 @@ export const BEST_SELLER = [
         price: 65.0,
         image: "/assets/bestSeller4.jpg",
         badge: "sale",
+    },
+];
+
+// customer reviews
+export const CUSTOMER_REVIEWS = [
+    {
+        name: "Emily Johnson",
+        review:
+            "I absolutely love the quality of the products! The materials feel premium, and the attention to detail is outstanding. Customer support was also very responsive and helpful. I will definitely be coming back for more purchases in the future!",
+        title: "BTV-Designer",
+    },
+    {
+        name: "David Williams",
+        review:
+            "This was my first time ordering, and I was impressed. The website was easy to navigate, the checkout process was seamless, and the delivery was on time. The product exceeded my expectations, and I appreciate the effort put into packaging as well.",
+        title: "Marketing Specialist",
+    },
+    {
+        name: "Sophia Martinez",
+        review:
+            "I've been using these products for a while now, and I can confidently say they are worth every penny. The durability, functionality, and sleek design make them stand out from other brands. I highly recommend this to anyone looking for high-quality items!",
+        title: "Tech Enthusiast",
     },
 ];
