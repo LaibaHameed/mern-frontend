@@ -31,7 +31,6 @@ const NewArrival = () => {
                             <Image
                                 src={item.image}
                                 alt="Gallery Image"
-                                layout="responsive"
                                 width={500}
                                 height={800}
                             />
