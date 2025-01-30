@@ -9,7 +9,7 @@ const SectionList = ({ title, items }) => {
                 <Link 
                     href={item.link} 
                     key={item.id}
-                    className="capitalize hover:text-green-600 cursor-pointer block"
+                    className="capitalize hover:text-green-600 cursor-pointer block transition-all duration-300 ease-in-out"
                 >
                     {item.label}
                 </Link>

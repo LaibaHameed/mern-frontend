@@ -6,7 +6,7 @@ const ProductCard = ({ product }) => {
     return (
         <div className="relative group border border-gray-300 overflow-hidden w-full max-w-[300px] mx-auto sm:max-w-none">
             {/* Badge */}
-            {product.badge && <Badge text={product.badge} type={product.badge} />}
+            {product.badge && <Badge type={product.badge} />}
 
             {/* Image */}
             <Image
@@ -23,7 +23,7 @@ const ProductCard = ({ product }) => {
                     {ICONS.map((icon, index) => (
                         <button
                             key={icon.name}
-                            className={`px-3 py-3 bg-white shadow-md text-gray-900 hover:bg-green-600 hover:text-white transition ${index===0 && "rounded-l-full"} ${index === Object.values(ICONS).length-1 && "rounded-r-full"} `}
+                            className={`px-3 py-3 bg-white shadow-md text-gray-900 hover:bg-green-600 hover:text-white transition-all duration-300 ease-in-out ${index===0 && "rounded-l-full"} ${index === Object.values(ICONS).length-1 && "rounded-r-full"} `}
                             aria-label={icon.name}
                         >
                             {icon.icon}

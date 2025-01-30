@@ -26,11 +26,11 @@ const ContactInfo = () => {
             </div>
             <div className="flex items-center">
                 <h2 className="font-bold mr-4">Follow us:</h2>
-                <div className="flex items-center space-x-4 text-xl">
-                    <FaFacebookF className="cursor-pointer hover:text-blue-600" />
-                    <IoLogoTwitter className="cursor-pointer hover:text-blue-400" />
-                    <FaPinterest className="cursor-pointer hover:text-red-600" />
-                    <FaGooglePlusG className="cursor-pointer hover:text-red-500" />
+                <div className="flex items-center space-x-4 text-xl ">
+                    <FaFacebookF size={20}  className="cursor-pointer hover:text-blue-600 transition-all duration-300 ease-in-out" />
+                    <IoLogoTwitter size={20}  className="cursor-pointer hover:text-blue-400 transition-all duration-300 ease-in-out" />
+                    <FaPinterest  size={20} className="cursor-pointer hover:text-red-600 transition-all duration-300 ease-in-out" />
+                    <FaGooglePlusG size={25}  className="cursor-pointer hover:text-red-500 transition-all duration-300 ease-in-out" />
                 </div>
             </div>
         </div>

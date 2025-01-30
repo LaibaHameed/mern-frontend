@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const useSlider = ({ dataLength, intervalTime = 3000 }) => {
+const useSlider = ({ dataLength, intervalTime = 10000 }) => {
     const [currentSlide, setCurrentSlide] = useState(0);
 
     const nextSlide = () => {

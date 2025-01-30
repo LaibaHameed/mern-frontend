@@ -6,7 +6,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  transition: all 0.3s ease-in-out;
+  /* transition: all 0.3s ease-in-out; */
 }
 
 /* Home gallery section */
@@ -58,12 +58,18 @@
 .image-wrapper {
   position: relative;
   width: 100%;
+  height: 100%;
 }
 
+.image-wrapper >.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 .image-title {
   position: absolute;
-  top: 16px; 
-  left: 8px; 
+  top: 20px; 
+  left: 15px; 
   z-index: 10; 
 }
 
