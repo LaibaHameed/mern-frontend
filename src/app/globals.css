@@ -1,12 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@plugin "daisyui" {
+  themes: false;
+}
 
-*{
-  margin: 0;
-  padding: 0;
+* {
   box-sizing: border-box;
-  transition: all 0.3s ease-in-out;
 }
 
 /* Home gallery section */
@@ -14,15 +12,13 @@
   margin: 0;
   margin-top: 96px;
   margin-bottom: 96px;
-  margin-left: 96px;
-  margin-right: 96px;
 }
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); 
-  grid-template-rows: repeat(2, auto); 
-  gap: 16px; 
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 16px;
 }
 
 .grid-container > .img-1 {
@@ -62,35 +58,12 @@
 
 .image-title {
   position: absolute;
-  top: 16px; 
-  left: 8px; 
-  z-index: 10; 
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Tablet view: Adjust grid for 2 columns */
-@media (max-width: 1024px){
-  .gallery {
-    margin-left: 48px;
-    margin-right: 48px;
-  }
+  top: 16px;
+  left: 8px;
+  z-index: 10;
 }
 
 @media (max-width: 768px) {
-
   .grid-container {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(5, auto);
@@ -105,7 +78,7 @@
   .grid-container > .img-3 {
     grid-column: 1 / 3;
     grid-row: 1 / 2;
-  }  
+  }
 
   .grid-container > .img-1 {
     grid-column: 1 / 2;
@@ -121,31 +94,22 @@
     grid-column: 2 / 3;
     grid-row: 3 / 4;
   }
-
-  
 }
 
-@media (max-width: 640px){
+@media (max-width: 640px) {
   .grid-container {
-    gap: 5px; 
+    gap: 5px;
   }
 }
-
 
 /* Mobile view */
 @media (max-width: 480px) {
-  .gallery {
-    margin-left: 20px;
-    margin-right: 20px  ;
-  }
-
   .grid-container > div {
     margin-bottom: 20px;
   }
 
   .image-title {
-    top: 16px; 
-    left: 8px; 
-
+    top: 16px;
+    left: 8px;
   }
 }
