@@ -19,10 +19,10 @@ const Header = () => {
 
   return (
     <div>
-      <div className="flex justify-center items-center bg-gray-900">
+      <div className="flex-center bg-gray-900">
         <Container>
           {/* Top Bar */}
-          <div className="sm:flex items-center justify-between  py-6 text-white text-sm hidden">
+          <div className="md:flex items-center justify-between  py-6 text-white text-sm hidden">
             <div className="flex items-center gap-2 text-xs hover:text-green-700 font-semibold tracking-wider">
               <FiPhone size={20} />
               <span className="text-xs">Hotline: (602) 462 8889</span>
@@ -41,7 +41,7 @@ const Header = () => {
       </div>
 
       {/* Main Header */}
-      <div className="flex justify-center items-center">
+      <div className="flex-center">
         <Container>
           <div className="flex items-center justify-between py-6  border-b border-gray-200">
             {/* Logo */}
@@ -114,8 +114,6 @@ const Header = () => {
           </div>
         </Container>
       </div>
-
-      {/* Mobile Menu */}
 
       {/* Mobile Menu */}
       <div

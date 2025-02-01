@@ -2,6 +2,21 @@
 @plugin "daisyui" {
   themes: false;
 }
+@theme {
+  /* breakpoints  */
+  --breakpoint-md: 800px;
+
+  /* colors variables  */
+  --color-primary: #008236;
+}
+
+@layer components {
+  .flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
 
 * {
   box-sizing: border-box;

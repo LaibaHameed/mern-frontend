@@ -6,7 +6,7 @@ import Container from '../shared/Container';
 
 const BestSeller = () => {
   return (
-    <div className="flex justify-center items-center py-20">
+    <div className="flex-center py-20">
       <Container>
         <div className="flex flex-col items-center justify-center">
           <h1 className="text-4xl font-semibold font-serif my-4 tracking-tighter">

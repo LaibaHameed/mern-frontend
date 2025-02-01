@@ -11,7 +11,7 @@ import Container from '../shared/Container';
 const Footer = () => {
   return (
     <>
-      <div className="flex justify-center items-center bg-gray-100 shadow-2xl">
+      <div className="flex-center bg-gray-100 shadow-2xl">
         <Container>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 px-6 md:px-20 py-20">
             {/* Contact Us Section */}
@@ -29,7 +29,7 @@ const Footer = () => {
         </Container>
       </div>
 
-      <div className="bg-gray-900 py-4 flex justify-center items-center">
+      <div className="bg-gray-900 py-4 flex-center">
         <Container>
           <p className="text-gray-50 text-center px-6">
             Copyright 2019 by Botanical Store - All rights reserved

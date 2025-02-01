@@ -1,13 +1,9 @@
 import {ICONS} from '@/constants/general';
-import Badge from './Badge';
 import Image from 'next/image';
 
 const ProductCard = ({product}) => {
   return (
     <div className="relative group border border-gray-300 overflow-hidden w-full  mx-auto sm:max-w-none">
-      {/* Badge */}
-      {product.badge && <Badge text={product.badge} type={product.badge} />}
-
       {/* Image */}
       <Image
         src={product.image}

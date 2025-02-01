@@ -25,7 +25,7 @@ const Carousel = () => {
         className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
         style={{opacity: currentSlide === currentSlide ? 1 : 0}}
       ></div>
-      <div className="flex justify-center items-center">
+      <div className="flex-center">
         <Container>
           <div className="relative mx-auto max-w-screen-xl  py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8">
             <div className="max-w-xxl text-slate-800 text-left">
@@ -47,7 +47,7 @@ const Carousel = () => {
               <div className="mt-14 flex flex-wrap gap-4 text-center">
                 <Link
                   href={ROOT_ROUTE}
-                  className="rounded-full bg-green-700 px-7 py-2 tracking-wider md:px-10 md:py-4 md:text-md md:font-semibold text-white shadow hover:bg-green-400 focus:outline-none sm:w-auto flex items-center justify-center gap-2"
+                  className="rounded-full bg-primary px-7 py-2 tracking-wider md:px-10 md:py-4 md:text-md md:font-semibold text-white shadow hover:bg-green-400 focus:outline-none sm:w-auto flex items-center justify-center gap-2"
                 >
                   {SLIDES[currentSlide].buttonText1} <FaArrowRight />
                 </Link>

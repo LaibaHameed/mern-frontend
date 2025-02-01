@@ -8,7 +8,7 @@ const CustomerReviews = () => {
   const {currentSlide} = useSlider({dataLength: CUSTOMER_REVIEWS.length});
 
   return (
-    <div className="bg-gray-100 flex justify-center items-center">
+    <div className="bg-gray-100 flex-center">
       <Container>
         <div className="py-20">
           <div className="flex flex-col items-center justify-center md:px-20 sm:px-10 md:py-10">

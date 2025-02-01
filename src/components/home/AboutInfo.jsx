@@ -5,7 +5,7 @@ import Container from '../shared/Container';
 
 const AboutInfo = () => {
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex-center">
       <Container>
         <div className="flex flex-col items-center justify-center mb-24 mt-6">
           <div className="my-28 flex lg:flex-row flex-col items-center justify-between gap-6 w-full">
