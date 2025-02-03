@@ -1,7 +1,7 @@
-import {ICONS} from '@/constants/general';
+import { ICONS } from '@/constants/general';
 import Image from 'next/image';
 
-const ProductCard = ({product}) => {
+const ProductCard = ({ product }) => {
   return (
     <div className="relative group border border-gray-300 overflow-hidden w-full  mx-auto sm:max-w-none">
       {/* Image */}
@@ -14,16 +14,13 @@ const ProductCard = ({product}) => {
       />
 
       {/* Hover Buttons */}
-      <div className="absolute bottom-24 left-0 w-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <div className="flex items-center justify-center py-3 gap-3 transition-all ">
+      <div className="absolute bottom-24 left-0 w-full opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 animate">
+        <div className="flex items-center justify-center py-3 gap-3">
           {ICONS.map((icon, index) => (
             <button
               key={icon.name}
-              className={`px-3 py-3 bg-white shadow-md text-gray-900 hover:bg-green-600 hover:text-white transition ${
-                index === 0 && 'rounded-l-full'
-              } ${
-                index === Object.values(ICONS).length - 1 && 'rounded-r-full'
-              } `}
+              className={`px-3 py-3 bg-white shadow-md text-secondary hover:bg-primary-hover hover:text-white animate ${index === 0 && 'rounded-l-full'
+                } ${index === Object.values(ICONS).length - 1 && 'rounded-r-full'}`}
               aria-label={icon.name}
             >
               {icon.icon}
@@ -31,6 +28,7 @@ const ProductCard = ({product}) => {
           ))}
         </div>
       </div>
+
 
       {/* Text Content */}
       <div className="flex flex-col items-center justify-center py-6">

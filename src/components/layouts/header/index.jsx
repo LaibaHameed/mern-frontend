@@ -19,11 +19,11 @@ const Header = () => {
 
   return (
     <div>
-      <div className="flex-center bg-gray-900">
+      <div className="flex-center bg-secondary">
         <Container>
           {/* Top Bar */}
-          <div className="md:flex items-center justify-between  py-6 text-white text-sm hidden">
-            <div className="flex items-center gap-2 text-xs hover:text-green-700 font-semibold tracking-wider">
+          <div className="md:flex items-center justify-between py-6 text-white text-sm hidden">
+            <div className="flex items-center gap-2 text-xs hover:text-primary animate font-semibold tracking-wider">
               <FiPhone size={20} />
               <span className="text-xs">Hotline: (602) 462 8889</span>
             </div>
@@ -43,7 +43,7 @@ const Header = () => {
       {/* Main Header */}
       <div className="flex-center">
         <Container>
-          <div className="flex items-center justify-between py-6  border-b border-gray-200">
+          <div className="flex items-center justify-between py-6 sm:margin-lg">
             {/* Logo */}
             <div>
               <Image
@@ -55,12 +55,12 @@ const Header = () => {
             </div>
 
             {/* Navigation */}
-            <nav className="hidden lg:flex gap-10 text-lg text-gray-700">
+            <nav className="hidden lg:flex gap-10 text-lg text-secondary">
               {NAV_LIST.map((route) => (
                 <Link
                   key={route.value}
                   href={route.path}
-                  className="hover:text-green-700 text-xs underline-offset-8 decoration-2 hover:underline font-bold text-black tracking-wider"
+                  className="hover:text-primary hover:underline animate text-xs underline-offset-8 decoration-2 font-bold tracking-wider"
                 >
                   {route.label}
                 </Link>
@@ -69,16 +69,15 @@ const Header = () => {
 
             <div className="flex justify-between">
               {/* Mobile Menu Button */}
-              {/* Mobile Menu Button */}
               <div
                 className="lg:hidden flex items-center sm:mx-6"
                 onClick={toggleMenu}
               >
                 {isMenuOpen ? (
-                  <FiX className="cursor-pointer text-gray-600" size={25} />
+                  <FiX className="cursor-pointer text-secondary" size={25} />
                 ) : (
                   <FiAlignJustify
-                    className="cursor-pointer text-gray-600"
+                    className="cursor-pointer text-secondary"
                     size={25}
                   />
                 )}
@@ -87,26 +86,26 @@ const Header = () => {
               {/* Icons Section */}
               <div className="hidden sm:flex items-center sm:gap-4">
                 <GoSearch
-                  className="cursor-pointer hover:text-green-700 text-gray-600"
+                  className="cursor-pointer hover:text-primary animate text-secondary"
                   size={20}
                 />
 
                 {/* Cart Icon with Badge */}
                 <div className="relative">
                   <BsCart3
-                    className="cursor-pointer hover:text-green-700 text-gray-600"
+                    className="cursor-pointer hover:text-primary animate text-secondary"
                     size={20}
                   />
 
                   {cartItems > 0 && (
-                    <span className="absolute -top-2 -right-2 bg-green-700 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center cursor-pointer">
+                    <span className="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full w-4 h-4 flex items-center justify-center cursor-pointer">
                       {cartItems}
                     </span>
                   )}
                 </div>
 
                 <LuCircleUser
-                  className="cursor-pointer hover:text-green-700 text-gray-600"
+                  className="cursor-pointer hover:text-primary animate text-secondary"
                   size={20}
                 />
               </div>
@@ -119,14 +118,14 @@ const Header = () => {
       <div
         className={`lg:hidden ${
           isMenuOpen ? 'min-h-[180px] h-[180px]' : 'min-h-0 h-0'
-        } text-gray-700 transition-all overflow-hidden py-2 my-4 absolute top-20 left-0 w-full bg-white bg-opacity-90 z-50`}
+        } text-secondary overflow-hidden py-2 my-4 absolute top-20 left-0 w-full bg-white bg-opacity-90 z-50 animate`}
       >
         <nav className="flex flex-col">
           {NAV_LIST.map((route) => (
             <Link
               key={route.value}
               href={route.path}
-              className="hover:text-green-600 hover:bg-black py-3 text-xs p-4 font-bold tracking-wider"
+              className="hover:text-primary-hover hover:bg-black animate py-3 text-xs p-6 font-bold tracking-wider"
             >
               {route.label}
             </Link>

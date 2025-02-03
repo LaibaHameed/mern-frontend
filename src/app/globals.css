@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @plugin "daisyui" {
   themes: false;
 }
@@ -8,6 +8,8 @@
 
   /* colors variables  */
   --color-primary: #008236;
+  --color-primary-hover: #16A34A;
+  --color-secondary: #1a202c;
 }
 
 @layer components {
@@ -16,6 +18,18 @@
     justify-content: center;
     align-items: center;
   }
+  .animate {
+    transition: all 0.3s ease-in-out;
+  }
+
+  .margin-lg {
+    margin-left: 48px;
+    margin-right: 48px;
+  }
+  .margin-sm {
+    margin-left: 24px;
+    margin-right: 24px;
+  }
 }
 
 * {
@@ -23,6 +37,7 @@
 }
 
 /* Home gallery section */
+
 .gallery {
   margin: 0;
   margin-top: 96px;
