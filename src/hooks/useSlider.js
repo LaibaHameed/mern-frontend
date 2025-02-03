@@ -17,7 +17,7 @@ const useSlider = ({ dataLength, intervalTime = 3000 }) => {
         return () => clearInterval(interval);
     }, [dataLength]); 
 
-    return { currentSlide, nextSlide, prevSlide };
+    return { currentSlide, nextSlide, prevSlide, setCurrentSlide };
 };
 
 export default useSlider;

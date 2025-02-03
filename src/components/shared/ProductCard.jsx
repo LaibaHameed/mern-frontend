@@ -15,7 +15,7 @@ const ProductCard = ({ product }) => {
 
       {/* Hover Buttons */}
       <div className="absolute bottom-24 left-0 w-full opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 animate">
-        <div className="flex items-center justify-center py-3 gap-3">
+        <div className="flex-center py-3 gap-3">
           {ICONS.map((icon, index) => (
             <button
               key={icon.name}

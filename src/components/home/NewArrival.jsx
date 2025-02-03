@@ -6,9 +6,9 @@ import Container from '../shared/Container';
 
 const NewArrival = () => {
   return (
-    <div className="flex-center">
+    <div className="flex-center sm:margin-lg margin-sm">
       <Container>
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex-center flex-col">
           <h1 className="text-4xl font-semibold font-serif my-4 tracking-tighter">
             New Arrival
           </h1>
@@ -22,7 +22,7 @@ const NewArrival = () => {
             There are many variations of passages of lorem ipsum available
           </p>
 
-          <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6  my-6">
+          <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 my-6">
             {NEW_ARRIVAL.map((item) => (
               <ProductCard key={item.id} product={item} />
             ))}
