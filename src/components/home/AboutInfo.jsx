@@ -1,4 +1,4 @@
-import {INFO} from '@/constants/general';
+import { INFO } from '@/constants/general';
 import Image from 'next/image';
 import React from 'react';
 import Container from '../shared/Container';
@@ -7,14 +7,14 @@ const AboutInfo = () => {
   return (
     <div className="flex-center">
       <Container>
-        <div className="flex flex-col items-center justify-center mb-24 mt-6">
-          <div className="my-28 flex lg:flex-row flex-col items-center justify-between gap-6 w-full">
+        <div className=" flex-col flex-center sm:margin-lg margin-sm mb-24 mt-6">
+          <div className="my-28 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 w-full">
             {INFO.map((item) => (
               <div
-                className="flex flex-col sm:flex-row items-center justify-center gap-3 border rounded-full w-full lg:w-1/4 bg-gray-100 sm:py-6 py-3"
+                className="flex-center flex-col sm:flex-row sm:items-center gap-3 border rounded-full bg-gray-100 sm:py-6 py-3 px-4"
                 key={item.value}
               >
-                <div className="text-green-800 text-3xl">{item.logo}</div>
+                <div className="text-primary text-3xl">{item.logo}</div>
                 <div className="text-center sm:text-left text-sm">
                   <h5 className="font-bold text-gray-800">{item.title}</h5>
                   <p className="text-md text-gray-600">{item.discreption}</p>

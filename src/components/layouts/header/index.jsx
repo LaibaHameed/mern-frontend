@@ -23,12 +23,12 @@ const Header = () => {
         <Container>
           {/* Top Bar */}
           <div className="md:flex items-center justify-between py-6 text-white text-sm hidden">
-            <div className="flex items-center gap-2 text-xs hover:text-primary animate font-semibold tracking-wider">
+            <div className="flex-center gap-2 text-xs hover:text-primary animate font-semibold tracking-wider">
               <FiPhone size={20} />
               <span className="text-xs">Hotline: (602) 462 8889</span>
             </div>
             <p className="text-xs mx-4">Welcome To Botanical Store</p>
-            <div className="flex justify-end items-center gap-4 text-xs">
+            <div className="flex-center justify-end gap-4 text-xs">
               <span>
                 Currency: <strong>USD</strong>
               </span>
@@ -43,7 +43,7 @@ const Header = () => {
       {/* Main Header */}
       <div className="flex-center">
         <Container>
-          <div className="flex items-center justify-between py-6 sm:margin-lg">
+          <div className="flex-center justify-between py-6 sm:margin-lg">
             {/* Logo */}
             <div>
               <Image
@@ -67,10 +67,10 @@ const Header = () => {
               ))}
             </nav>
 
-            <div className="flex justify-between">
+            <div className="flex-center justify-between">
               {/* Mobile Menu Button */}
               <div
-                className="lg:hidden flex items-center sm:mx-6"
+                className="lg:hidden flex-center sm:mx-6"
                 onClick={toggleMenu}
               >
                 {isMenuOpen ? (
@@ -98,7 +98,7 @@ const Header = () => {
                   />
 
                   {cartItems > 0 && (
-                    <span className="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full w-4 h-4 flex items-center justify-center cursor-pointer">
+                    <span className="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full w-4 h-4 flex-center cursor-pointer">
                       {cartItems}
                     </span>
                   )}

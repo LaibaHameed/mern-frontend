@@ -5,18 +5,18 @@ import useSlider from '@/hooks/useSlider';
 import Container from '../shared/Container';
 
 const CustomerReviews = () => {
-  const {currentSlide} = useSlider({dataLength: CUSTOMER_REVIEWS.length});
+  const { currentSlide, setCurrentSlide } = useSlider({ dataLength: CUSTOMER_REVIEWS.length });
 
   return (
     <div className="bg-gray-100 flex-center">
       <Container>
         <div className="py-20">
-          <div className="flex flex-col items-center justify-center md:px-20 sm:px-10 md:py-10">
+          <div className="flex-center flex-col md:px-20 sm:px-10 md:py-10">
             <h1 className="sm:text-4xl text-2xl font-semibold font-serif my-4 tracking-tighter">
               What Say Client
             </h1>
-            <span className="text-6xl font-serif text-gray-600 mt-6">“</span>
-            <div className="lg:mx-20 flex flex-col items-center justify-center">
+            <span className="text-6xl font-serif text-gray-600 md:mt-6">“</span>
+            <div className="lg:mx-20 flex-center flex-col">
               <p className="text-center text-sm sm:font-normal h-20 text-gray-500 font-serif font-thin tracking-wide">
                 {CUSTOMER_REVIEWS[currentSlide].review}
               </p>
@@ -31,13 +31,13 @@ const CustomerReviews = () => {
             {/* Dots for indicating slides */}
             <div className="flex mt-6 space-x-2">
               {CUSTOMER_REVIEWS.map((customer) => (
-                <div
+                <button
                   key={customer.name}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    CUSTOMER_REVIEWS[currentSlide].name === customer.name
-                      ? 'bg-green-500 scale-125'
-                      : 'bg-gray-400'
+                  onClick={() => setCurrentSlide(customer.id)}
+                  className={`w-3 h-3 rounded-full animate focus:outline-none ${
+                    currentSlide === customer.id ? 'bg-green-500 scale-125' : 'bg-gray-400'
                   }`}
+                  aria-label={`Go to review by ${customer.name}`}
                 />
               ))}
             </div>
