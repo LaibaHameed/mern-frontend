@@ -30,12 +30,12 @@ const CustomerReviews = () => {
 
             {/* Dots for indicating slides */}
             <div className="flex mt-6 space-x-2">
-              {CUSTOMER_REVIEWS.map((customer, index) => (
+              {CUSTOMER_REVIEWS.map((customer) => (
                 <button
                   key={customer.name}
-                  onClick={() => setCurrentSlide(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 focus:outline-none ${
-                    currentSlide === index ? 'bg-green-500 scale-125' : 'bg-gray-400'
+                  onClick={() => setCurrentSlide(customer.id)}
+                  className={`w-3 h-3 rounded-full animate focus:outline-none ${
+                    currentSlide === customer.id ? 'bg-green-500 scale-125' : 'bg-gray-400'
                   }`}
                   aria-label={`Go to review by ${customer.name}`}
                 />
