@@ -1,11 +1,16 @@
 'use client';
-import {CUSTOMER_REVIEWS} from '@/constants/general';
-import React from 'react';
-import useSlider from '@/hooks/useSlider';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { nextReviewSlide, goToReviewSlide } from '@/lib/features/sliderSlice';
+import { CUSTOMER_REVIEWS } from '@/constants/general';
 import Container from '../shared/Container';
+import useAutoSlider from '@/hooks/useAutoSlider'; 
 
 const CustomerReviews = () => {
-  const { currentSlide, setCurrentSlide } = useSlider({ dataLength: CUSTOMER_REVIEWS.length });
+  const dispatch = useDispatch();
+  const currentSlide = useSelector((state) => state.slider.customerReviewSlide);
+
+  useAutoSlider(nextReviewSlide);
 
   return (
     <div className="bg-gray-100 flex-center">
@@ -13,7 +18,7 @@ const CustomerReviews = () => {
         <div className="py-20">
           <div className="flex-center flex-col md:px-20 sm:px-10 md:py-10">
             <h1 className="sm:text-4xl text-2xl font-semibold font-serif my-4 tracking-tighter">
-              What Say Client
+              What Our Clients Say
             </h1>
             <span className="text-6xl font-serif text-gray-600 md:mt-6">“</span>
             <div className="lg:mx-20 flex-center flex-col">
@@ -33,7 +38,7 @@ const CustomerReviews = () => {
               {CUSTOMER_REVIEWS.map((customer) => (
                 <button
                   key={customer.name}
-                  onClick={() => setCurrentSlide(customer.id)}
+                  onClick={() => dispatch(goToReviewSlide(customer.id))}
                   className={`w-3 h-3 rounded-full animate focus:outline-none ${
                     currentSlide === customer.id ? 'bg-green-500 scale-125' : 'bg-gray-400'
                   }`}

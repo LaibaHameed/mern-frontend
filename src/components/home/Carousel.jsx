@@ -1,29 +1,32 @@
 'use client';
 
-import {AiOutlineVerticalLeft, AiOutlineVerticalRight} from 'react-icons/ai';
-import {FaArrowRight} from 'react-icons/fa';
-import {ROOT_ROUTE} from '@/utils/PATHS';
+import { useSelector, useDispatch } from 'react-redux';
+import { nextSlide, prevSlide } from '@/lib/features/sliderSlice';
+import { ROOT_ROUTE } from '@/utils/PATHS';
 import SLIDES from '@/constants/general';
-import useSlider from '@/hooks/useSlider';
+import { AiOutlineVerticalLeft, AiOutlineVerticalRight } from 'react-icons/ai';
+import { FaArrowRight } from 'react-icons/fa';
 import Link from 'next/link';
 import Container from '../shared/Container';
+import useAutoSlider from '@/hooks/useAutoSlider';
 
 const Carousel = () => {
-  const {currentSlide, nextSlide, prevSlide} = useSlider({
-    dataLength: SLIDES.length,
-  });
+  const dispatch = useDispatch();
+  const currentSlide = useSelector((state) => state.slider.currentSlide);
+
+  useAutoSlider(nextSlide);
 
   return (
     <section
       className="relative bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-in-out"
       style={{
         backgroundImage: `url(${SLIDES[currentSlide].image})`,
-        opacity: 1, // Make sure the opacity is animated
+        opacity: 1,
       }}
     >
       <div
         className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
-        style={{opacity: currentSlide === currentSlide ? 1 : 0}}
+        style={{ opacity: currentSlide === currentSlide ? 1 : 0 }}
       ></div>
       <div className="flex-center">
         <Container>
@@ -31,7 +34,7 @@ const Carousel = () => {
             <div className="max-w-xxl text-slate-800 text-left">
               <h2 className="text-md lg:text-2xl md:text-xl sm:text-lg font-serif font-bold text-slate-700 mb-6 uppercase">
                 <span className="text-green-800 font-extrabold mr-1">|</span>
-                Welcom to Botanical
+                Welcome to Botanical
               </h2>
               <h1 className="text-3xl lg:text-6xl md:text-5xl sm:text-4xl font-extrabold font-serif mb-2">
                 {SLIDES[currentSlide].title}
@@ -57,10 +60,10 @@ const Carousel = () => {
         </Container>
       </div>
 
-      {/* Navigation Buttons and Counter */}
+      {/* Navigation Buttons */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex items-center gap-4 text-white">
         <button
-          onClick={prevSlide}
+          onClick={() => dispatch(prevSlide())}
           className="p-2 text-gray-800 hover:text-green-700"
         >
           <AiOutlineVerticalRight size={25} />
@@ -69,8 +72,8 @@ const Carousel = () => {
           {currentSlide + 1}/{SLIDES.length}
         </span>
         <button
-          onClick={nextSlide}
-          className="rounded-full  p-2 text-gray-800 hover:text-green-700"
+          onClick={() => dispatch(nextSlide())}
+          className="rounded-full p-2 text-gray-800 hover:text-green-700"
         >
           <AiOutlineVerticalLeft size={25} />
         </button>
