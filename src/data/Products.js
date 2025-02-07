@@ -3,6 +3,7 @@ const Products = {
       productId: "FA008",
       name: "Pellentesque aliquet",
       rating: 4.5,
+      reviews: 5,
       price: 65.00,
       description: "Aenean id ullamcorper libero. Vestibulum imperdiet nibh.",
       productCode: "FA008",
