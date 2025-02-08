@@ -1,57 +1,25 @@
 'use client'
 import React, { useState } from 'react'
 import Container from '../shared/Container'
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
-import "swiper/css";
 import Products from '@/data/Products'; 
 import ProductDetails from './ProductDetails';
+import ProductImage from './ProductImage';
+import ImageSlider from './ImageSlider';
 
 const SinglePage = ({ productName = "Pellentesque aliquet" }) => {
   const product = Products[productName]; 
-  const [mainImage, setMainImage] = useState(product.images[0]);
+  const [mainImage, setMainImage] = useState(product.images[0].path);
 
   if (!product) return <p>Product not found.</p>;
 
   return (
-    <div className='flex-center sm:mx-12'>
+    <div className='flex-center sm:mx-12 mx-6'>
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start mt-24">
-
-          {/* Left: Product Image */}
-          <div className="w-full">
-            <img src={mainImage} alt={product.name} className="w-full h-auto" />
-          </div>
-          <ProductDetails/>
+          <ProductImage mainImage={mainImage} productName={product.name} />
+          <ProductDetails product={product}/>
         </div>
-
-        {/* Image Slider */}
-        <div className="container mx-auto my-10">
-          <Swiper
-            slidesPerView={6}
-            spaceBetween={10}
-            loop={true}
-            autoplay={{ delay: 2500, disableOnInteraction: false }}
-            modules={[Autoplay]}
-            breakpoints={{
-              320: { slidesPerView: 2 }, 
-              640: { slidesPerView: 3 }, 
-              1024: { slidesPerView: 6 }, 
-            }}
-          >
-            {product.images.map((img, index) => (
-              <SwiperSlide key={index}>
-                <img
-                  src={img}
-                  alt={`Thumbnail ${index + 1}`}
-                  className={`w-full h-40 object-cover shadow-md cursor-pointer border-2 animate ${mainImage === img ? "border-primary" : "border-gray-300"
-                    }`}
-                  onClick={() => setMainImage(img)}
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
+        <ImageSlider images={product.images} setMainImage={setMainImage} mainImage={mainImage} />
       </Container>
     </div>
   )

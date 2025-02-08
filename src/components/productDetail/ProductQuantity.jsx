@@ -32,7 +32,7 @@ const ProductQuantity = () => {
             <div className="flex flex-wrap gap-4 text-center">
                 <Link
                     href={ROOT_ROUTE}
-                    className="rounded-full bg-primary px-7 py-3 tracking-wider text-white shadow hover:bg-green-400 focus:outline-none sm:w-auto flex-center gap-2 animate"
+                    className="rounded-full bg-primary sm:px-7 px-10 py-3 tracking-wider text-white shadow hover:bg-green-400 focus:outline-none sm:w-auto flex-center gap-2 animate"
                 >
                     Add To Cart <FaArrowRight />
                 </Link>
