@@ -1,15 +1,15 @@
 'use client';
 
-import {AiOutlineVerticalLeft, AiOutlineVerticalRight} from 'react-icons/ai';
-import {FaArrowRight} from 'react-icons/fa';
-import {ROOT_ROUTE} from '@/utils/PATHS';
+import { AiOutlineVerticalLeft, AiOutlineVerticalRight } from 'react-icons/ai';
+import { FaArrowRight } from 'react-icons/fa';
+import { ROOT_ROUTE } from '@/utils/PATHS';
 import SLIDES from '@/constants/general';
 import useSlider from '@/hooks/useSlider';
 import Link from 'next/link';
 import Container from '../shared/Container';
 
 const Carousel = () => {
-  const {currentSlide, nextSlide, prevSlide} = useSlider({
+  const { currentSlide, nextSlide, prevSlide } = useSlider({
     dataLength: SLIDES.length,
   });
 
@@ -23,7 +23,7 @@ const Carousel = () => {
     >
       <div
         className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
-        style={{opacity: currentSlide === currentSlide ? 1 : 0}}
+        style={{ opacity: currentSlide === currentSlide ? 1 : 0 }}
       ></div>
       <div className="flex-center">
         <Container>
@@ -47,7 +47,7 @@ const Carousel = () => {
               <div className="mt-14 flex flex-wrap gap-4 text-center">
                 <Link
                   href={ROOT_ROUTE}
-                  className="rounded-full bg-primary px-7 py-2 tracking-wider md:px-10 md:py-4 md:text-md md:font-semibold text-white shadow hover:bg-green-400 focus:outline-none sm:w-auto flex items-center justify-center gap-2"
+                  className="rounded-full bg-primary px-7 py-2 tracking-wider md:px-10 md:py-4 md:text-md md:font-semibold text-white shadow hover:bg-green-400 focus:outline-none sm:w-auto flex-center gap-2 animate"
                 >
                   {SLIDES[currentSlide].buttonText1} <FaArrowRight />
                 </Link>

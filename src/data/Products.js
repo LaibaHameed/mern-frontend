@@ -1,0 +1,57 @@
+const Products = {
+  "Pellentesque aliquet": {
+    productId: "FA008",
+    name: "Pellentesque aliquet",
+    rating: 4.5,
+    reviews: 5,
+    price: 65.00,
+    description: "Aenean id ullamcorper libero. Vestibulum imperdiet nibh.",
+    productCode: "FA008",
+    quantity: 68,
+    shippingTax: "Free",
+    sizes: ["S", "M", "L", "XL", "XXL"],
+    colors: ["red", "blue", "green"],
+    categories: ["Butter & Eggs", "Fruits", "Milk & Cream", "Vegetables"],
+    tags: ["organic food", "fruits", "juice"],
+    brand: "KFC",
+    images: [
+      { id: 1, path: "/assets/bestSeller1.jpg" },
+      { id: 2, path: "/assets/bestSeller2.jpg" },
+      { id: 3, path: "/assets/bestSeller3.jpg" },
+      { id: 4, path: "/assets/bestSeller4.jpg" },
+      { id: 5, path: "/assets/bestSeller1.jpg" },
+      { id: 6, path: "/assets/bestSeller2.jpg" },
+      { id: 7, path: "/assets/bestSeller3.jpg" },
+      { id: 8, path: "/assets/bestSeller4.jpg" },
+    ],
+  },
+
+  "New Organic Product": {
+    productId: "FA009",
+    name: "New Organic Product",
+    rating: 4.2,
+    reviews: 10,
+    price: 55.00,
+    description: "Fresh and organic product for healthy eating.",
+    productCode: "FA009",
+    quantity: 100,
+    shippingTax: "Free",
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["yellow", "black", "white"],
+    categories: ["Organic", "Health", "Vegetables"],
+    tags: ["fresh", "organic", "healthy"],
+    brand: "OrganicLife",
+    images: [
+      { id: 1, path: "/assets/bestSeller1.jpg" },
+      { id: 2, path: "/assets/bestSeller2.jpg" },
+      { id: 3, path: "/assets/bestSeller3.jpg" },
+      { id: 4, path: "/assets/bestSeller4.jpg" },
+      { id: 5, path: "/assets/bestSeller1.jpg" },
+      { id: 6, path: "/assets/bestSeller2.jpg" },
+      { id: 7, path: "/assets/bestSeller3.jpg" },
+      { id: 8, path: "/assets/bestSeller4.jpg" },
+    ],
+  }
+};
+
+export default Products;
