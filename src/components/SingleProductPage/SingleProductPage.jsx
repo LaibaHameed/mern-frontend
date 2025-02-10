@@ -2,11 +2,11 @@
 import React, { useState } from 'react'
 import Container from '../shared/Container'
 import Products from '@/data/Products';
-import ProductDetails from './ProductDetails';
 import ProductImage from './ProductImage';
 import ImageSlider from './ImageSlider';
-import ProductTabs from './ProductTabs';
 import RelatedProducts from './RelatedProducts';
+import ProductTabs from './ProductTabs/ProductTabs';
+import ProductDetails from './ProductDetails/ProductDetails';
 
 const SingleProductPage = ({ productName = "Pellentesque aliquet" }) => {
   const product = Products[productName];

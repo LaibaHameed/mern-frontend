@@ -1,4 +1,4 @@
-import SingleProductPage from '@/components/productDetail/SingleProductPage'
+import SingleProductPage from '@/components/SingleProductPage/SingleProductPage'
 import Breadcrumb from '@/components/shared/Breadcrumb'
 import React from 'react'
 
