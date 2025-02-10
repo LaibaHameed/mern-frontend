@@ -6,7 +6,7 @@ import ProductTags from './ProductTags'
 
 const AllFilters = () => {
   return (
-    <div className='my-6'>
+    <div className='sm:grid grid-cols-2 gap-6 md:grid-cols-1'>
       <ProductCategories/>
       <PriceFilter/>
       <TopRatedProducts/>
