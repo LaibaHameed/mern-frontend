@@ -1,6 +1,7 @@
 "use client";
 import { BEST_SELLER } from "@/constants/general";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 
@@ -9,7 +10,7 @@ const TopRatedProducts = () => {
     <div className="py-4 bg-white w-full">
       <h3 className="font-semibold mb-6 text-secondary uppercase">Top Rated </h3>
       
-      <div className="space-y-4 cursor-pointer">
+      <Link href={`/products/${product.id}`} className="space-y-4 cursor-pointer">
         {BEST_SELLER.map((product) => (
           <div key={product.id} className="flex items-start gap-4 mb-2 hover:shadow-xl animate">
             <Image width={75} height={75} src={product.image} alt={product.title} className=" object-cover " />
@@ -19,7 +20,7 @@ const TopRatedProducts = () => {
             </div>
           </div>
         ))}
-      </div>
+      </Link>
     </div>
   );
 };
