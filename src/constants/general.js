@@ -215,3 +215,34 @@ export const PRODUCT_ITEMS = {
   },
   bestSales: {label: 'Best Sales', link: '#best-sales', id: 'best-sales'},
 };
+
+
+// product Sorting options
+export const SORTING_OPRIONS = [
+  { value: 'default', label: 'Default Sorting' },
+  { value: 'low-price', label: 'Sort by Low Price' },
+  { value: 'high-price', label: 'Sort by High Price' },
+  { value: 'new', label: 'Sort by New Products' },
+  { value: 'old', label: 'Sort by Old Products' },
+]
+
+// product Categories
+export const PRODUCT_CATEGORIES = [
+  { name: 'Dried', count: 6 },
+  { name: 'Vegetables', count: 8 },
+  { name: 'Fruits', count: 9 },
+  { name: 'Juice', count: 6 },
+  { name: 'Uncategorized', count: 2 },
+];
+
+// product tags
+export const PRODUCT_TAGS = [
+  { id: 1, name: "Plant" },
+  { id: 2, name: "Floor" },
+  { id: 3, name: "Indoor" },
+  { id: 4, name: "Green" },
+  { id: 5, name: "Healthy" },
+  { id: 6, name: "Cactus" },
+  { id: 7, name: "House plant" },
+  { id: 8, name: "Office tree" },
+];
