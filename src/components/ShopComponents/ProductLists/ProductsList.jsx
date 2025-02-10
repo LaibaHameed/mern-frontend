@@ -1,7 +1,7 @@
 'use client'
 import Products from '@/data/Products'
 import React, { useState } from 'react'
-import ProductCard from '../shared/ProductCard'
+import ProductCard from '../../shared/ProductCard'
 import Pagination from './Pagination' 
 
 const ProductsList = () => {

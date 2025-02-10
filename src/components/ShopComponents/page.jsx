@@ -2,7 +2,7 @@ import React from 'react'
 import TopSection from './TopSection/page'
 import Container from '../shared/Container'
 import AllFilters from './Filters/page'
-import ProductsList from './ProductsList'
+import ProductsList from './ProductLists/ProductsList'
 
 const MainContent = () => {
   return (
