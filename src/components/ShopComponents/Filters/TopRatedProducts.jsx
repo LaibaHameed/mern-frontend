@@ -6,7 +6,7 @@ import React from "react";
 
 const TopRatedProducts = () => {
   return (
-    <div className="py-4 bg-white w-full">
+    <div className="py-4 bg-white w-full hidden md:block">
       <h3 className="font-semibold mb-6 text-secondary uppercase">Top Rated </h3>
       
       {BEST_SELLER.map((product) => (
