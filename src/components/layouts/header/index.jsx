@@ -118,7 +118,7 @@ const Header = () => {
       <div
         className={`lg:hidden ${
           isMenuOpen ? 'min-h-[180px] h-[180px]' : 'min-h-0 h-0'
-        } text-secondary overflow-hidden py-2 my-4 absolute top-20 left-0 w-full bg-white bg-opacity-90 z-50 animate`}
+        } text-secondary overflow-hidden py-2 my-4 absolute top-20 left-0 w-full bg-white bg-opacity-90 z-40 animate`}
       >
         <nav className="flex flex-col">
           {NAV_LIST.map((route) => (
