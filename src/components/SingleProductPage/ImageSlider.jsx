@@ -19,19 +19,21 @@ const ImageSlider = ({ images = [], setMainImage, mainImage }) => {
                     1024: { slidesPerView: 7 },
                 }}
             >
-                {images.length > 0 ? images.map((img) => (
-                    <SwiperSlide key={img.id}>
-                        <Image
-                            src={img.path}
-                            alt={`Thumbnail ${img.id}`}
-                            width={100}
-                            height={100}
-                            className={`w-20 h-20 object-cover shadow-md cursor-pointer border-2 animate ${mainImage === img.path ? "border-primary" : "border-gray-100"
-                                }`}
-                            onClick={() => setMainImage(img.path)}
-                        />
-                    </SwiperSlide>
-                )) : <p className="text-center text-gray-500">No images available</p>}
+                {images.length ? (
+                    images.map((img) => (
+                        <SwiperSlide key={img.id}>
+                            <Image
+                                src={img.path}
+                                alt={`Thumbnail ${img.id}`}
+                                width={100}
+                                height={100}
+                                className={`w-20 h-20 object-cover shadow-md cursor-pointer border-2 animate ${mainImage === img.path ? "border-primary" : "border-gray-100"
+                                    }`}
+                                onClick={() => setMainImage(img.path)}
+                            />
+                        </SwiperSlide>
+                    ))
+                ) : <p className="text-center text-gray-500">No images available</p>}
             </Swiper>
         </div>
     )
