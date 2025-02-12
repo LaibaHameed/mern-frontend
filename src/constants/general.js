@@ -8,6 +8,7 @@ import {TbSwitchHorizontal} from 'react-icons/tb';
 // Carousel slides
 const SLIDES = [
   {
+    id:1,
     title: 'Decorate Naturally,',
     title2: ' Live Beautifully.',
     description:
@@ -16,6 +17,7 @@ const SLIDES = [
     buttonText1: 'shop now',
   },
   {
+    id:2,
     title: 'Plants:',
     title2: ' Your Daily Dose of Calm.',
     description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit!',

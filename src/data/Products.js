@@ -20,6 +20,10 @@ const Products = {
       { id: 2, path: "/assets/bestSeller2.jpg" },
       { id: 3, path: "/assets/bestSeller3.jpg" },
       { id: 4, path: "/assets/bestSeller4.jpg" },
+      { id: 1, path: "/assets/bestSeller1.jpg" },
+      { id: 2, path: "/assets/bestSeller2.jpg" },
+      { id: 3, path: "/assets/bestSeller3.jpg" },
+      { id: 4, path: "/assets/bestSeller4.jpg" },
     ],
   },
 

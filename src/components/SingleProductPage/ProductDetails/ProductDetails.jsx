@@ -11,7 +11,7 @@ const ProductDetails = ({ product }) => {
     return (
         <div>
             <div className="space-y-4">
-                <h2 className="text-3xl font-bold">{product.name}</h2>
+                <h2 className="md:text-3xl text-xl font-bold">{product.name}</h2>
 
                 <div className='flex space-x-2 items-center'>
                     <span className="flex space-x-1 text-lg text-orange-500">
@@ -26,7 +26,7 @@ const ProductDetails = ({ product }) => {
                     <p className="text-gray-500 font-light">( {product.reviews || 0} customer reviews )</p>
                 </div>
 
-                <p className="text-2xl font-semibold text-primary">${product.price.toFixed(2)}</p>
+                <p className="md:text-2xl text-xl font-semibold text-primary">${product.price.toFixed(2)}</p>
                 
                 <p className=" text-gray-500 my-5">{product.description}</p>
 
