@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import Description from "./Description";
 import Reviews from "./Reviews";
 
-const ProductTabs = ({product}) => {
+const ProductTabs = ({ product }) => {
     const [activeTab, setActiveTab] = useState("description");
 
     return (
         <div className="py-12">
-            <div className="flex-center tracking-tighter">
+            <div className="w-full flex-center tracking-tighter">
                 {/* Description Tab */}
                 <h1
-                    className={`group relative sm:text-4xl text-xl font-semibold font-serif my-4 tracking-tighter cursor-pointer sm:mx-6 mx-2 transition-colors duration-500 hover:text-primary ${activeTab === "description" ? "text-primary" : "text-secondary"
+                    className={`group relative text-xl sm:text-2xl md:!text-4xl font-semibold font-serif my-4 tracking-tighter cursor-pointer sm:mx-6 mx-2 transition-colors duration-500 hover:text-primary ${activeTab === "description" ? "text-primary" : "text-secondary"
                         }`}
                     onClick={() => setActiveTab("description")}
                 >
@@ -23,7 +23,7 @@ const ProductTabs = ({product}) => {
 
                 {/* Reviews Tab */}
                 <h1
-                    className={`group relative sm:text-4xl text-xl font-semibold font-serif my-4 tracking-tighter cursor-pointer sm:mx-6 mx-2 transition-colors duration-500 hover:text-primary  ${activeTab === "reviews" ? "text-primary" : "text-secondary"
+                    className={`group relative text-xl sm:text-2xl md:!text-4xl font-semibold font-serif my-4 tracking-tighter cursor-pointer sm:mx-6 mx-2 transition-colors duration-500 hover:text-primary  ${activeTab === "reviews" ? "text-primary" : "text-secondary"
                         }`}
                     onClick={() => setActiveTab("reviews")}
                 >

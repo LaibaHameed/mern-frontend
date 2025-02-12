@@ -1,12 +1,13 @@
 'use client';
-import {CUSTOMER_REVIEWS} from '@/constants/general';
+import { CUSTOMER_REVIEWS } from '@/constants/general';
 import React from 'react';
-import useSlider from '@/hooks/useSlider';
 import Container from '../shared/Container';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 const CustomerReviews = () => {
-  const { currentSlide, setCurrentSlide } = useSlider({ dataLength: CUSTOMER_REVIEWS.length });
-
   return (
     <div className="bg-gray-100 flex-center">
       <Container>
@@ -16,31 +17,27 @@ const CustomerReviews = () => {
               What Say Client
             </h1>
             <span className="text-6xl font-serif text-gray-600 md:mt-6">“</span>
-            <div className="lg:mx-20 flex-center flex-col">
-              <p className="text-center text-sm sm:font-normal h-20 text-gray-500 font-serif font-thin tracking-wide">
-                {CUSTOMER_REVIEWS[currentSlide].review}
-              </p>
-              <h2 className="text-xl font-bold text-gray-600 mt-12">
-                {CUSTOMER_REVIEWS[currentSlide].name}
-              </h2>
-              <p className="text-gray-500 my-2">
-                {CUSTOMER_REVIEWS[currentSlide].title}
-              </p>
-            </div>
 
-            {/* Dots for indicating slides */}
-            <div className="flex mt-6 space-x-2">
-              {CUSTOMER_REVIEWS.map((customer) => (
-                <button
-                  key={customer.name}
-                  onClick={() => setCurrentSlide(customer.id)}
-                  className={`w-3 h-3 rounded-full animate focus:outline-none ${
-                    currentSlide === customer.id ? 'bg-green-500 scale-125' : 'bg-gray-400'
-                  }`}
-                  aria-label={`Go to review by ${customer.name}`}
-                />
+            {/* Swiper Slider */}
+            <Swiper
+              modules={[Pagination, Autoplay]}
+              pagination={{ clickable: true }}
+              autoplay={{ delay: 5000, disableOnInteraction: false }}
+              spaceBetween={20}
+              slidesPerView={1}
+              speed={1000}
+              className="w-full max-w-3xl h-auto"
+            >
+              {CUSTOMER_REVIEWS.map((review) => (
+                <SwiperSlide key={review.id} className="text-center">
+                  <p className="text-sm sm:text-lg mx-12 sm:font-normal text-gray-500 font-serif font-thin tracking-wide">
+                    {review.review}
+                  </p>
+                  <h2 className="text-xl font-bold text-gray-600 mt-6 mb-3">{review.name}</h2>
+                  <p className="text-gray-500 mb-12">{review.title}</p>
+                </SwiperSlide>
               ))}
-            </div>
+            </Swiper>
           </div>
         </div>
       </Container>
