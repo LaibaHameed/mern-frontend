@@ -248,3 +248,9 @@ export const PRODUCT_TAGS = [
   { id: 7, name: "House plant" },
   { id: 8, name: "Office tree" },
 ];
+
+export const CART_ITEMS = [
+  { id: 1, name: 'Pellentesque aliquet', image: "/assets/bestSeller1.jpg", price: 20, quantity: 2 },
+  { id: 2, name: 'Neque Porro Quisquam', image: "/assets/bestSeller2.jpg", price: 15, quantity: 1 },
+  { id: 3, name: 'Aliquam Quaerat Voluptem', image: "/assets/bestSeller3.jpg", price: 30, quantity: 3 },
+]

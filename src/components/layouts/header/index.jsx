@@ -1,14 +1,14 @@
 'use client';
-import {FiAlignJustify, FiX} from 'react-icons/fi';
-import {FiPhone} from 'react-icons/fi';
-import {BsCart3} from 'react-icons/bs';
-import {GoSearch} from 'react-icons/go';
-import {LuCircleUser} from 'react-icons/lu';
+import { FiAlignJustify, FiX } from 'react-icons/fi';
+import { FiPhone } from 'react-icons/fi';
+import { BsCart3 } from 'react-icons/bs';
+import { GoSearch } from 'react-icons/go';
+import { LuCircleUser } from 'react-icons/lu';
 
 import Image from 'next/image';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import {NAV_LIST} from '@/utils/PATHS';
+import { NAV_LIST } from '@/utils/PATHS';
 import Container from '../../shared/Container';
 
 const Header = () => {
@@ -92,10 +92,12 @@ const Header = () => {
 
                 {/* Cart Icon with Badge */}
                 <div className="relative">
-                  <BsCart3
-                    className="cursor-pointer hover:text-primary animate text-secondary"
-                    size={20}
-                  />
+                  <Link href={'/cart'}>
+                    <BsCart3
+                      className="cursor-pointer hover:text-primary animate text-secondary"
+                      size={20}
+                    />
+                  </Link>
 
                   {cartItems > 0 && (
                     <span className="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full w-4 h-4 flex-center cursor-pointer">
@@ -116,9 +118,8 @@ const Header = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden ${
-          isMenuOpen ? 'min-h-[180px] h-[180px]' : 'min-h-0 h-0'
-        } text-secondary overflow-hidden py-2 my-4 absolute top-20 left-0 w-full bg-white bg-opacity-90 z-40 animate`}
+        className={`lg:hidden ${isMenuOpen ? 'min-h-[180px] h-[180px]' : 'min-h-0 h-0'
+          } text-secondary overflow-hidden py-2 my-4 absolute top-20 left-0 w-full bg-white bg-opacity-90 z-40 animate`}
       >
         <nav className="flex flex-col">
           {NAV_LIST.map((route) => (
