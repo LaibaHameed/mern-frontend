@@ -59,8 +59,8 @@ const CartTable = ({ cartItems, updateQuantity }) => {
                     </thead>
                     <tbody>
                         {cartItems.map((item) => (
-                            <tr key={item.id} className='border-b border-gray-300 bg-amber-50 w-full flex justify-between'>
-                                <td className='px-2 py-6 flex items-start gap-6 cursor-pointer text-left bg-red-50'>
+                            <tr key={item.id} className='border-b border-gray-300  w-full flex justify-between'>
+                                <td className='px-2 py-6 flex items-start gap-6 cursor-pointer text-left'>
                                     <Image src={item.image} alt={item.name} width={100} height={100} />
                                     <div>
                                         <p className='text-gray-600 font-light hover:text-primary text-xs animate'>{item.name} {item.name}</p>
@@ -81,7 +81,7 @@ const CartTable = ({ cartItems, updateQuantity }) => {
                                         </div>
                                     </div>
                                 </td>
-                                <td className='px-2 py-6 text-xs font-semibold tracking-wider min-w-[100px] text-right bg-green-50'>
+                                <td className='px-2 py-6 text-xs font-semibold tracking-wider min-w-[100px] text-right'>
                                     ${item.price * item.quantity}.00
                                 </td>
                             </tr>
