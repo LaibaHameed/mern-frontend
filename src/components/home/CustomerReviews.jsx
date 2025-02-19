@@ -9,7 +9,7 @@ import 'swiper/css/pagination';
 
 const CustomerReviews = () => {
   return (
-    <div className="bg-gray-100 flex-center">
+    <div className="bg-gray-100 flex-center mb-24">
       <Container>
         <div className="py-20">
           <div className="flex-center flex-col md:px-20 sm:px-10 md:py-10">

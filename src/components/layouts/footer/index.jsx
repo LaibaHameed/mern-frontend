@@ -11,7 +11,7 @@ import Container from '@/components/shared/Container';
 const Footer = () => {
   return (
     <>
-      <div className="flex-center bg-gray-100 shadow-2xl mt-24">
+      <div className="flex-center bg-gray-100 shadow-2xl">
         <Container>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 margin-sm  md:margin-lg py-20">
             {/* Contact Us Section */}
