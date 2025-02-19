@@ -106,10 +106,12 @@ const Header = () => {
                   )}
                 </div>
 
-                <LuCircleUser
-                  className="cursor-pointer hover:text-primary animate text-secondary"
-                  size={20}
-                />
+                <Link href={'/register'}>
+                  <LuCircleUser
+                    className="cursor-pointer hover:text-primary animate text-secondary"
+                    size={20}
+                  />
+                </Link>
               </div>
             </div>
           </div>
