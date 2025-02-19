@@ -4,7 +4,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import InputField from "@/components/shared/InputField";
 import { useRouter } from "next/navigation";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { forgotPasswordSchema } from "@/schemas/yupSchema";
+import { forgotPasswordSchema } from "@/schemas/authSchema";
 
 const ForgotPassword = () => {
     const methods = useForm({

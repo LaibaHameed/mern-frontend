@@ -5,7 +5,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import InputField from "@/components/shared/InputField";
 import { useRouter } from "next/navigation";
-import { registerSchema } from "@/schemas/yupSchema";
+import { registerSchema } from "@/schemas/authSchema";
 
 const Register = () => {
   const methods = useForm({

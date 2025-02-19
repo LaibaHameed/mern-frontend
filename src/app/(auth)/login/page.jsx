@@ -4,7 +4,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import InputField from "@/components/shared/InputField";
 import { useRouter } from "next/navigation";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { loginSchema } from "@/schemas/yupSchema";
+import { loginSchema } from "@/schemas/authSchema";
 
 const Login = () => {
   const methods = useForm({
