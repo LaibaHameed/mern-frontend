@@ -1,49 +1,46 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: false;
+}
+@theme {
+  /* breakpoints  */
+  --breakpoint-md: 830px;
 
-:root {
-<<<<<<< HEAD
-  --background: #ffffff;
-  --foreground: #171717;
-=======
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
->>>>>>> 1c35deb (Commit: Setup Next.js app updated version)
+  /* colors variables  */
+  --color-primary: #008236;
+  --color-primary-hover: #16A34A;
+  --color-secondary: #1a202c;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-<<<<<<< HEAD
-    --background: #0a0a0a;
-    --foreground: #ededed;
-=======
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
->>>>>>> 1c35deb (Commit: Setup Next.js app updated version)
+@layer components {
+  .flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .animate {
+    transition: all 0.3s ease-in-out;
+  }
+
+  .margin-lg {
+    margin-left: 48px;
+    margin-right: 48px;
+  }
+  .margin-sm {
+    margin-left: 24px;
+    margin-right: 24px;
   }
 }
 
-body {
-<<<<<<< HEAD
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-=======
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+* {
+  box-sizing: border-box;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
->>>>>>> 1c35deb (Commit: Setup Next.js app updated version)
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none; 
+  scrollbar-width: none;  
 }
