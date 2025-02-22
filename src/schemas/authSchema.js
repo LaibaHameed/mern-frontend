@@ -1,21 +1,67 @@
-import * as yup from "yup";
+import {validate} from '@/utils/validateUtils';
+import * as yup from 'yup';
 
-const emailSchema = yup.string().email("Invalid email address").required("Email is required");
-const passwordSchema = yup.string().min(6, "Password must be at least 6 characters").required("Password is required");
+const emailSchema = yup
+  .string()
+  .email('Invalid email address')
+  .required('Email is required');
+const passwordSchema = yup
+  .string()
+  .min(6, 'Password must be at least 6 characters')
+  .required('Password is required');
 
 export const registerSchema = yup.object({
-    name: yup.string().required("Name is required"),
-    email: emailSchema,
-    password: passwordSchema,
+  name: yup.string().required('Name is required'),
+  email: emailSchema,
+  password: passwordSchema,
 });
 
 export const loginSchema = yup.object({
-    email: emailSchema,
-    password: passwordSchema,
+  email: emailSchema,
+  password: passwordSchema,
 });
 
-
 export const forgotPasswordSchema = yup.object({
-    email : emailSchema,
-})
+  email: emailSchema,
+});
 
+// API schemas
+
+const commonAuthSchema = {
+  email: yup
+    .string()
+    .email()
+    .required('Email is required')
+    .test('email', 'Email is not valid', (value) => {
+      // This custom regex test enhances email validation to address limitations in the default yup validation, which fails to catch certain invalid email formats like "test@test" or "test@test.c".
+      return /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value);
+    }),
+  password: yup
+    .string()
+    .required('Password is required')
+    .min(
+      8,
+      'Must contain at least 8 characters and at least 1 uppercase letter'
+    )
+    .matches(
+      /[A-Z]/,
+      'Must contain at least 8 characters and at least 1 uppercase letter'
+    ),
+};
+
+export const validateCreateUserReq = (user) => {
+  const schema = yup.object().shape({
+    name: yup.string().min(1).max(255).required('Name is required'),
+    ...commonAuthSchema,
+  });
+
+  return validate(schema, user);
+};
+
+export const validateLoginReq = (user) => {
+  const schema = yup.object().shape({
+    ...commonAuthSchema,
+  });
+
+  return validate(schema, user);
+};
