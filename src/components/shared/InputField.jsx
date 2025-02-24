@@ -9,7 +9,7 @@ const InputField = ({ label, type, name}) => {
     const {field, fieldState: {error}} = useController({name, control});
 
     const [showPassword, setShowPassword] = useState(false);
-    const inputType = (type === "password") && (showPassword ? "text" : type);
+    const inputType = type === "password" ? (showPassword ? "text" : "password") : type;
 
     return (
         <div className="relative mt-6">

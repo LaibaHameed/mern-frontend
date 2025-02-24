@@ -6,6 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import InputField from "@/components/shared/InputField";
 import { useRouter } from "next/navigation";
 import { registerSchema } from "@/schemas/authSchema";
+import { useCallApiMutation } from "@/redux/slices/apiSlice";
 
 const Register = () => {
   const methods = useForm({
@@ -14,8 +15,19 @@ const Register = () => {
   });
 
   const router = useRouter()
+  const [callApi, { isLoading, error }] = useCallApiMutation();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
+    const response = await callApi({
+      url: '/api/auth/register',
+      method: 'POST',
+      payload: data
+    })
+    if (response.error) {
+      console.error('Registration Error:', response.error.data);
+      return
+    }
+    console.log('User Registered Successfully:', response.data);
     console.log("User Data:", data);
     router.push('/login')
   };
@@ -34,12 +46,14 @@ const Register = () => {
         <InputField label="Email address" type="email" name="email" />
         <InputField label="Password" type="password" name="password" />
 
-        <div className="flex-center">
+        <div className="flex-center flex-col mt-8">
+          {error && <p className="text-red-500 mb-4 text-sm">{error.data?.message || "Account Registration failed"}</p>}
+
           <button
             type="submit"
-            className="min-w-48 bg-primary text-white py-2 rounded-full hover:bg-primary-hover mt-6 cursor-pointer"
+            className="min-w-48 bg-primary text-white py-2 rounded-full hover:bg-primary-hover cursor-pointer"
           >
-            Register
+            {isLoading ? "Signing up..." : "Register"}
           </button>
         </div>
       </form>

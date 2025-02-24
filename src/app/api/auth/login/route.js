@@ -1,38 +1,43 @@
-import {verifyPassword} from '@/utils/passwordUtils';
-import {dbConnect} from '../../databases/config';
-import {UsersResponses} from '@/factories/success';
-import {UsersServices} from '../../services/users';
-import {GeneralErrors, UsersErrors} from '@/factories/errors';
-import {validatorMiddleware} from '../../middlewares';
-import {validateLoginReq} from '@/schemas/authSchema';
-import {generateToken} from '@/utils/jwtUtils';
+import { verifyPassword } from '@/utils/passwordUtils';
+import { dbConnect } from '../../databases/config';
+import { UsersResponses } from '@/factories/success';
+import { UsersServices } from '../../services/users';
+import { GeneralErrors, UsersErrors } from '@/factories/errors';
+import { validatorMiddleware } from '../../middlewares';
+import { validateLoginReq } from '@/schemas/authSchema';
+import { generateToken } from '@/utils/jwtUtils';
 
 export async function POST(request) {
-  await dbConnect();
+  try {
+    await dbConnect();
 
-  const data = await request.json();
+    const data = await request.json();
 
-  const {errors} = await validatorMiddleware(validateLoginReq, data);
+    const { errors } = await validatorMiddleware(validateLoginReq, data);
 
-  if (errors) return GeneralErrors.badRequestErr({customMessage: errors});
+    if (errors) return GeneralErrors.badRequestErr({ customMessage: errors });
 
-  const {email, password} = data;
+    const { email, password } = data;
 
-  const {user} = await UsersServices.getUserByEmail({email});
+    const { user } = await UsersServices.getUserByEmail({ email });
 
-  if (!user) return UsersErrors.invalidCredentials();
+    if (!user) return UsersErrors.invalidCredentials();
 
-  const isPasswordMatch = await verifyPassword({
-    password,
-    hashedPassword: user.password,
-  });
+    const isPasswordMatch = await verifyPassword({
+      password,
+      hashedPassword: user.password,
+    });
 
-  if (!isPasswordMatch) return UsersErrors.invalidCredentials();
+    if (!isPasswordMatch) return UsersErrors.invalidCredentials();
 
-  const accessToken = generateToken({email: user.email, _id: user._id});
+    const accessToken = generateToken({ email: user.email, _id: user._id });
 
-  return UsersResponses.loginSuccessfully({
-    user: {_id: user._id, email: user.email, name: user.name},
-    accessToken,
-  });
+    return UsersResponses.loginSuccessfully({
+      user: { _id: user._id, email: user.email },
+      accessToken,
+    });
+  } catch (error) {
+    console.error('Login error:', error);
+    return GeneralErrors.internalServerErr();
+  }
 }
