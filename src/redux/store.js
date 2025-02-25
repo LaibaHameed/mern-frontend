@@ -1,8 +1,7 @@
 import {configureStore} from '@reduxjs/toolkit';
 import {persistStore, persistReducer} from 'redux-persist';
 import {rootPersistConfig, rootReducer} from './rootReducer';
-
-// ----------------------------------------------------------------------
+import { usersApiSlice } from '@/app/api/auth/usersApi';
 
 const store = configureStore({
   reducer: persistReducer(rootPersistConfig, rootReducer),
@@ -10,7 +9,7 @@ const store = configureStore({
     getDefaultMiddleware({
       serializableCheck: false,
       immutableCheck: false,
-    }).concat(),
+    }).concat(usersApiSlice.middleware),
 });
 
 const persistor = persistStore(store);

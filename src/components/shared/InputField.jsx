@@ -3,13 +3,14 @@ import { FiAlertCircle, FiEye, FiEyeOff } from "react-icons/fi";
 import { useState } from "react";
 import { useController, useFormContext } from "react-hook-form";
 
-const InputField = ({ label, type, name}) => {
+const InputField = ({ label, type, name }) => {
 
-    const {control} = useFormContext();
-    const {field, fieldState: {error}} = useController({name, control});
+    const { control } = useFormContext();
+    const { field, fieldState: { error } } = useController({ name, control });
 
     const [showPassword, setShowPassword] = useState(false);
-    const inputType = (type === "password") && (showPassword ? "text" : type);
+    const inputType = type === "password" ? (showPassword ? "text" : "password") : type;
+
 
     return (
         <div className="relative mt-6">
