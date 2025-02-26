@@ -1,16 +1,22 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-// ----------------------------------------------------------------------
 const defaultState = {
   currentUser: null,
+  authToken: null,
 };
 
 const slice = createSlice({
   name: 'users',
   initialState: defaultState,
   reducers: {
-    setCurrentUser(state, action) {
-      state.currentUser = action.payload;
+    setLoginCredentials(state, action) {
+      const {user, token} = action.payload;
+      state.currentUser = user;
+      state.authToken = token;
+    },
+    resetLoginCredentials(state) {
+      state.currentUser = null;
+      state.authToken = null;
     },
     resetUserState: () => defaultState,
   },
@@ -23,3 +29,13 @@ export const actions = slice.actions;
 
 // selectors
 export const getCurrentUser = (state) => state.user.currentUser;
+
+export const loginUser =
+  ({user, token}) =>
+  (dispatch) => {
+    dispatch(actions.setLoginCredentials({user, token}));
+  };
+
+export const logoutUser = () => (dispatch) => {
+  dispatch(actions.resetLoginCredentials());
+};
