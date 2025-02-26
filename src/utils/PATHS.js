@@ -1,17 +1,29 @@
 export const ROOT_ROUTE = '/';
+export const DASHBOARD_ROOT = '/dashboard';
+export const AUTH_ROOT = '/auth';
 
 export const PUBLIC_ROUTES = {
   home: ROOT_ROUTE,
   store: '/shop',
   about: '/about',
   contact: '/contact',
+  cart: '/cart',
 };
 
 export const API_ROUTES = {
   auth: {
-    register: '/api/auth/register',
-    login: '/api/auth/login',
+    register: '/auth/register',
+    login: '/auth/login',
   },
+};
+
+export const AUTH_ROUTES = {
+  login: '/auth/login',
+  forgotPassword: '/auth/forgot-password',
+};
+
+export const DASHBOARD_ROUTES = {
+  home: DASHBOARD_ROOT,
 };
 
 const NAV_ROUTES = {

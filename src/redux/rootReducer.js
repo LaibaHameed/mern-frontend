@@ -2,7 +2,8 @@ import {combineReducers} from 'redux';
 import {persistReducer} from 'redux-persist';
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
 import userReducer from './slices/user/userSlice';
-import { usersApiSlice } from '@/app/api/auth/usersApi';
+import {usersApiSlice} from './slices/user/usersApi';
+
 // import {clearStore} from './utils';
 
 const createNoopStorage = () => ({
@@ -37,7 +38,7 @@ const userPersistConfig = {
 
 const reduxAppReducer = combineReducers({
   user: persistReducer(userPersistConfig, userReducer),
-  [usersApiSlice.reducerPath] : usersApiSlice.reducer,
+  [usersApiSlice.reducerPath]: usersApiSlice.reducer,
 });
 
 const rootReducer = (state, action) => {

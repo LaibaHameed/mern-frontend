@@ -1,9 +1,5 @@
-import React from 'react'
+import Dashboard from '@/components/dashboard';
 
-const Dashboard = () => {
-  return (
-    <div className='flex-center text-4xl text-black'>Dashboard</div>
-  )
+export default function page() {
+  return <Dashboard />;
 }
-
-export default Dashboard

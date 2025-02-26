@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 @plugin "daisyui" {
   themes: false;
 }
@@ -8,8 +8,9 @@
 
   /* colors variables  */
   --color-primary: #008236;
-  --color-primary-hover: #16A34A;
+  --color-primary-hover: #16a34a;
   --color-secondary: #1a202c;
+  --color-error: #fb2c36;
 }
 
 @layer components {
@@ -41,6 +42,6 @@
 }
 
 .scrollbar-hide {
-  -ms-overflow-style: none; 
-  scrollbar-width: none;  
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
