@@ -1,10 +1,9 @@
 import {Inter} from 'next/font/google';
-import Header from '@/components/layouts/header';
-import Footer from '@/components/layouts/footer';
 import './globals.css';
 import ReduxProvider from '@/redux/provider';
 import {ToastContainer} from 'react-toastify';
 import AuthGuard from '@/components/layouts/guards/authGuard';
+import ClientLayout from './ClientLayout';
 
 const inter = Inter({subsets: ['latin']});
 
@@ -20,7 +19,7 @@ export default function RootLayout({children}) {
         <ReduxProvider>
           <AuthGuard>
             <ToastContainer
-              position="top-right"
+              position="bottom-right"
               autoClose={3000}
               hideProgressBar={false}
               newestOnTop={false}
@@ -29,9 +28,9 @@ export default function RootLayout({children}) {
               draggable
               pauseOnHover
             />
-            <Header />
+            <ClientLayout>
             {children}
-            <Footer />
+            </ClientLayout>
           </AuthGuard>
         </ReduxProvider>
       </body>

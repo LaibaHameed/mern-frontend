@@ -1,18 +1,20 @@
-'use client';
-
-import {useDispatch} from 'react-redux';
-import {logoutUser} from '@/redux/slices/user/userSlice';
-import ThemeButton from '../shared/buttons/ThemeButton';
+'use client'
+import { useRouter } from "next/navigation";
+import ThemeButton from "../shared/buttons/ThemeButton";
 
 const Dashboard = () => {
-  const dispatch = useDispatch();
+  const router = useRouter()
+
+  const onClickButton = () => {
+    router.push('/dashboard/AddProduct')
+  }  
 
   return (
-    <div className="flex-center flex-col text-black">
-      Dashboard <br />
+    <div className="flex-center flex-col text-black min-h-screen">
       <ThemeButton
-        buttonText="Logout"
-        handleClick={() => dispatch(logoutUser())}
+      buttonText={'Add Product'}
+      handleClick={onClickButton}
+      styles={'bg-primary hover:bg-primary-hover'}
       />
     </div>
   );
