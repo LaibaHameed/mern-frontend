@@ -13,21 +13,21 @@ const PasswordField = ({label, placeholder, name, control}) => {
         <div className="flex flex-col relative">
           <label
             htmlFor={label}
-            className="text-sm font-semibold text-secondary"
+            className="text-sm font-semibold text-secondary py-1"
           >
             {label}
           </label>
           <input
             type={showPassword ? 'text' : 'password'}
             {...field}
-            className={`w-full p-2 border rounded-md text-sm  bg-transparent ${
+            className={`w-full p-2 text-sm  bg-transparent ${
               error ? 'outline-error border-error' : 'outline-primary border'
             }`}
             placeholder={placeholder}
             id={label}
           />
           <span
-            className="absolute right-3 top-[29px] cursor-pointer text-gray-500"
+            className="absolute right-3 top-[36px] cursor-pointer text-gray-500"
             onClick={() => setShowPassword(!showPassword)}
           >
             {showPassword ? (

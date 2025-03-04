@@ -4,14 +4,14 @@ import Link from 'next/link';
 
 const ProductCard = ({ product }) => {
   return (
-    <Link href={`/products/${product.id}`}>
+    <Link href={`/products/${product.name}`}>
       <div className="relative group border border-gray-300 overflow-hidden w-full  mx-auto sm:max-w-none">
         {/* Image */}
         <Image
           src={product.image}
           width={400}
           height={370}
-          alt={product.title}
+          alt={product.name}
           className="w-full h-auto"
         />
 

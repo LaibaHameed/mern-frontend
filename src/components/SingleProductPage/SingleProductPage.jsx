@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import Container from '../shared/Container'
 import Products from '@/data/Products';
 import ProductImage from './ProductImage';
-import ImageSlider from './ImageSlider';
 import RelatedProducts from './RelatedProducts';
 import ProductTabs from './ProductTabs/ProductTabs';
 import ProductDetails from './ProductDetails/ProductDetails';

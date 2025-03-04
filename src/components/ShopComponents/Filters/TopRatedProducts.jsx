@@ -12,7 +12,7 @@ const TopRatedProducts = () => {
       {BEST_SELLER.map((product) => (
         <Link key={product.id} href={`/products/${product.id}`} className="space-y-4 cursor-pointer">
           <div className="flex items-start gap-4 mb-2 hover:shadow-xl animate">
-            <Image width={75} height={75} src={product.image} alt={product.title} className="object-cover" />
+            <Image width={75} height={75} src={product.image} alt={product.name} className="object-cover" />
             <div>
               <h4 className="text-sm font-light text-secondary tracking-wider">{product.title}</h4>
               <p className="text-secondary font-semibold py-2 font-serif">{product.price}.00 $</p>

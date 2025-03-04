@@ -1,20 +1,15 @@
-'use client';
-
-import {useDispatch} from 'react-redux';
-import {logoutUser} from '@/redux/slices/user/userSlice';
-import ThemeButton from '../shared/buttons/ThemeButton';
+'use client'
+import { getCurrentUser } from "@/redux/slices/user/userSlice";
+import { useSelector } from "react-redux";
 
 const Dashboard = () => {
-  const dispatch = useDispatch();
+  const currentUser = useSelector(getCurrentUser)
 
   return (
-    <div className="flex-center flex-col text-black">
-      Dashboard <br />
-      <ThemeButton
-        buttonText="Logout"
-        handleClick={() => dispatch(logoutUser())}
-      />
-    </div>
+    <>
+    <h1 className="text-2xl font-bold">Welcome to the Dashboard</h1>
+    {currentUser ? <h2 className="py-3">You are Login as: {currentUser.email}</h2> : <h2 className="py-3 text-red-700">You are not Login</h2>}
+    </>
   );
 };
 
