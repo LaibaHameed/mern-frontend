@@ -1,22 +1,15 @@
 'use client'
-import { useRouter } from "next/navigation";
-import ThemeButton from "../shared/buttons/ThemeButton";
+import { getCurrentUser } from "@/redux/slices/user/userSlice";
+import { useSelector } from "react-redux";
 
 const Dashboard = () => {
-  const router = useRouter()
-
-  const onClickButton = () => {
-    router.push('/dashboard/AddProduct')
-  }  
+  const currentUser = useSelector(getCurrentUser)
 
   return (
-    <div className="flex-center flex-col text-black min-h-screen">
-      <ThemeButton
-      buttonText={'Add Product'}
-      handleClick={onClickButton}
-      styles={'bg-primary hover:bg-primary-hover'}
-      />
-    </div>
+    <>
+    <h1 className="text-2xl font-bold">Welcome to the Dashboard</h1>
+    {currentUser ? <h2 className="py-3">You are Login as: {currentUser.email}</h2> : <h2 className="py-3 text-red-700">You are not Login</h2>}
+    </>
   );
 };
 

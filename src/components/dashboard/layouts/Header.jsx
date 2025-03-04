@@ -1,34 +1,34 @@
-'use client';
+import { DASHBOARD_ROOT, ROOT_ROUTE } from "@/utils/PATHS";
+import Link from "next/link";
+import { GoHomeFill } from "react-icons/go";
+import { FiAlignJustify } from 'react-icons/fi';
 
-import { useDispatch } from 'react-redux';
-import { logoutUser } from '@/redux/slices/user/userSlice';
-import ThemeButton from '@/components/shared/buttons/ThemeButton';
-import Container from '@/components/shared/Container';
-import Link from 'next/link';
-const Header = () => {
 
-  const dispatch = useDispatch();
+const Header = ({ toggleSidebar }) => {
   return (
-    <div>
-      {/* Main Header */}
-      <div className="flex-center shadow-md">
-        <Container>
-          <div className="flex-center justify-between py-6 sm:margin-lg">
-            {/* Logo */}
-            <Link href={'/dashboard'}>
-              <h1 className='text-2xl text-primary font-serif font-bold cursor-pointer'>Admin Dashboard</h1>
-            </Link>
+    <div className="flex items-center justify-between py-6 px-6 mb-10 bg-slate-100 shadow-md md:rounded-xl">
 
-            <ThemeButton
-              buttonText="Logout"
-              handleClick={() => dispatch(logoutUser())}
-              styles={'bg-red-600 hover:bg-red-700'}
-            />
-          </div>
-        </Container>
+      <div className="flex items-center gap-2">
+        <Link href={ROOT_ROUTE} className="ml-6">
+          <GoHomeFill size={20} />
+        </Link>
+        <span className="text-xl">/</span>
+        <Link href={DASHBOARD_ROOT}>
+          <h1 className="text-primary font-serif font-bold cursor-pointer">Admin Dashboard</h1>
+        </Link>
       </div>
+
+      <button
+        className="md:hidden text-gray-700 hover:text-primary text-2xl"
+        onClick={toggleSidebar}
+      >
+        <FiAlignJustify
+          className="cursor-pointer text-secondary"
+          size={25}
+        />
+      </button>
     </div>
   );
-}
+};
 
-export default Header
+export default Header;

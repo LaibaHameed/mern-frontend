@@ -20,8 +20,10 @@ const Breadcrumb = () => {
                             {pathSegments.map((segment, index) => {
                                 const path = `/${pathSegments.slice(0, index + 1).join("/")}`;
                                 const isLast = index === pathSegments.length - 1;
-                                const formattedSegment =
-                                    segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, " ");
+                                const formattedSegment = decodeURIComponent(segment)
+                                    .replace(/-/g, " ")
+                                    .replace(/\b\w/g, (char) => char.toUpperCase());
+
 
                                 return (
                                     <li key={path} className="flex items-center">

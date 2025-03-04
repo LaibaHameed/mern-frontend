@@ -3,7 +3,7 @@ import React from 'react';
 const ThemeButton = ({buttonText, loading = false, styles, handleClick}) => {
   return (
     <button
-      className={`btn border-none text-white h-[38px] rounded-md cursor-pointer flex-center  ${styles}`}
+      className={`flex-center gap-3 px-4 py-3 text-white rounded-lg cursor-pointer ${styles}`}
       onClick={handleClick}
     >
       {!loading ? (

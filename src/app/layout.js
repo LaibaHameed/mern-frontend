@@ -3,7 +3,6 @@ import './globals.css';
 import ReduxProvider from '@/redux/provider';
 import {ToastContainer} from 'react-toastify';
 import AuthGuard from '@/components/layouts/guards/authGuard';
-import ClientLayout from './ClientLayout';
 
 const inter = Inter({subsets: ['latin']});
 
@@ -28,9 +27,7 @@ export default function RootLayout({children}) {
               draggable
               pauseOnHover
             />
-            <ClientLayout>
             {children}
-            </ClientLayout>
           </AuthGuard>
         </ReduxProvider>
       </body>
