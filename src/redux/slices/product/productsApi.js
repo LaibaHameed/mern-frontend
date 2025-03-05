@@ -1,33 +1,27 @@
 import {handleApiResponse} from '@/utils/handleApiResponse';
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
-import {loginUser} from './userSlice';
 import {API_ROUTES} from '@/utils/PATHS';
+import {actions as productsActions} from './productsSlice';
 export const API_SERVER_URL = process.env.NEXT_PUBLIC_API_URL;
 
-export const usersApiSlice = createApi({
-  reducerPath: 'usersApi',
+export const productsApiSlice = createApi({
+  reducerPath: 'productsApi',
   baseQuery: fetchBaseQuery({baseUrl: API_SERVER_URL, credentials: 'include'}),
-  tagTypes: ['User'],
+  tagTypes: ['Product'],
   endpoints: (builder) => ({
-    //login user api
-    loginUser: builder.mutation({
-      query: ({email, password}) => ({
-        url: API_ROUTES.auth.login,
+    //add product api
+    addProduct: builder.mutation({
+      query: ({data}) => ({
+        url: API_ROUTES.product.addProduct,
         method: 'POST',
-        body: {email, password},
+        body: data,
       }),
       onQueryStarted: async (_, {dispatch, queryFulfilled}) => {
         const {body} = await handleApiResponse({queryFulfilled});
-        if (body)
-          dispatch(
-            loginUser({
-              user: body.user,
-              token: body.accessToken,
-            })
-          );
+        if (body) dispatch(productsActions.updateList(body.product));
       },
     }),
   }),
 });
 
-export const {useLoginUserMutation} = usersApiSlice;
+export const {useAddProductMutation} = productsApiSlice;

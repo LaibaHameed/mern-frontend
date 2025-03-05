@@ -1,8 +1,8 @@
 'use client';
 import {GALLERY_ITEMS, NEW_ARRIVAL} from '@/constants/general';
 import Image from 'next/image';
-import ProductCard from '../shared/ProductCard';
-import Container from '../shared/Container';
+import ProductCard from '../shared/common/ProductCard';
+import Container from '../shared/common/Container';
 
 const NewArrival = () => {
   return (

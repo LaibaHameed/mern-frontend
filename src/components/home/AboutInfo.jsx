@@ -1,7 +1,7 @@
-import { INFO } from '@/constants/general';
+import {INFO} from '@/constants/general';
 import Image from 'next/image';
 import React from 'react';
-import Container from '../shared/Container';
+import Container from '../shared/common/Container';
 
 const AboutInfo = () => {
   return (

@@ -9,7 +9,7 @@ import Image from 'next/image';
 import React, {useState} from 'react';
 import Link from 'next/link';
 import {AUTH_ROUTES, NAV_LIST, PUBLIC_ROUTES} from '@/utils/PATHS';
-import Container from '../../shared/Container';
+import Container from '../../shared/common/Container';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

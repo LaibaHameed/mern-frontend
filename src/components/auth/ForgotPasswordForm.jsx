@@ -1,7 +1,7 @@
 'use client';
 
 import {useForm} from 'react-hook-form';
-import InputField from '@/components/shared/InputField';
+import InputField from '@/components/shared/inputs/InputField';
 // import {yupResolver} from '@hookform/resolvers/yup';
 // import {loginSchema} from '@/schemas/authSchema';
 import SubmitButton from '../shared/buttons/SubmitButton';

@@ -2,7 +2,9 @@ import {combineReducers} from 'redux';
 import {persistReducer} from 'redux-persist';
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
 import userReducer from './slices/user/userSlice';
+import productReducer from './slices/product/productsSlice';
 import {usersApiSlice} from './slices/user/usersApi';
+import {productsApiSlice} from './slices/product/productsApi';
 
 // import {clearStore} from './utils';
 
@@ -36,9 +38,17 @@ const userPersistConfig = {
   keyPrefix: 'redux-',
 };
 
+const productPersistConfig = {
+  key: 'products',
+  storage,
+  keyPrefix: 'redux-',
+};
+
 const reduxAppReducer = combineReducers({
   user: persistReducer(userPersistConfig, userReducer),
+  products: persistReducer(productPersistConfig, productReducer),
   [usersApiSlice.reducerPath]: usersApiSlice.reducer,
+  [productsApiSlice.reducerPath]: productsApiSlice.reducer,
 });
 
 const rootReducer = (state, action) => {
