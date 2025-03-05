@@ -1,18 +1,18 @@
-import SingleProductPage from '@/components/SingleProductPage/SingleProductPage'
-import Footer from '@/components/layouts/footer'
-import Header from '@/components/layouts/header'
-import Breadcrumb from '@/components/shared/Breadcrumb'
-import React from 'react'
+import SingleProductPage from '@/components/SingleProductPage/SingleProductPage';
+import Footer from '@/components/layouts/footer';
+import Header from '@/components/layouts/header';
+import Breadcrumb from '@/components/shared/common/Breadcrumb';
+import React from 'react';
 
-const ProductDetailPage = ({ params }) => {
+const ProductDetailPage = ({params}) => {
   return (
     <>
-    <Header/>
-      <Breadcrumb/>
-      <SingleProductPage/>
-    <Footer/>
+      <Header />
+      <Breadcrumb />
+      <SingleProductPage />
+      <Footer />
     </>
-  )
-}
+  );
+};
 
-export default ProductDetailPage
+export default ProductDetailPage;

@@ -1,8 +1,8 @@
 import {BEST_SELLER} from '@/constants/general';
 import Image from 'next/image';
 import React from 'react';
-import ProductCard from '../shared/ProductCard';
-import Container from '../shared/Container';
+import ProductCard from '../shared/common/ProductCard';
+import Container from '../shared/common/Container';
 
 const BestSeller = () => {
   return (

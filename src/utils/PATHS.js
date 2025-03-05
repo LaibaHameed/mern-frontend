@@ -18,6 +18,9 @@ export const API_ROUTES = {
     register: '/auth/register',
     login: '/auth/login',
   },
+  product: {
+    addProduct: '/products/add-product',
+  },
 };
 
 export const AUTH_ROUTES = {

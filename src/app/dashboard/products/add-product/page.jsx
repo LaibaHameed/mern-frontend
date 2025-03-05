@@ -1,15 +1,15 @@
-import AddProductForm from '@/components/dashboard/AddProductForm'
-import Container from '@/components/shared/Container'
-import React from 'react'
+import AddProductForm from '@/components/dashboard/AddProductForm';
+import Container from '@/components/shared/common/Container';
+import React from 'react';
 
 const AddProduct = () => {
   return (
-    <div className='flex-center w-full'>
+    <div className="flex-center w-full">
       <Container>
-        <AddProductForm/>
+        <AddProductForm />
       </Container>
     </div>
-  )
-}
+  );
+};
 
-export default AddProduct
+export default AddProduct;

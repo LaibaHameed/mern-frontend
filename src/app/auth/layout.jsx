@@ -1,9 +1,9 @@
 'use client';
 import Footer from '@/components/layouts/footer';
 import Header from '@/components/layouts/header';
-import Container from '@/components/shared/Container';
+import Container from '@/components/shared/common/Container';
 
-const AuthLayout = ({ children }) => {
+const AuthLayout = ({children}) => {
   return (
     <>
       <Header />

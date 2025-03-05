@@ -6,7 +6,7 @@ import {
   INFORMATION_ITEMS,
   PRODUCT_ITEMS,
 } from '@/constants/general';
-import Container from '@/components/shared/Container';
+import Container from '@/components/shared/common/Container';
 
 const Footer = () => {
   return (
