@@ -31,6 +31,7 @@ const AboutInfo = () => {
 
           <Image
             src={'/assets/signature.png'}
+            alt={'signature'}
             width={150}
             height={150}
             className="mt-8 mb-6"
