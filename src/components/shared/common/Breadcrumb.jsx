@@ -3,7 +3,7 @@ import Link from 'next/link';
 import {usePathname} from 'next/navigation';
 import Container from './Container';
 
-const Breadcrumb = () => {
+const Breadcrumb = ({title}) => {
   const pathname = usePathname();
   const pathSegments = pathname.split('/').filter(Boolean);
 
@@ -13,7 +13,7 @@ const Breadcrumb = () => {
         <Container>
           <nav className="text-gray-600 text-sm flex-center flex-col">
             <h1 className="text-4xl font-serif font-semibold text-secondary mb-4 tracking-tighter">
-              Shop
+              {title}
             </h1>
             <ul className="flex space-x-2">
               <BreadcrumbItem href="/" label="Home" />

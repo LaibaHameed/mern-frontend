@@ -14,4 +14,16 @@ export default {
       message: 'Internal server error',
     });
   },
+  contactErr: () => {
+    return AppError({
+      statusCode: StatusCodes.BAD_REQUEST,
+      message: 'Contact submission failed',
+    });
+  },
+  authorizedErr: () => {
+    return AppError({
+      statusCode: StatusCodes.UNAUTHORIZED,
+      message: 'Login session expired. Please login again',
+    });
+  },
 };
