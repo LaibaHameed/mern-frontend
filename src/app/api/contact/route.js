@@ -5,6 +5,8 @@ import {GeneralErrors} from '@/factories/errors';
 import {MongoFactoryServices} from '../services/mongoFactory';
 import {ContactsModel} from '../models';
 import {GeneralResponses} from '@/factories/success';
+import {sendContactFormEmailToAdmin} from '@/utils/emailSender/sendContactFormEmailToAdmin';
+import {sendContactFormEmailToUser} from '@/utils/emailSender/sendContactFormEmailToUser';
 
 export async function POST(request) {
   await dbConnect();
@@ -21,6 +23,9 @@ export async function POST(request) {
   });
 
   if (error) return GeneralErrors.contactErr();
+
+  sendContactFormEmailToAdmin({data: contact});
+  sendContactFormEmailToUser({data: contact});
 
   return GeneralResponses.contactSubmitSuccessfully({contact});
 }
