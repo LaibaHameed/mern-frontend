@@ -6,7 +6,16 @@ export const API_SERVER_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const usersApiSlice = createApi({
   reducerPath: 'usersApi',
-  baseQuery: fetchBaseQuery({baseUrl: API_SERVER_URL, credentials: 'include'}),
+  baseQuery: fetchBaseQuery({
+    baseUrl: API_SERVER_URL,
+    credentials: 'include',
+    // prepareHeaders: (headers, {getState}) => {
+    //   const token = getState().user.authToken;
+    //   if (token) {
+    //     headers.set('authorization', `Bearer ${token}`);
+    //   }
+    // },
+  }),
   tagTypes: ['User'],
   endpoints: (builder) => ({
     //login user api
@@ -27,7 +36,19 @@ export const usersApiSlice = createApi({
           );
       },
     }),
+    //contact form api
+    contactSubmission: builder.mutation({
+      query: ({data}) => ({
+        url: API_ROUTES.contact,
+        method: 'POST',
+        body: data,
+      }),
+      onQueryStarted: async (_, {queryFulfilled}) => {
+        await handleApiResponse({queryFulfilled});
+      },
+    }),
   }),
 });
 
-export const {useLoginUserMutation} = usersApiSlice;
+export const {useLoginUserMutation, useContactSubmissionMutation} =
+  usersApiSlice;

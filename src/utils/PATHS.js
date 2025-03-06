@@ -21,6 +21,7 @@ export const API_ROUTES = {
   product: {
     addProduct: '/products/add-product',
   },
+  contact: '/contact',
 };
 
 export const AUTH_ROUTES = {

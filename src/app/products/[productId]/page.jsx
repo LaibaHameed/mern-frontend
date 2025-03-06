@@ -8,7 +8,7 @@ const ProductDetailPage = ({params}) => {
   return (
     <>
       <Header />
-      <Breadcrumb />
+      <Breadcrumb title="New Product" />
       <SingleProductPage />
       <Footer />
     </>
