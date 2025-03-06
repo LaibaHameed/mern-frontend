@@ -1,27 +1,41 @@
-import {handleApiResponse} from '@/utils/handleApiResponse';
-import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
-import {API_ROUTES} from '@/utils/PATHS';
-import {actions as productsActions} from './productsSlice';
+import { handleApiResponse } from '@/utils/handleApiResponse';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { API_ROUTES } from '@/utils/PATHS';
+import { actions as productsActions } from './productsSlice';
+
 export const API_SERVER_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const productsApiSlice = createApi({
   reducerPath: 'productsApi',
-  baseQuery: fetchBaseQuery({baseUrl: API_SERVER_URL, credentials: 'include'}),
+  baseQuery: fetchBaseQuery({ baseUrl: API_SERVER_URL, credentials: 'include' }),
   tagTypes: ['Product'],
   endpoints: (builder) => ({
+    // fetch all products 
+    getProducts: builder.query({
+      query: () => ({
+        url: API_ROUTES.product.getProducts,
+        method: 'GET',
+      }),
+      providesTags: ['Product'], // Caching
+      onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
+        const { body } = await handleApiResponse({ queryFulfilled });
+        if (body) dispatch(productsActions.setList(body.products));
+      },
+    }),
+
     //add product api
     addProduct: builder.mutation({
-      query: ({data}) => ({
+      query: ({ data }) => ({
         url: API_ROUTES.product.addProduct,
         method: 'POST',
         body: data,
       }),
-      onQueryStarted: async (_, {dispatch, queryFulfilled}) => {
-        const {body} = await handleApiResponse({queryFulfilled});
+      onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
+        const { body } = await handleApiResponse({ queryFulfilled });
         if (body) dispatch(productsActions.updateList(body.product));
       },
     }),
   }),
 });
 
-export const {useAddProductMutation} = productsApiSlice;
+export const { useGetProductsQuery, useAddProductMutation } = productsApiSlice;

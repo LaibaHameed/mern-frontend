@@ -24,4 +24,10 @@ export const MongoFactoryServices = {
     );
     return {success, error, response};
   },
+  getAll : async ({model}) => {
+    const {success, error, response} = await asyncTryCatch(
+      async () => await model.find({})
+    );
+    return {success, error, response};
+  }
 };

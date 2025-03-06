@@ -1,7 +1,9 @@
-import {createSlice} from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const defaultState = {
   list: [],
+  loading: false,
+  error: null,
 };
 
 const slice = createSlice({

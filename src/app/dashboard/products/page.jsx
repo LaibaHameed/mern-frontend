@@ -3,6 +3,7 @@
 import {useRouter} from 'next/navigation';
 import ThemeButton from '@/components/shared/buttons/ThemeButton';
 import {DASHBOARD_ROUTES} from '@/utils/PATHS';
+import ProductList from '@/components/dashboard/ProductList';
 
 const Products = () => {
   const router = useRouter();
@@ -17,7 +18,7 @@ const Products = () => {
           handleClick={onClickButton}
           styles={'bg-primary hover:bg-primary-hover'}
         />
-        All Products
+        <ProductList/>
       </div>
     </div>
   );
