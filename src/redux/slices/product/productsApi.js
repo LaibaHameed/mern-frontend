@@ -12,12 +12,12 @@ export const productsApiSlice = createApi({
   endpoints: (builder) => ({
     // fetch all products 
     getProducts: builder.query({
-      query: () => ({
-        url: API_ROUTES.product.getProducts,
+      query: ({ limit, page }) => ({
+        url: `${API_ROUTES.product.getProducts}?limit=${limit}&page=${page}`,
         method: 'GET',
       }),
       providesTags: ['Product'], // Caching
-      onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
+      onQueryStarted: async ({ limit, page }, { dispatch, queryFulfilled }) => {
         const { body } = await handleApiResponse({ queryFulfilled });
         if (body) dispatch(productsActions.setList(body.products));
       },

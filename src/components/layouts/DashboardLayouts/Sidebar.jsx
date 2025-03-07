@@ -60,7 +60,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
                     <ThemeButton
                         buttonText="Logout"
                         handleClick={() => dispatch(logoutUser())}
-                        styles="bg-red-600 hover:bg-red-700 w-full"
+                        styles="bg-red-700 hover:bg-red-600 w-full"
                     />
                 </div>
             </aside>

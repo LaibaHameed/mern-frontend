@@ -1,24 +1,16 @@
 'use client';
 
-import {useRouter} from 'next/navigation';
-import ThemeButton from '@/components/shared/buttons/ThemeButton';
-import {DASHBOARD_ROUTES} from '@/utils/PATHS';
-import ProductList from '@/components/dashboard/ProductList';
+import ProductTable from '@/components/dashboard/ProductTable';
+import TopSection from '@/components/dashboard/TopSection';
 
 const Products = () => {
-  const router = useRouter();
 
-  const onClickButton = () => router.push(DASHBOARD_ROUTES.products.addProduct);
 
   return (
     <div>
       <div className="flex-center flex-col text-black gap-6">
-        <ThemeButton
-          buttonText={'Add Product'}
-          handleClick={onClickButton}
-          styles={'bg-primary hover:bg-primary-hover'}
-        />
-        <ProductList/>
+        <TopSection/>
+        <ProductTable/>
       </div>
     </div>
   );

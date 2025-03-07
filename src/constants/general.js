@@ -254,3 +254,6 @@ export const CART_ITEMS = [
   { id: 2, name: 'Neque Porro Quisquam', image: "/assets/bestSeller2.jpg", price: 15, quantity: 1 },
   { id: 3, name: 'Aliquam Quaerat Voluptem', image: "/assets/bestSeller3.jpg", price: 30, quantity: 3 },
 ]
+
+// dashboar Product headers
+export const PRODUCT_HEADER = ["Product", "Product Code", "Stock", "Actions", ""]

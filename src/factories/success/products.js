@@ -11,12 +11,13 @@ export default {
       },
     });
   },
-  productsFetchedSuccessfully: ({ products }) => {
+  productsFetchedSuccessfully: ({ products, pagination }) => {
     return AppResponse({
       statusCode: StatusCodes.OK,
       message: 'Products fetched successfully',
       body: {
         products,
+        pagination 
       },
     });
   },

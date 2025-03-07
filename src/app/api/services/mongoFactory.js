@@ -24,10 +24,16 @@ export const MongoFactoryServices = {
     );
     return {success, error, response};
   },
-  getAll : async ({model}) => {
-    const {success, error, response} = await asyncTryCatch(
-      async () => await model.find({})
+  getAll: async ({ model, query = {}, options }) => {
+    const { success, error, response } = await asyncTryCatch(
+      async () => await model.find(query, null, options)
     );
-    return {success, error, response};
-  }
+    return { success, error, response };
+  },
+  count: async ({ model, query = {} }) => {
+    const { success, error, response } = await asyncTryCatch(
+      async () => await model.countDocuments(query)
+    );
+    return { success, error, response };
+  },
 };

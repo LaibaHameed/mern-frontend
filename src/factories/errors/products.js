@@ -8,10 +8,4 @@ export default {
       message: 'Products registration failed',
     });
   },
-  getProductsFailed : () => {
-    return AppError({
-      statusCode : StatusCodes
-
-    })
-  }
 };
