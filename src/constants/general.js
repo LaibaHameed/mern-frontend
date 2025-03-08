@@ -1,14 +1,14 @@
-import {BsGift, BsTruck} from 'react-icons/bs';
-import {GrPowerCycle} from 'react-icons/gr';
-import {FiPhone} from 'react-icons/fi';
-import {BsCart3, BsEye} from 'react-icons/bs';
-import {FiHeart} from 'react-icons/fi';
-import {TbSwitchHorizontal} from 'react-icons/tb';
+import { BsGift, BsTruck } from 'react-icons/bs';
+import { GrPowerCycle } from 'react-icons/gr';
+import { FiPhone } from 'react-icons/fi';
+import { BsCart3, BsEye } from 'react-icons/bs';
+import { FiHeart } from 'react-icons/fi';
+import { TbSwitchHorizontal } from 'react-icons/tb';
 
 // Carousel slides
 const SLIDES = [
   {
-    id:1,
+    id: 1,
     title: 'Decorate Naturally,',
     title2: ' Live Beautifully.',
     description:
@@ -17,7 +17,7 @@ const SLIDES = [
     buttonText1: 'shop now',
   },
   {
-    id:2,
+    id: 2,
     title: 'Plants:',
     title2: ' Your Daily Dose of Calm.',
     description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit!',
@@ -106,10 +106,10 @@ export const NEW_ARRIVAL = [
 
 // Product card Icons
 const PRODUCT_ICONS = {
-  heart: {icon: <FiHeart size={20} />, name: 'heart'},
-  cart: {icon: <BsCart3 size={20} />, name: 'cart'},
-  eye: {icon: <BsEye size={20} />, name: 'eye'},
-  switch: {icon: <TbSwitchHorizontal size={20} />, name: 'switch'},
+  heart: { icon: <FiHeart size={20} />, name: 'heart' },
+  cart: { icon: <BsCart3 size={20} />, name: 'cart' },
+  eye: { icon: <BsEye size={20} />, name: 'eye' },
+  switch: { icon: <TbSwitchHorizontal size={20} />, name: 'switch' },
 };
 
 export const ICONS = Object.values(PRODUCT_ICONS);
@@ -178,8 +178,8 @@ export const INFORMATION_ITEMS = {
     link: '#new-products',
     id: 'new-products',
   },
-  topSeller: {label: 'Top Seller', link: '#top-seller', id: 'top-seller'},
-  aboutUs: {label: 'About our shop', link: '#about-us', id: 'about-us'},
+  topSeller: { label: 'Top Seller', link: '#top-seller', id: 'top-seller' },
+  aboutUs: { label: 'About our shop', link: '#about-us', id: 'about-us' },
   privacyPolicy: {
     label: 'Privacy policy',
     link: '#privacy-policy',
@@ -188,8 +188,8 @@ export const INFORMATION_ITEMS = {
 };
 
 export const ACCOUNT_ITEMS = {
-  myAccount: {label: 'My account', link: '#my-account', id: 'my-account'},
-  discount: {label: 'Discount', link: '#discount', id: 'discount'},
+  myAccount: { label: 'My account', link: '#my-account', id: 'my-account' },
+  discount: { label: 'Discount', link: '#discount', id: 'discount' },
   ordersHistory: {
     label: 'Orders History',
     link: '#orders-history',
@@ -203,19 +203,19 @@ export const ACCOUNT_ITEMS = {
 };
 
 export const PRODUCT_ITEMS = {
-  delivery: {label: 'Delivery', link: '#delivery', id: 'delivery'},
+  delivery: { label: 'Delivery', link: '#delivery', id: 'delivery' },
   legalNotice: {
     label: 'Legal Notice',
     link: '#legal-notice',
     id: 'legal-notice',
   },
-  pricesDrop: {label: 'Prices Drop', link: '#prices-drop', id: 'prices-drop'},
+  pricesDrop: { label: 'Prices Drop', link: '#prices-drop', id: 'prices-drop' },
   newProducts: {
     label: 'New Products',
     link: '#new-products',
     id: 'new-products',
   },
-  bestSales: {label: 'Best Sales', link: '#best-sales', id: 'best-sales'},
+  bestSales: { label: 'Best Sales', link: '#best-sales', id: 'best-sales' },
 };
 
 
@@ -256,4 +256,25 @@ export const CART_ITEMS = [
 ]
 
 // dashboar Product headers
-export const PRODUCT_HEADER = ["Product", "Product Code", "Stock", "Actions", ""]
+export const PRODUCT_HEADER = [
+  {
+    key: "product",
+    name: "Product",
+  },
+  {
+    key: "productCode",
+    name: "Product Code",
+  },
+  {
+    key: "stock",
+    name: "Stock",
+  },
+  {
+    key: "actions",
+    name: "Actions",
+  },
+  {
+    key: "empty",
+    name: " ",
+  },
+];

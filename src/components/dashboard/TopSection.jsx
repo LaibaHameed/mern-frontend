@@ -1,22 +1,14 @@
-import React from 'react'
-import { useRouter } from 'next/navigation';
-import ThemeButton from '../shared/buttons/ThemeButton'
-import { DASHBOARD_ROUTES } from '@/utils/PATHS';
-import Search from '../ShopComponents/TopSection/Search';
 
-const TopSection = () => {
-    const router = useRouter();
+const TopSection = ({ title, searchComponent, buttonComponent }) => {
 
-    const onClickButton = () => router.push(DASHBOARD_ROUTES.products.addProduct);
     return (
-        <div className='flex flex-col sm:flex-row w-full justify-between items-center gap-3'>
-            <Search/>
-            <ThemeButton
-                buttonText={'Add Product'}
-                handleClick={onClickButton}
-                styles={'bg-primary hover:bg-primary-hover text-sm py-2'}
-            />
-        </div>
+        <>
+            <h1 className="text-4xl font-bold font-serif text-secondary mb-6">{title && <h2>{title}</h2>}</h1>
+            <div className='flex flex-col sm:flex-row w-full justify-between items-center gap-3 px-4'>
+                {searchComponent && searchComponent}
+                {buttonComponent && buttonComponent}
+            </div>
+        </>
     )
 }
 

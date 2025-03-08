@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaRegEdit } from "react-icons/fa";
 import { MdOutlineDeleteForever } from "react-icons/md";
-import ThemeButton from "../shared/buttons/ThemeButton";
+import ThemeButton from "@/components/shared/buttons/ThemeButton";
 
 
 const ProductRow = ({ product }) => {

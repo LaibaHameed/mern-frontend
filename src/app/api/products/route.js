@@ -14,15 +14,21 @@ export async function GET(req) {
     const page = parseInt(searchParams.get('page')) || 1;
     const skip = (page - 1) * limit;
 
+    const { success, error, response } = await MongoFactoryServices.findAll({ 
+        model: Product, 
+        query: {}, 
+        options: { skip, limit } 
+    });
 
-    const { success: countSuccess, error: countError, response: total } = await MongoFactoryServices.count({ model: Product, query: {} });
-    if (!countSuccess) return GeneralErrors.internalServerErr({ customMessage: countError });
+    if (!success) {
+        return GeneralErrors.internalServerErr({ customMessage: error });
+    }
 
-    const { success, error, response: products } = await MongoFactoryServices.getAll({ model: Product, query: {}, options: { skip, limit } });
-    if (!success) return GeneralErrors.internalServerErr({ customMessage: { customMessage: error } });
+    const { products, total } = response;
 
     return ProductResponses.productsFetchedSuccessfully({
-        products,
+        products, 
         pagination: { total, currentPage: page, totalPages: Math.ceil(total / limit) },
     });
 }
+

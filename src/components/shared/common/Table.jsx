@@ -6,9 +6,9 @@ const Table = ({ headers, children }) => {
             <table className="w-full min-w-2xl table-auto border-collapse">
             <thead>
                 <tr className="border-b border-gray-500 bg-gray-100">
-                    {headers.map((header, index) => (
-                        <th key={index} className="text-left px-4 py-2">
-                            {header}
+                    {headers.map((header) => (
+                        <th key={header.key} className="text-left px-4 py-2 font-semibold">
+                            {header.name}
                         </th>
                     ))}
                 </tr>

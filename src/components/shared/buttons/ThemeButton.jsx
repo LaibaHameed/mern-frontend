@@ -5,7 +5,7 @@ const ThemeButton = ({ buttonText, loading = false, styles, handleClick, disable
         disabled ? "opacity-80 cursor-not-allowed" : "cursor-pointer"
       }`}
       onClick={handleClick}
-      disabled={disabled}
+      disabled={disabled || loading}
     >
       {!loading ? (
         buttonText

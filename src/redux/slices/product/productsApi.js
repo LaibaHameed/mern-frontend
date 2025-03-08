@@ -17,9 +17,8 @@ export const productsApiSlice = createApi({
         method: 'GET',
       }),
       providesTags: ['Product'], // Caching
-      onQueryStarted: async ({ limit, page }, { dispatch, queryFulfilled }) => {
-        const { body } = await handleApiResponse({ queryFulfilled });
-        if (body) dispatch(productsActions.setList(body.products));
+      onQueryStarted: async (_, { queryFulfilled }) => {
+        handleApiResponse({ queryFulfilled });
       },
     }),
 

@@ -5,14 +5,14 @@ import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { FaTimes } from 'react-icons/fa';
 import { yupResolver } from '@hookform/resolvers/yup';
-import InputField from '../shared/inputs/InputField';
-import SubmitButton from '../shared/buttons/SubmitButton';
-import NumberField from '../shared/inputs/NumberField';
-import TextareaField from '../shared/inputs/TextareaField';
 import { productSchema } from '@/schemas/ProductSchema';
-import FileInputField from '../shared/inputs/FileInputField';
 import { useAddProductMutation } from '@/redux/slices/product/productsApi';
 import { DASHBOARD_ROUTES } from '@/utils/PATHS';
+import InputField from '@/components/shared/inputs/InputField';
+import NumberField from '@/components/shared/inputs/NumberField';
+import TextareaField from '@/components/shared/inputs/TextareaField';
+import FileInputField from '@/components/shared/inputs/FileInputField';
+import SubmitButton from '@/components/shared/buttons/SubmitButton';
 
 const AddProductForm = () => {
   const [imagePreviews, setImagePreviews] = useState([]);
