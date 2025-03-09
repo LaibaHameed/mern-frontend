@@ -4,8 +4,8 @@ import { useTablePagination } from '@/hooks/useTablePagination';
 import { useGetProductsQuery } from "@/redux/slices/product/productsApi";
 import { PRODUCT_HEADER } from "@/constants/general";
 import ProductRow from "./ProductRow";
-import Table from "@/components/shared/common/Table";
 import ThemeButton from "@/components/shared/buttons/ThemeButton";
+import Table from "@/components/shared/TableComponents/Table";
 
 const ProductTable = () => {
     const { page, limit, nextPage, prevPage } = useTablePagination();
