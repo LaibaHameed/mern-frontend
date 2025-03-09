@@ -1,6 +1,6 @@
 import { useRouter } from 'next/navigation';
 import { DASHBOARD_ROUTES } from '@/utils/PATHS';
-import TopSection from '../TopSection'
+import TopSection from '../../shared/TableComponents/TopSection'
 import ProductTable from './ProductTable'
 import Search from '@/components/ShopComponents/TopSection/Search';
 import ThemeButton from '@/components/shared/buttons/ThemeButton';
