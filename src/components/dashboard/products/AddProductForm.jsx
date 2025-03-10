@@ -88,8 +88,9 @@ const AddProductForm = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="bg-white px-10 py-12 shadow-md w-full rounded-3xl my-10"
       >
-        <h2 className="text-xl font-semibold text-left mb-5">Add Product</h2>
-
+        <h2 className="text-xl text-secondary font-semibold text-left mb-5">
+          Add Product
+        </h2>
         <div className="md:grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="col-span-2">
             <InputField
