@@ -1,24 +1,25 @@
-"use client"
 import { IoCloudOfflineOutline } from "react-icons/io5";
-import { useTablePagination } from '@/hooks/useTablePagination';
+import { useTablePagination } from "@/hooks/useTablePagination";
 import { useGetProductsQuery } from "@/redux/slices/product/productsApi";
 import { PRODUCT_HEADER } from "@/constants/general";
 import ProductRow from "./ProductRow";
 import ThemeButton from "@/components/shared/buttons/ThemeButton";
 import Table from "@/components/shared/TableComponents/Table";
+import useDebounce from "@/hooks/useDebounce";
+import { useState } from "react";
 
-const ProductTable = () => {
+const ProductTable = ({ searchQuery }) => {
     const { page, limit, nextPage, prevPage } = useTablePagination();
-    const { data, isLoading, isError } = useGetProductsQuery({ limit, page });
-    
-    const products = data?.body?.products ?? [];
-    const totalPages = data?.body?.pagination?.totalPages ?? 1
+    const debouncedSearch = useDebounce(searchQuery, 300);
 
+    const { data, isLoading, isError } = useGetProductsQuery({ limit, page, search: debouncedSearch });
+
+    const products = data?.body?.products ?? [];
+    const totalPages = data?.body?.pagination?.totalPages ?? 1;
 
     if (isLoading) return <span className="loading loading-spinner loading-x text-black"></span>;
     if (isError) return <p className="py-10 flex-center gap-2">Error loading products.</p>;
-    if (products.length === 0) return <p className="py-10 flex-center gap-2"><IoCloudOfflineOutline /> No products available...</p>
-
+    if (products.length === 0) return <p className="py-10 flex-center gap-2"><IoCloudOfflineOutline /> No products available...</p>;
 
     return (
         <div className="w-full">
@@ -30,12 +31,22 @@ const ProductTable = () => {
                 </Table>
 
                 <div className="flex-center my-12">
-                    <ThemeButton buttonText='Previous' styles={'text-white bg-primary hover:bg-primary-hover text-sm'} handleClick={prevPage} disabled={page === 1} />
+                    <ThemeButton
+                        buttonText="Previous"
+                        styles="text-white bg-primary hover:bg-primary-hover text-sm"
+                        handleClick={prevPage}
+                        disabled={page === 1}
+                    />
                     <span className="text-sm mx-12">Page {page} of {totalPages}</span>
-                    <ThemeButton buttonText='Next' styles={'text-white bg-primary hover:bg-primary-hover text-sm'} handleClick={nextPage} disabled={page === totalPages} />
+                    <ThemeButton
+                        buttonText="Next"
+                        styles="text-white bg-primary hover:bg-primary-hover text-sm"
+                        handleClick={nextPage}
+                        disabled={page === totalPages}
+                    />
                 </div>
             </div>
-        </div >
+        </div>
     );
 };
 

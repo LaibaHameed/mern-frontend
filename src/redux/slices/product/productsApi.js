@@ -12,11 +12,17 @@ export const productsApiSlice = createApi({
   endpoints: (builder) => ({
     // fetch all products 
     getProducts: builder.query({
-      query: ({ limit, page }) => ({
-        url: `${API_ROUTES.product.getProducts}?limit=${limit}&page=${page}`,
-        method: 'GET',
-      }),
-      providesTags: ['Product'], // Caching
+      query: ({ limit, page, search }) => {
+        let url = `${API_ROUTES.product.getProducts}?limit=${limit}&page=${page}`;
+        if (search) {
+          url += `&search=${encodeURIComponent(search)}`;
+        }
+        return {
+          url,
+          method: 'GET',
+        };
+      },
+      providesTags: ['Product'],
       onQueryStarted: async (_, { queryFulfilled }) => {
         handleApiResponse({ queryFulfilled });
       },
