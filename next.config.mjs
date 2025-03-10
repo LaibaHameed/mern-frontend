@@ -10,6 +10,14 @@ const nextConfig = {
     NEXT_PUBLIC_NODEMAILER_EMAIL: process.env.NEXT_PUBLIC_NODEMAILER_EMAIL,
     NEXT_PUBLIC_NODEMAILER_PASS: process.env.NEXT_PUBLIC_NODEMAILER_PASS,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Header from "@/components/dashboard/layouts/Header";
-import Sidebar from "@/components/dashboard/layouts/Sidebar";
+import Header from "@/components/layouts/DashboardLayouts/Header";
+import Sidebar from "@/components/layouts/DashboardLayouts/Sidebar";
 
 export default function DashboardLayout({ children }) {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);

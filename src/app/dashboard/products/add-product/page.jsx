@@ -1,4 +1,4 @@
-import AddProductForm from '@/components/dashboard/AddProductForm';
+import AddProductForm from '@/components/dashboard/products/AddProductForm';
 import Container from '@/components/shared/common/Container';
 import React from 'react';
 
@@ -6,7 +6,7 @@ const AddProduct = () => {
   return (
     <div className="flex-center w-full">
       <Container>
-        <AddProductForm />
+        <AddProductForm/>
       </Container>
     </div>
   );

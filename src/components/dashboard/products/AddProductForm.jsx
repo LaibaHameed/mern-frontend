@@ -1,27 +1,27 @@
 'use client';
 
-import {useState, useEffect} from 'react';
-import {useForm} from 'react-hook-form';
-import {useRouter} from 'next/navigation';
-import {FaTimes} from 'react-icons/fa';
-import {yupResolver} from '@hookform/resolvers/yup';
-import InputField from '../shared/inputs/InputField';
-import SubmitButton from '../shared/buttons/SubmitButton';
-import NumberField from '../shared/inputs/NumberField';
-import TextareaField from '../shared/inputs/TextareaField';
-import {productSchema} from '@/schemas/ProductSchema';
-import FileInputField from '../shared/inputs/FileInputField';
-import {useAddProductMutation} from '@/redux/slices/product/productsApi';
-import {DASHBOARD_ROUTES} from '@/utils/PATHS';
+import { useState, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
+import { FaTimes } from 'react-icons/fa';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { productSchema } from '@/schemas/ProductSchema';
+import { useAddProductMutation } from '@/redux/slices/product/productsApi';
+import { DASHBOARD_ROUTES } from '@/utils/PATHS';
+import InputField from '@/components/shared/inputs/InputField';
+import NumberField from '@/components/shared/inputs/NumberField';
+import TextareaField from '@/components/shared/inputs/TextareaField';
+import FileInputField from '@/components/shared/inputs/FileInputField';
+import SubmitButton from '@/components/shared/buttons/SubmitButton';
 
 const AddProductForm = () => {
   const [imagePreviews, setImagePreviews] = useState([]);
   const [selectedFiles, setSelectedFiles] = useState([]);
   const router = useRouter();
 
-  const [addProduct, {isLoading}] = useAddProductMutation();
+  const [addProduct, { isLoading }] = useAddProductMutation();
 
-  const {control, handleSubmit, reset, watch, setValue} = useForm({
+  const { control, handleSubmit, reset, watch, setValue } = useForm({
     resolver: yupResolver(productSchema),
     defaultValues: {
       name: '',
@@ -38,6 +38,16 @@ const AddProductForm = () => {
 
   const productImages = watch('productImages');
 
+  const removeImage = (index) => {
+    setImagePreviews((prevPreviews) =>
+      prevPreviews.filter((_, i) => i !== index)
+    );
+    setSelectedFiles((prevFiles) => prevFiles.filter((_, i) => i !== index));
+
+    const updatedFiles = selectedFiles.filter((_, i) => i !== index);
+    setValue('productImages', updatedFiles);
+  };
+
   useEffect(() => {
     if (productImages && productImages.length > 0) {
       const newFiles = Array.from(productImages);
@@ -50,30 +60,22 @@ const AddProductForm = () => {
       setImagePreviews((prevPreviews) => [...prevPreviews, ...newPreviews]);
 
       return () => newPreviews.forEach((url) => URL.revokeObjectURL(url));
+    } else {
+      setImagePreviews([]);
+      setSelectedFiles([]);
     }
   }, [productImages]);
-
-  const removeImage = (index) => {
-    setImagePreviews((prevPreviews) =>
-      prevPreviews.filter((_, i) => i !== index)
-    );
-    setSelectedFiles((prevFiles) => {
-      const updatedFiles = prevFiles.filter((_, i) => i !== index);
-      setValue('productImages', updatedFiles);
-      return updatedFiles;
-    });
-  };
 
   const onSubmit = async (data) => {
     const formData = new FormData();
     formData.append(
       'data',
-      JSON.stringify({...data, productImages: undefined})
+      JSON.stringify({ ...data, productImages: undefined })
     );
 
     data.productImages.forEach((file) => formData.append('files', file));
 
-    await addProduct({data: formData});
+    await addProduct({ data: formData });
     reset();
     setImagePreviews([]);
     setSelectedFiles([]);

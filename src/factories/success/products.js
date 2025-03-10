@@ -1,13 +1,23 @@
-import {AppResponse} from '../utils/response';
-import {StatusCodes} from 'http-status-codes';
+import { AppResponse } from '../utils/response';
+import { StatusCodes } from 'http-status-codes';
 
 export default {
-  productAddedSuccessfully: ({product}) => {
+  productAddedSuccessfully: ({ product }) => {
     return AppResponse({
       statusCode: StatusCodes.OK,
       message: 'Product added successfully',
       body: {
         product,
+      },
+    });
+  },
+  productsFetchedSuccessfully: ({ products, pagination }) => {
+    return AppResponse({
+      statusCode: StatusCodes.OK,
+      message: 'Products fetched successfully',
+      body: {
+        products,
+        pagination 
       },
     });
   },
