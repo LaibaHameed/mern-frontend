@@ -3,16 +3,12 @@ import { useTablePagination } from "@/hooks/useTablePagination";
 import { useGetProductsQuery } from "@/redux/slices/product/productsApi";
 import { PRODUCT_HEADER } from "@/constants/general";
 import ProductRow from "./ProductRow";
-import ThemeButton from "@/components/shared/buttons/ThemeButton";
 import Table from "@/components/shared/TableComponents/Table";
-import useDebounce from "@/hooks/useDebounce";
-import { useState } from "react";
+import Pagination from "@/components/shared/TableComponents/Pagination";
 
 const ProductTable = ({ searchQuery }) => {
     const { page, limit, nextPage, prevPage } = useTablePagination();
-    const debouncedSearch = useDebounce(searchQuery, 300);
-
-    const { data, isLoading, isError } = useGetProductsQuery({ limit, page, search: debouncedSearch });
+    const { data, isLoading, isError } = useGetProductsQuery({ limit, page, search: searchQuery });
 
     const products = data?.body?.products ?? [];
     const totalPages = data?.body?.pagination?.totalPages ?? 1;
@@ -30,21 +26,7 @@ const ProductTable = ({ searchQuery }) => {
                     ))}
                 </Table>
 
-                <div className="flex-center my-12">
-                    <ThemeButton
-                        buttonText="Previous"
-                        styles="text-white bg-primary hover:bg-primary-hover text-sm"
-                        handleClick={prevPage}
-                        disabled={page === 1}
-                    />
-                    <span className="text-sm mx-12">Page {page} of {totalPages}</span>
-                    <ThemeButton
-                        buttonText="Next"
-                        styles="text-white bg-primary hover:bg-primary-hover text-sm"
-                        handleClick={nextPage}
-                        disabled={page === totalPages}
-                    />
-                </div>
+                <Pagination page={page} totalPages={totalPages} nextPage={nextPage} prevPage={prevPage} />
             </div>
         </div>
     );

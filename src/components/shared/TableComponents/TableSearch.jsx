@@ -1,35 +1,47 @@
-import React, { useState } from "react";
+"use client";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import { GoSearch } from "react-icons/go";
 import { FiX } from "react-icons/fi";
+import SearchInput from "../inputs/SearchInput";
 
-const TableSearch = ({ setSearchQuery  }) => {
-    const [query, setQuery] = useState("");
+const TableSearch = ({ setSearchQuery }) => {
+    const { control, handleSubmit, reset, watch } = useForm();
 
-    const handleSearch = (e) => {
-        setQuery(e.target.value);
-        setSearchQuery(e.target.value);
+    const searchValue = watch("search", "");
+    const [inputValue, setInputValue] = useState("");
+
+    useEffect(() => {
+        setInputValue(searchValue);
+    }, [searchValue]);
+
+    const onSubmit = (data) => {
+        setSearchQuery(data.search.trim(), false);
+    };
+
+    const handleClear = () => {
+        reset();
+        setInputValue("");
+        setSearchQuery("", false);
     };
 
     return (
-        <div className="relative flex-center w-full max-w-sm px-3 py-2 bg-white border-2 border-gray-100">
-            <input
-                type="text"
-                value={query}
-                onChange={handleSearch}
-                placeholder="Search Product..."
-                className="w-full bg-transparent outline-none text-gray-600 border-none text-sm"
-            />
-            <div className="flex-center gap-1">
-                {query && (
-                    <button onClick={() => { setQuery(''); setSearchQuery(''); }} className="">
+        <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="relative flex items-center w-full max-w-sm px-3 py-2 bg-white border-2 border-gray-100"
+        >
+            <SearchInput name={'search'} control={control} placeholder={'Search Product...'} setSearchQuery={setSearchQuery} />
+            <div className="flex items-center gap-1">
+                {inputValue.length > 0 && (
+                    <button type="button" onClick={handleClear} className="focus:outline-none">
                         <FiX className="text-gray-500 hover:text-secondary cursor-pointer" size={20} />
                     </button>
                 )}
-                <button onClick={handleSearch}>
+                <button type="submit" className="focus:outline-none">
                     <GoSearch className="text-gray-500 hover:text-secondary cursor-pointer" size={20} />
                 </button>
             </div>
-        </div>
+        </form>
     );
 };
 
