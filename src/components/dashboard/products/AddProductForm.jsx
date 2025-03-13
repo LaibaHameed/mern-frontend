@@ -158,7 +158,7 @@ const AddProductForm = () => {
               {imagePreviews.map((src, index) => (
                 <div
                   key={index}
-                  className="relative w-[150px] h-[150px] border rounded-md overflow-hidden"
+                  className="relative w-[150px] h-[150px] border overflow-hidden"
                 >
                   <img
                     src={src}
@@ -167,7 +167,7 @@ const AddProductForm = () => {
                   />
                   <button
                     onClick={() => removeImage(index)}
-                    className="absolute top-2 right-2 shadow-lg bg-white h-5 w-5 rounded-full flex-center"
+                    className="absolute top-2 right-2 shadow-lg bg-white h-5 w-5 flex-center"
                   >
                     <FaTimes className=" text-secondary" size={14} />
                   </button>

@@ -3,7 +3,7 @@ import React from 'react';
 const SubmitButton = ({buttonText, loading = false, styles}) => {
   return (
     <button
-      className={`btn border-none bg-primary text-white h-[38px] rounded-md hover:bg-primary-hover cursor-pointer flex-center ${styles}`}
+      className={`btn border-none bg-primary text-white h-[38px] hover:bg-primary-hover cursor-pointer flex-center ${styles}`}
       type="submit"
     >
       {!loading ? (
