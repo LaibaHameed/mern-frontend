@@ -15,7 +15,6 @@ const ProductRow = ({ product }) => {
                             <Image
                                 src={product.imageUrls[0]}
                                 alt={product.name}
-                                className="rounded-md"
                                 width={80}
                                 height={80}
                             />

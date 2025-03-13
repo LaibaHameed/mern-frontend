@@ -27,7 +27,7 @@ const ProductsPage = () => {
                 title="Products"
                 setSearchQuery={handleSearch}
                 onClickButton={onClickButton}
-                ButtonComponent
+                isActionButtonRequired
             />
             <ProductTable searchQuery={debounced ? debouncedSearch : searchQuery} />
         </div>

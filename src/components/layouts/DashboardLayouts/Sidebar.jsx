@@ -44,7 +44,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
                             <li key={item.value} className="my-2">
                                 <Link
                                     href={item.path}
-                                    className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
+                                    className={`flex items-center gap-3 px-4 py-3 transition-colors ${
                                         pathname === item.path ? "bg-primary" : "hover:bg-primary-hover"
                                     }`}
                                     onClick={() => setIsOpen(false)}
