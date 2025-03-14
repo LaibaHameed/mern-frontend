@@ -27,7 +27,7 @@ export const handleApiResponse = async ({
         type: 'success',
         message: toastMessage.success.customMessage || response.data.message,
       });
-    console.log('Success');
+    // console.log('Success');
   }
 
   if (errorObj) {
@@ -50,7 +50,7 @@ export const handleApiResponse = async ({
         type: 'error',
         message: toastMessage.error.customMessage || message,
       });
-    console.log(message);
+    // console.log(message);
   }
 
   return responseObject;

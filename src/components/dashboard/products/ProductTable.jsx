@@ -3,6 +3,7 @@ import { useTablePagination } from "@/hooks/useTablePagination";
 import { useGetProductsQuery } from "@/redux/slices/product/productsApi";
 import { PRODUCT_HEADER } from "@/constants/general";
 import ProductRow from "./ProductRow";
+import Loader from "@/components/shared/common/Loader";
 import Table from "@/components/shared/TableComponents/Table";
 import Pagination from "@/components/shared/TableComponents/Pagination";
 
@@ -13,7 +14,7 @@ const ProductTable = ({ searchQuery }) => {
     const products = data?.body?.products ?? [];
     const totalPages = data?.body?.pagination?.totalPages ?? 1;
 
-    if (isLoading) return <span className="loading loading-spinner loading-x text-black"></span>;
+    if (isLoading) return <Loader/>
     if (isError) return <p className="py-10 flex-center gap-2">Error loading products.</p>;
     if (products.length === 0) return <p className="py-10 flex-center gap-2"><IoCloudOfflineOutline /> No products available...</p>;
 

@@ -20,7 +20,8 @@ export const API_ROUTES = {
   },
   product: {
     addProduct: '/products/add-product',
-    getProducts: "/products",
+    getProducts: '/products',
+    getProductById : '/products'
   },
   contact: '/contact',
 };

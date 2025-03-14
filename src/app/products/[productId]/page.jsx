@@ -4,12 +4,14 @@ import Header from '@/components/layouts/header';
 import Breadcrumb from '@/components/shared/common/Breadcrumb';
 import React from 'react';
 
-const ProductDetailPage = ({params}) => {
+const ProductDetailPage = async ({params}) => {
+  const { productId } = await params;
+   
   return (
     <>
       <Header />
       <Breadcrumb title="New Product" />
-      <SingleProductPage />
+      <SingleProductPage productId={productId}  />
       <Footer />
     </>
   );

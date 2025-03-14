@@ -21,4 +21,13 @@ export default {
       },
     });
   },
+  productFetchedSuccessfully: ({ product }) => { 
+    return AppResponse({
+      statusCode: StatusCodes.OK,
+      message: 'Product fetched successfully',
+      body: {
+        product,
+      },
+    });
+  },
 };

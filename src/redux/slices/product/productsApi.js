@@ -28,6 +28,17 @@ export const productsApiSlice = createApi({
       },
     }),
 
+    // get product by Id
+    getProductById: builder.query({
+      query: (productId) => ({
+        url : `${API_ROUTES.product.getProductById}/${productId}`,
+        method : 'GET',
+      }),
+      onQueryStarted: async(_, { queryFulfilled }) => {
+        handleApiResponse({queryFulfilled})
+      }
+    }),
+
     //add product api
     addProduct: builder.mutation({
       query: ({ data }) => ({
@@ -43,4 +54,4 @@ export const productsApiSlice = createApi({
   }),
 });
 
-export const { useGetProductsQuery, useAddProductMutation } = productsApiSlice;
+export const { useGetProductsQuery, useGetProductByIdQuery, useAddProductMutation } = productsApiSlice;

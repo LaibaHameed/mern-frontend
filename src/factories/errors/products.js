@@ -8,4 +8,10 @@ export default {
       message: 'Products registration failed',
     });
   },
+  notFound: () => {
+    return AppError({
+      statusCode: StatusCodes.NOT_FOUND,
+      message: 'Product Not Found',
+    });
+  }
 };
