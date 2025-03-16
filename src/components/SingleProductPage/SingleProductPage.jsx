@@ -1,30 +1,27 @@
 'use client';
-import React, {useState} from 'react';
-import Container from '../shared/common/Container';
-import Products from '@/data/Products';
 import ProductImage from './ProductImage';
+import Loader from '../shared/common/Loader';
 import RelatedProducts from './RelatedProducts';
+import Container from '../shared/common/Container';
 import ProductTabs from './ProductTabs/ProductTabs';
+import { IoCloudOfflineOutline } from 'react-icons/io5';
 import ProductDetails from './ProductDetails/ProductDetails';
+import { useGetProductByIdQuery } from '@/redux/slices/product/productsApi';
 
-const SingleProductPage = ({productName = 'Pellentesque aliquet'}) => {
-  const product = Products[productName];
+const SingleProductPage = ({ productId }) => {
+  const { data, isLoading, error } = useGetProductByIdQuery(productId);
 
-  if (!product) return <p>Product not found.</p>;
+  if (isLoading) return <Loader/>
+  if (error) return <p className="py-20 flex-center gap-2" > <IoCloudOfflineOutline /> Product not found.</p>;
 
-  const [mainImage, setMainImage] = useState(product?.images?.[0]?.path || '');
+  const product = data.body.product;
 
   return (
     <div className="flex-center sm:mx-12 mx-6">
       <Container>
         <div className="md:mx-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start mt-24">
-            <ProductImage
-              mainImage={mainImage}
-              productName={product.name}
-              images={product.images || []}
-              setMainImage={setMainImage}
-            />
+            <ProductImage product={product} />
             <ProductDetails product={product} />
           </div>
           <ProductTabs product={product} />

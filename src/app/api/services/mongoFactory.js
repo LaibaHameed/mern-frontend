@@ -1,12 +1,6 @@
 import { asyncTryCatch } from '@/utils/tryCatchUtils';
 
 export const MongoFactoryServices = {
-  findOne: async ({ model, query }) => {
-    const { success, error, response } = await asyncTryCatch(
-      async () => await model.findOne(query)
-    );
-    return { success, error, response };
-  },
   create: async ({ model, data, session = null }) => {
     const { success, error, response } = await asyncTryCatch(async () => {
       if (Array.isArray(data)) {
@@ -21,6 +15,18 @@ export const MongoFactoryServices = {
   find: async ({ model, query }) => {
     const { success, error, response } = await asyncTryCatch(
       async () => await model.find(query)
+    );
+    return { success, error, response };
+  },
+  findOne: async ({ model, query }) => {
+    const { success, error, response } = await asyncTryCatch(
+      async () => await model.findOne(query)
+    );
+    return { success, error, response };
+  },
+  findById: async ({ model, id }) => {
+    const { success, error, response } = await asyncTryCatch(
+      async () => await model.findById(id)
     );
     return { success, error, response };
   },

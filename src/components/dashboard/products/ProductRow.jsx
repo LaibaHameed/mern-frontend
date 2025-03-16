@@ -38,7 +38,7 @@ const ProductRow = ({ product }) => {
                     </div>
                 </td>
                 <td className="px-4 py-2">
-                    <Link href={'/'} className="underline text-sm hover:text-primary transition-all">
+                    <Link href={`/products/${product._id}`} className="underline text-sm hover:text-primary transition-all">
                         View Product
                     </Link>
                 </td>

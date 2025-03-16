@@ -1,7 +1,6 @@
-import React from 'react'
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
-import "swiper/css";
+import 'swiper/css';
+import { Autoplay } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import Image from 'next/image';
 
 const ImageSlider = ({ images = [], setMainImage, mainImage }) => {
@@ -19,24 +18,26 @@ const ImageSlider = ({ images = [], setMainImage, mainImage }) => {
                     1024: { slidesPerView: 7 },
                 }}
             >
-                {images.length ? (
-                    images.map((img) => (
-                        <SwiperSlide key={img.id}>
+                {images.length > 0 ? (
+                    images.map((img, index) => (
+                        <SwiperSlide key={img}>
                             <Image
-                                src={img.path}
-                                alt={`Thumbnail ${img.id}`}
+                                src={img}
+                                alt={`Thumbnail ${index + 1}`}
                                 width={100}
                                 height={100}
-                                className={`w-20 h-20 object-cover shadow-md cursor-pointer border-2 animate ${mainImage === img.path ? "border-primary" : "border-gray-100"
-                                    }`}
-                                onClick={() => setMainImage(img.path)}
+                                className={`w-20 h-20 object-cover shadow-md cursor-pointer border-2 
+                                    ${mainImage === img ? "border-primary" : "border-gray-100"}`}
+                                onClick={() => setMainImage(img)}
                             />
                         </SwiperSlide>
                     ))
-                ) : <p className="text-center text-gray-500">No images available</p>}
+                ) : (
+                    <p className="text-center text-gray-500 py-3">No images available</p>
+                )}
             </Swiper>
         </div>
-    )
-}
+    );
+};
 
-export default ImageSlider
+export default ImageSlider;
