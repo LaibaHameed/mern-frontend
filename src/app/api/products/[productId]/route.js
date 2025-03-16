@@ -1,4 +1,4 @@
-import Product from "../../models/productsModel";
+import { ProductsModel } from "../../models";
 import { dbConnect } from "../../databases/config";
 import { ProductResponses } from "@/factories/success";
 import { MongoFactoryServices } from "../../services/mongoFactory";
@@ -10,17 +10,17 @@ export async function GET(req, { params }) {
     const { productId } = await params;
 
     if (!productId) {
-        return GeneralErrors.badRequestErr({ customMessage: "Product ID is required" });
+        return GeneralErrors.badRequestErr({ customMessage: 'Product ID is required' });
     }
 
-    const { success, error, response } = await MongoFactoryServices.findOne({
-        model: Product,
-        query: { _id: productId },
+    const { success, error, response: product } = await MongoFactoryServices.findById({
+        model: ProductsModel,
+        id: productId
     });
 
-    if (error || !response) {
-        return ProductsErrors.notFound({ customMessage: error || "Product not found" });
+    if (error || !product) {
+        return ProductsErrors.productNotFoundErr();
     }
 
-    return ProductResponses.productFetchedSuccessfully({ product: response });
+    return ProductResponses.productFetchedSuccessfully({ product });
 }

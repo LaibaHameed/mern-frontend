@@ -4,7 +4,7 @@ import ProductQuantity from './ProductQuantity';
 
 const ProductDetails = ({ product }) => {
     if (!product) {
-        return <p className='h-1/3 flex-center text-lg' >Product data not available.</p>;
+        return <p className='h-1/3 flex-center text-lg' >Product not found.</p>;
     }
 
     return (
@@ -33,15 +33,15 @@ const ProductDetails = ({ product }) => {
 
                 <div className="text-sm space-y-1">
                     <p>
-                        <span className="text-gray-500 font-light mr-2">Product Code:</span>{' '}
+                        <span className="text-gray-500 font-light mr-2">Product Code:</span>
                         {product.code}
                     </p>
                     <p>
-                        <span className="text-gray-500 font-light mr-2">Quantity:</span>{' '}
+                        <span className="text-gray-500 font-light mr-2">Quantity:</span>
                         {product.availableQty} Items
                     </p>
                     <p>
-                        <span className="text-gray-500 font-light mr-2">Shipping tax:</span>{' '}
+                        <span className="text-gray-500 font-light mr-2">Shipping tax:</span>
                         {product.tax}
                     </p>
                 </div>

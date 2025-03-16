@@ -31,7 +31,7 @@ export const productsApiSlice = createApi({
     // get product by Id
     getProductById: builder.query({
       query: (productId) => ({
-        url : `${API_ROUTES.product.getProductById}/${productId}`,
+        url : API_ROUTES.product.single({productId}),
         method : 'GET',
       }),
       onQueryStarted: async(_, { queryFulfilled }) => {

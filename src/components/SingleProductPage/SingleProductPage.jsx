@@ -12,7 +12,7 @@ const SingleProductPage = ({ productId }) => {
   const { data, isLoading, error } = useGetProductByIdQuery(productId);
 
   if (isLoading) return <Loader/>
-  if (error || !data?.body?.product) return <p className="py-20 flex-center gap-2" > <IoCloudOfflineOutline /> Product not found.</p>;
+  if (error) return <p className="py-20 flex-center gap-2" > <IoCloudOfflineOutline /> Product not found.</p>;
 
   const product = data.body.product;
 

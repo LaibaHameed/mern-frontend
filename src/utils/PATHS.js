@@ -21,7 +21,7 @@ export const API_ROUTES = {
   product: {
     addProduct: '/products/add-product',
     getProducts: '/products',
-    getProductById : '/products'
+    single : ({productId}) => `/products/${productId}`
   },
   contact: '/contact',
 };
