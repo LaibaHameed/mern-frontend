@@ -19,7 +19,7 @@ export default function RootLayout({children}) {
           <AuthGuard>
             <ToastContainer
               autoClose={3000}
-              // hideProgressBar={false}
+              hideProgressBar={true}
               newestOnTop={false}
               closeOnClick
               pauseOnFocusLoss

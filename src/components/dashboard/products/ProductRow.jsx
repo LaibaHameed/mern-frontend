@@ -3,9 +3,15 @@ import Link from "next/link";
 import { FaRegEdit } from "react-icons/fa";
 import { MdOutlineDeleteForever } from "react-icons/md";
 import ThemeButton from "@/components/shared/buttons/ThemeButton";
+import { useDeleteProductMutation } from "@/redux/slices/product/productsApi";
 
 
 const ProductRow = ({ product }) => {
+    const [deleteProduct] = useDeleteProductMutation();
+
+    const handleDelete = async () => {
+        await deleteProduct(product._id);
+    };
     return (
         <>
             <tr key={product._id} className="border-b border-gray-300">
@@ -34,7 +40,7 @@ const ProductRow = ({ product }) => {
                         {/* Edit Button */}
                         <ThemeButton buttonText={<FaRegEdit size={20} />} styles={'text-white bg-primary hover:bg-primary-hover'} />
                         {/* Delete Button */}
-                        <ThemeButton buttonText={<MdOutlineDeleteForever size={20} />} styles={'text-white bg-red-700 hover:bg-red-600'} />
+                        <ThemeButton buttonText={<MdOutlineDeleteForever size={20} />} styles={'text-white bg-red-700 hover:bg-red-600'} handleClick={handleDelete} />
                     </div>
                 </td>
                 <td className="px-4 py-2">

@@ -31,11 +31,11 @@ export const productsApiSlice = createApi({
     // get product by Id
     getProductById: builder.query({
       query: (productId) => ({
-        url : API_ROUTES.product.single({productId}),
-        method : 'GET',
+        url: API_ROUTES.product.single({ productId }),
+        method: 'GET',
       }),
-      onQueryStarted: async(_, { queryFulfilled }) => {
-        handleApiResponse({queryFulfilled})
+      onQueryStarted: async (_, { queryFulfilled }) => {
+        handleApiResponse({ queryFulfilled })
       }
     }),
 
@@ -51,7 +51,20 @@ export const productsApiSlice = createApi({
         if (body) dispatch(productsActions.updateList(body.product));
       },
     }),
+
+    // delete Product api
+    deleteProduct: builder.mutation({
+      query: (productId) => ({
+        url: API_ROUTES.product.single({ productId }),
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['Product'],
+      onQueryStarted: async (_, { queryFulfilled }) => {
+        await handleApiResponse({ queryFulfilled });
+      },
+    })
+
   }),
 });
 
-export const { useGetProductsQuery, useGetProductByIdQuery, useAddProductMutation } = productsApiSlice;
+export const { useGetProductsQuery, useGetProductByIdQuery, useAddProductMutation, useDeleteProductMutation } = productsApiSlice;
