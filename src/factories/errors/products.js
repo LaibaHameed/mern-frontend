@@ -8,4 +8,16 @@ export default {
       message: 'Products registration failed',
     });
   },
+  productNotFoundErr: () => {
+    return AppError({
+      statusCode: StatusCodes.NOT_FOUND,
+      message: 'Product Not Found',
+    });
+  },
+  productDeletionFailed: () => {
+    return AppError({
+      statusCode: StatusCodes.BAD_REQUEST,
+      message: 'Failed to delete product'
+    });
+  },
 };

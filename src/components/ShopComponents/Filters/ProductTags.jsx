@@ -1,7 +1,5 @@
 "use client";
 import { PRODUCT_TAGS } from "@/constants/general";
-import React from "react";
-
 
 const ProductTags = () => {
   return (
@@ -12,7 +10,7 @@ const ProductTags = () => {
         {PRODUCT_TAGS.map((tag) => (
           <button
             key={tag.id}
-            className="text-sm px-4 py-1.5 mb-0.5 font-light border border-gray-300 rounded-full hover:bg-primary-hover animate cursor-pointer hover:text-white "
+            className="text-sm px-4 py-1.5 mb-0.5 font-light border border-gray-300 rounded-full hover:bg-primary animate cursor-pointer hover:text-white "
           >
             {tag.name}
           </button>

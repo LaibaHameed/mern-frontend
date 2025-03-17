@@ -13,7 +13,7 @@ export default function Home() {
       <Carousel />
       <AboutInfo />
       <NewArrival />
-      <BestSeller />
+      {/* <BestSeller /> */}
       <CustomerReviews />
       <Footer/>
     </>

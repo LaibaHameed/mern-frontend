@@ -1,7 +1,7 @@
-import { validate } from '@/utils/validateUtils';
+import {validate} from '@/utils/validateUtils';
 import * as yup from 'yup';
 
-const emailSchema = yup
+export const emailSchema = yup
   .string()
   .email()
   .required('Email is required')
@@ -12,10 +12,7 @@ const emailSchema = yup
 const passwordSchema = yup
   .string()
   .required('Password is required')
-  .min(
-    8,
-    'Must contain at least 8 characters and at least 1 uppercase letter'
-  )
+  .min(8, 'Must contain at least 8 characters and at least 1 uppercase letter')
   .matches(
     /[A-Z]/,
     'Must contain at least 8 characters and at least 1 uppercase letter'

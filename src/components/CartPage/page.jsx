@@ -1,7 +1,7 @@
 'use client';
-import React, {useState} from 'react';
+import { useState } from 'react';
 import Container from '../shared/common/Container';
-import {CART_ITEMS} from '@/constants/general';
+import { CART_ITEMS } from '@/constants/general';
 import CartTable from './CartTable';
 
 const CartPage = () => {
@@ -11,7 +11,7 @@ const CartPage = () => {
     setCartItems((prevItems) =>
       prevItems.map((item) =>
         item.id === id
-          ? {...item, quantity: Math.max(1, item.quantity + delta)}
+          ? { ...item, quantity: Math.max(1, item.quantity + delta) }
           : item
       )
     );
@@ -20,43 +20,46 @@ const CartPage = () => {
   return (
     <div className="flex-center sm:m-12 mx-6">
       <Container>
-        <CartTable cartItems={cartItems} updateQuantity={updateQuantity} />
+        <div className="grid xl:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-6 ">
 
-        <div className="my-12">
-          <h3 className="font-semibold mb-2 uppercase">Add Note</h3>
-          <textarea
-            className="w-full p-3 border border-gray-300 focus:outline-none text-sm"
-            placeholder="Write your note here..."
-            rows={6}
-          ></textarea>
-        </div>
-
-        <div className="flex md:flex-row flex-col items-start justify-between gap-6">
-          <div>
-            <h3 className="font-semibold mb-2 uppercase">Promo code</h3>
-            <input
-              type="text"
-              className="p-3 max-w-xs border border-gray-300 focus:outline-none"
-            />
-            <button className="px-12 py-3 my-3 rounded-full bg-primary hover:bg-primary-hover text-white font-semibold uppercase block">
-              apply
-            </button>
+          <div className="xl:col-span-3 md:grid-cols-2 grid-cols-1">
+            <CartTable cartItems={cartItems} updateQuantity={updateQuantity} />
           </div>
-          <div className="w-full flex flex-col justify-between md:items-center items-start gap-6">
-            <div className="flex items-center justify-between">
-              <h3 className="font-semibold mb-2 uppercase pr-6">Sub Total:</h3>
-              <h3 className="font-semibold mb-2 uppercase">
-                $
-                {cartItems
+
+          <div className="col-span-1 w-full px-6 rounded shadow-md">
+            <h2 className="font-semibold mb-4 uppercase py-6 border-b border-gray-300">Order Summary</h2>
+
+            {/* Subtotal */}
+            <div className="flex justify-between font-medium mb-6">
+              <span>Subtotal:</span>
+              <span>
+                ${cartItems
                   .reduce((acc, item) => acc + item.price * item.quantity, 0)
                   .toFixed(2)}
-              </h3>
+              </span>
             </div>
-            <button className="px-12 py-3 my-3 rounded-full bg-primary hover:bg-primary-hover text-white font-semibold uppercase block">
-              Proceed to Checkout
-            </button>
+
+            {/* Coupon Code Input */}
+            <div className="mb-6">
+              <input
+                type="text"
+                className="p-2 w-full border border-gray-300 focus:outline-none"
+                placeholder='Enter Promo code'
+              />
+            </div>
+
+            {/* Update Cart Button */}
+            <button className="w-full p-3 mb-3 mt-6 text-sm bg-primary hover:bg-primary-hover text-white font-semibold uppercase block animate cursor-pointer">
+                Update Cart
+              </button>
+
+            {/* Checkout Button */}
+            <button className="w-full p-3 mb-6 text-sm bg-secondary hover:bg-primary-hover text-white font-semibold uppercase block animate cursor-pointer">
+                Proceed to Checkout
+              </button>
           </div>
-        </div>
+          
+        </div>   
       </Container>
     </div>
   );

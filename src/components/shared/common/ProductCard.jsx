@@ -21,7 +21,7 @@ const ProductCard = ({ product }) => {
             {ICONS.map((icon, index) => (
               <button
                 key={icon.name}
-                className={`px-3 py-3 bg-white shadow-md text-secondary hover:bg-primary-hover hover:text-white animate ${index === 0 && 'rounded-l-full'
+                className={`px-3 py-3 bg-white shadow-md text-secondary hover:bg-primary hover:text-white animate ${index === 0 && 'rounded-l-full'
                   } ${index === Object.values(ICONS).length - 1 && 'rounded-r-full'}`}
                 aria-label={icon.name}
               >
@@ -34,7 +34,7 @@ const ProductCard = ({ product }) => {
 
         {/* Text Content */}
         <div className="flex flex-col items-center justify-center py-6">
-          <p className="text-gray-600">{product.title}</p>
+          <p className="text-gray-600">{product.name}</p>
           <h3 className="font-extrabold text-gray-700 font-serif">
             {product.price}.00 $
           </h3>

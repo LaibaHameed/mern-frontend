@@ -20,7 +20,10 @@ export const API_ROUTES = {
   },
   product: {
     addProduct: '/products/add-product',
+    getProducts: '/products',
+    single : ({productId}) => `/products/${productId}`
   },
+  contact: '/contact',
 };
 
 export const AUTH_ROUTES = {
