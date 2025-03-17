@@ -13,7 +13,7 @@ const Header = ({ toggleSidebar }) => {
   return (
     <div className="flex items-center justify-between py-6 px-6 mb-10 bg-slate-100 shadow-md">
       <div className="flex items-center gap-2">
-        <Link href={ROOT_ROUTE} className="md:ml-6">
+        <Link href={ROOT_ROUTE}>
           <GoHomeFill size={20} />
         </Link>
         <span className="text-xl">/</span>
