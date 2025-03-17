@@ -24,3 +24,24 @@ export async function GET(req, { params }) {
 
     return ProductResponses.productFetchedSuccessfully({ product });
 }
+
+export async function DELETE(req, {params}){
+    await dbConnect();
+
+    const { productId } = params;
+
+    if (!productId) {
+        return GeneralErrors.badRequestErr({ customMessage: 'Product ID is required' });
+    }
+
+    const { success, error, response } = await MongoFactoryServices.deleteById({
+        model: ProductsModel,
+        id: productId,
+    });
+
+    if (error) {
+        return ProductsErrors.productDeletionFailed()
+    }
+
+    return ProductResponses.productDeletedSuccessfully();
+}

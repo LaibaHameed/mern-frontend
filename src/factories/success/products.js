@@ -17,17 +17,23 @@ export default {
       message: 'Products fetched successfully',
       body: {
         products,
-        pagination 
+        pagination
       },
     });
   },
-  productFetchedSuccessfully: ({ product }) => { 
+  productFetchedSuccessfully: ({ product }) => {
     return AppResponse({
       statusCode: StatusCodes.OK,
       message: 'Product fetched successfully',
       body: {
         product,
       },
+    });
+  },
+  productDeletedSuccessfully: () => {
+    return AppResponse({
+      statusCode: StatusCodes.OK,
+      message: 'Product Deleted successfully',
     });
   },
 };

@@ -21,7 +21,7 @@ const ProductCard = ({ product }) => {
             {ICONS.map((icon, index) => (
               <button
                 key={icon.name}
-                className={`px-3 py-3 bg-white shadow-md text-secondary hover:bg-primary-hover hover:text-white animate ${index === 0 && 'rounded-l-full'
+                className={`px-3 py-3 bg-white shadow-md text-secondary hover:bg-primary hover:text-white animate ${index === 0 && 'rounded-l-full'
                   } ${index === Object.values(ICONS).length - 1 && 'rounded-r-full'}`}
                 aria-label={icon.name}
               >

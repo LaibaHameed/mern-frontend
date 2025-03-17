@@ -1,11 +1,26 @@
-import Image from "next/image";
+'use client'
 import Link from "next/link";
+import Image from "next/image";
+import { useState } from "react";
 import { FaRegEdit } from "react-icons/fa";
 import { MdOutlineDeleteForever } from "react-icons/md";
+import { useDeleteProductMutation } from "@/redux/slices/product/productsApi";
 import ThemeButton from "@/components/shared/buttons/ThemeButton";
-
+import ConfirmationModal from "@/components/shared/common/ConfirmationModal";
 
 const ProductRow = ({ product }) => {
+    const [deleteProduct, { isLoading: isDeleting }] = useDeleteProductMutation();
+    const [showModal, setShowModal] = useState(false);
+
+    const handleDeleteConfirm = () => {
+        setShowModal(true);
+    };
+
+    const handleDelete = async () => {
+        await deleteProduct(product._id);
+        setShowModal(false);
+    };
+
     return (
         <>
             <tr key={product._id} className="border-b border-gray-300">
@@ -34,7 +49,7 @@ const ProductRow = ({ product }) => {
                         {/* Edit Button */}
                         <ThemeButton buttonText={<FaRegEdit size={20} />} styles={'text-white bg-primary hover:bg-primary-hover'} />
                         {/* Delete Button */}
-                        <ThemeButton buttonText={<MdOutlineDeleteForever size={20} />} styles={'text-white bg-red-700 hover:bg-red-600'} />
+                        <ThemeButton buttonText={<MdOutlineDeleteForever size={20} />} styles={'text-white bg-error hover:bg-error-hover'} handleClick={handleDeleteConfirm} />
                     </div>
                 </td>
                 <td className="px-4 py-2">
@@ -43,8 +58,20 @@ const ProductRow = ({ product }) => {
                     </Link>
                 </td>
             </tr>
-        </>
-    )
-}
 
-export default ProductRow
+            {/* Delete Confirmation Modal */}
+            {showModal && (
+                <ConfirmationModal
+                    message={`Are you sure you want to delete ${product.name}?`}
+                    onCancel={() => setShowModal(false)}
+                    onConfirm={handleDelete}
+                    confirmText="Delete"
+                    cancelText="Cancel"
+                    isLoading={isDeleting}
+                />
+            )}
+        </>
+    );
+};
+
+export default ProductRow;

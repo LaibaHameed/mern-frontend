@@ -1,8 +1,8 @@
+import Link from "next/link";
 import { useState } from "react";
 import { IoMdAdd } from "react-icons/io";
 import { HiOutlineMinus } from "react-icons/hi";
 import { FaArrowRight } from "react-icons/fa";
-import Link from "next/link";
 import { ROOT_ROUTE } from "@/utils/PATHS";
 
 const ProductQuantity = () => {
@@ -32,7 +32,7 @@ const ProductQuantity = () => {
             <div className="flex flex-wrap gap-4 text-center">
                 <Link
                     href={ROOT_ROUTE}
-                    className="rounded-full bg-primary sm:px-7 px-10 py-3 tracking-wider text-white shadow hover:bg-green-400 focus:outline-none sm:w-auto flex-center gap-2 animate"
+                    className="rounded-full bg-primary sm:px-7 px-10 py-3 tracking-wider text-white shadow hover:bg-primary-hover focus:outline-none sm:w-auto flex-center gap-2 animate"
                 >
                     Add To Cart <FaArrowRight />
                 </Link>

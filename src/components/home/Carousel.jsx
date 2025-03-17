@@ -1,6 +1,5 @@
 'use client';
 
-import {AiOutlineVerticalLeft, AiOutlineVerticalRight} from 'react-icons/ai';
 import {FaArrowRight} from 'react-icons/fa';
 import {ROOT_ROUTE} from '@/utils/PATHS';
 import SLIDES from '@/constants/general';
@@ -35,9 +34,9 @@ const Carousel = () => {
             >
               <Container>
                 <div className="relative mx-auto max-w-screen-xl py-32 lg:mx-6 lg:flex lg:h-screen lg:items-center">
-                  <div className="max-w-xxl text-slate-800 text-left">
-                    <h2 className="text-md lg:text-2xl md:text-xl sm:text-lg font-serif font-bold text-slate-700 mb-6 uppercase">
-                      <span className="text-green-800 font-extrabold mr-1">
+                  <div className="max-w-xxl text-secondary text-left">
+                    <h2 className="text-md lg:text-2xl md:text-xl sm:text-lg font-serif font-bold text-secondary mb-6 uppercase">
+                      <span className="text-primary font-extrabold mr-1">
                         |
                       </span>
                       Welcome to Botanical
@@ -49,14 +48,14 @@ const Carousel = () => {
                       {slide.title2}
                     </h1>
 
-                    <p className="mt-6 max-w-xl text-xs sm:text-sm/relaxed text-slate-700">
+                    <p className="mt-6 max-w-xl text-xs sm:text-sm/relaxed text-secondary">
                       {slide.description}
                     </p>
 
                     <div className="mt-14 flex flex-wrap gap-4 text-center">
                       <Link
                         href={ROOT_ROUTE}
-                        className="rounded-full bg-primary px-7 py-2 tracking-wider md:px-10 md:py-4 md:text-md md:font-semibold text-white shadow hover:bg-green-400 focus:outline-none sm:w-auto flex-center gap-2 animate"
+                        className="rounded-full bg-primary px-7 py-2 tracking-wider md:px-10 md:py-4 md:text-md md:font-semibold text-white shadow hover:bg-primary-hover focus:outline-none sm:w-auto flex-center gap-2 animate"
                       >
                         {slide.buttonText1} <FaArrowRight />
                       </Link>

@@ -30,17 +30,23 @@ export const MongoFactoryServices = {
     );
     return { success, error, response };
   },
-  findAll: async ({ model, query = {}, options }) => {
+  findAll: async ({ model, query = {}, options, sort = { createdAt: -1 } }) => {
     const { success, error, response: data } = await asyncTryCatch(
       async () => {
         const [products, total] = await Promise.all([
-          model.find(query, null, options),
+          model.find(query, null, options).sort(sort),
           model.countDocuments(query),
         ]);
         return { products, total };
       }
     );
     return { success, error, response: data };
-  }
+  },
+  deleteById: async ({ model, id }) => {
+    const { success, error, response } = await asyncTryCatch(
+      async () => await model.findByIdAndDelete(id)
+    );
+    return { success, error, response };
+  },
 
 };

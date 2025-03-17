@@ -62,7 +62,7 @@ export const INFO = Object.values(INFO_LIST);
 export const BADGE_TYPES = {
   sale: {
     value: 'sale',
-    bgColor: 'bg-green-600',
+    bgColor: 'bg-primary',
     label: 'Sale',
   },
   hot: {
