@@ -19,8 +19,8 @@ const CartTable = ({ cartItems, updateQuantity }) => {
                                 <td className='px-2 py-6 flex items-start gap-6 cursor-pointer text-left'>
                                     <Image src={item.image} alt={item.name} width={100} height={100} />
                                     <div>
-                                        <p className='text-gray-600 font-light hover:text-primary text-xs animate'>{item.name} {item.name}</p>
-                                        <h6 className='py-2 text-xs'>${item.price}.00</h6>
+                                        <p className='text-gray-600 font-light hover:text-primary text-sm animate'>{item.name}</p>
+                                        <h6 className='py-2 text-sm'>${item.price}.00</h6>
                                         <div className='flex items-center gap-2'>
                                             <div className='flex items-center border border-gray-300 w-fit'>
                                                 <button
@@ -31,13 +31,13 @@ const CartTable = ({ cartItems, updateQuantity }) => {
                                                     onClick={() => updateQuantity(item.id, 1)}
                                                     className='py-1 w-6 border-l border-gray-300 cursor-pointer'>+</button>
                                             </div>
-                                            <button className='hover:text-red-700 font-extrabold cursor-pointer'>
+                                            <button className='hover:text-error font-extrabold cursor-pointer'>
                                                 <BsTrash3 />
                                             </button>
                                         </div>
                                     </div>
                                 </td>
-                                <td className='px-2 py-6 text-xs font-semibold tracking-wider min-w-[100px] text-right'>
+                                <td className='px-2 py-6 text-sm font-semibold tracking-wider min-w-[100px] text-right'>
                                     ${item.price * item.quantity}.00
                                 </td>
                             </tr>

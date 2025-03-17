@@ -9,7 +9,7 @@ const ConfirmationModal = ({ message, onCancel, onConfirm, confirmText, cancelTe
                 <p className="pb-6">{message}</p>
                 <div className="flex justify-end gap-3 mt-1">
                     <ThemeButton buttonText={cancelText} styles="bg-secondary hover:bg-gray-700 px-4 py-2 text-sm" handleClick={onCancel} />
-                    <ThemeButton buttonText={confirmText} styles="bg-red-700 hover:bg-red-600 px-4 py-2 text-sm" handleClick={onConfirm} disabled={isLoading} />
+                    <ThemeButton buttonText={confirmText} styles="bg-error hover:bg-error-hover px-4 py-2 text-sm" handleClick={onConfirm} disabled={isLoading} />
                 </div>
             </div>
         </div>

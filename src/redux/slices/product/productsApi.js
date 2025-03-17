@@ -35,7 +35,7 @@ export const productsApiSlice = createApi({
         method: 'GET',
       }),
       onQueryStarted: async (_, { queryFulfilled }) => {
-        handleApiResponse({ queryFulfilled })
+        await handleApiResponse({ queryFulfilled })
       }
     }),
 

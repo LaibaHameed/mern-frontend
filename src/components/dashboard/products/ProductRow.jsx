@@ -49,7 +49,7 @@ const ProductRow = ({ product }) => {
                         {/* Edit Button */}
                         <ThemeButton buttonText={<FaRegEdit size={20} />} styles={'text-white bg-primary hover:bg-primary-hover'} />
                         {/* Delete Button */}
-                        <ThemeButton buttonText={<MdOutlineDeleteForever size={20} />} styles={'text-white bg-red-700 hover:bg-red-600'} handleClick={handleDeleteConfirm} />
+                        <ThemeButton buttonText={<MdOutlineDeleteForever size={20} />} styles={'text-white bg-error hover:bg-error-hover'} handleClick={handleDeleteConfirm} />
                     </div>
                 </td>
                 <td className="px-4 py-2">

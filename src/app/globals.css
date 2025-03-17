@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @plugin "daisyui" {
   themes: false;
 }
@@ -6,13 +6,17 @@
   /* breakpoints  */
   --breakpoint-md: 830px;
 
-  /* colors variables  */
-  /* --color-primary: #008236;
-  --color-primary-hover: #16a34a; */
-  --color-primary: #0494B3;
-  --color-primary-hover: #143444;
-  --color-secondary: #1A141C;
-  --color-error: #fb2c36;
+  /* Primary Colors */
+  --color-primary: #0097b2;
+  --color-primary-hover: #0086a0; 
+
+  /* Secondary Colors */
+  --color-secondary: #18171d;
+  --color-secondary-hover: #24232b; 
+
+  /* Error Colors */
+  --color-error: #c53038;
+  --color-error-hover: #a82a32;
 }
 
 @layer components {

@@ -36,7 +36,7 @@ const Carousel = () => {
                 <div className="relative mx-auto max-w-screen-xl py-32 lg:mx-6 lg:flex lg:h-screen lg:items-center">
                   <div className="max-w-xxl text-secondary text-left">
                     <h2 className="text-md lg:text-2xl md:text-xl sm:text-lg font-serif font-bold text-secondary mb-6 uppercase">
-                      <span className="text-green-800 font-extrabold mr-1">
+                      <span className="text-primary font-extrabold mr-1">
                         |
                       </span>
                       Welcome to Botanical
