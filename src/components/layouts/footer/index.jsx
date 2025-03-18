@@ -32,7 +32,7 @@ const Footer = () => {
       <div className="bg-secondary py-4 flex-center">
         <Container>
           <p className="text-gray-50 text-center margin-sm">
-            Copyright 2019 by Botanical Store - All rights reserved
+            Copyright 2025 by Hommy Decor - All rights reserved
           </p>
         </Container>
       </div>

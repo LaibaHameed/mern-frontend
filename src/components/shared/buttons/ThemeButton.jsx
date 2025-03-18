@@ -2,7 +2,7 @@ const ThemeButton = ({ buttonText, loading = false, styles, handleClick, disable
   return (
     <button
       className={`flex-center gap-3 px-4 py-2 text-white animate ${styles} ${
-        disabled ? "opacity-80 cursor-not-allowed" : "cursor-pointer"
+        disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
       }`}
       onClick={handleClick}
       disabled={disabled || loading}

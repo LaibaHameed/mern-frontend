@@ -8,7 +8,7 @@ const Cart = () => {
   return (
     <div>
       <Header />
-      <Breadcrumb title="Cart" />
+      <Breadcrumb/>
       <CartPage />
       <Footer />
     </div>

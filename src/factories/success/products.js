@@ -14,7 +14,6 @@ export default {
   productsFetchedSuccessfully: ({ products, pagination }) => {
     return AppResponse({
       statusCode: StatusCodes.OK,
-      message: 'Products fetched successfully',
       body: {
         products,
         pagination
@@ -24,7 +23,6 @@ export default {
   productFetchedSuccessfully: ({ product }) => {
     return AppResponse({
       statusCode: StatusCodes.OK,
-      message: 'Product fetched successfully',
       body: {
         product,
       },
