@@ -15,8 +15,8 @@ const InputField = ({label, placeholder, name, control}) => {
           </label>
           <input
             {...field}
-            className={`w-full p-2 text-sm  bg-transparent ${
-              error ? 'outline-error border-error' : 'outline-primary border'
+            className={`w-full p-2 text-sm  bg-transparent border-[1px] border-secondary ${
+              error ? 'outline-error border-error' : 'outline-primary '
             }`}
             placeholder={placeholder}
             id={name}

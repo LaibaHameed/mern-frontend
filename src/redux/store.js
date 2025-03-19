@@ -3,6 +3,7 @@ import {persistStore, persistReducer} from 'redux-persist';
 import {rootPersistConfig, rootReducer} from './rootReducer';
 import {usersApiSlice} from '@/redux/slices/user/usersApi';
 import {productsApiSlice} from '@/redux/slices/product/productsApi';
+import {ordersApiSlice} from '@/redux/slices/order/ordersApi';
 
 const store = configureStore({
   reducer: persistReducer(rootPersistConfig, rootReducer),
@@ -10,7 +11,11 @@ const store = configureStore({
     getDefaultMiddleware({
       serializableCheck: false,
       immutableCheck: false,
-    }).concat(usersApiSlice.middleware, productsApiSlice.middleware),
+    }).concat(
+      usersApiSlice.middleware,
+      productsApiSlice.middleware,
+      ordersApiSlice.middleware
+    ),
 });
 
 const persistor = persistStore(store);

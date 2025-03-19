@@ -7,7 +7,7 @@ import AuthGuard from '@/components/layouts/guards/authGuard';
 const inter = Inter({subsets: ['latin']});
 
 export const metadata = {
-  title: 'Botanical',
+  title: 'Hommy Decor',
   description: 'Ecom web app',
 };
 
