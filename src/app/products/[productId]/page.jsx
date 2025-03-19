@@ -9,7 +9,6 @@ const ProductDetailPage = async ({params}) => {
   return (
     <>
       <Header />
-      <Breadcrumb title="New Product" />
       <SingleProductPage productId={productId}  />
       <Footer />
     </>

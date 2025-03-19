@@ -27,7 +27,7 @@ const Header = () => {
               <FiPhone size={20} />
               <span className="text-xs">Hotline: (602) 462 8889</span>
             </div>
-            <p className="text-xs mx-4">Welcome To Botanical Store</p>
+            <p className="text-xs mx-4">Welcome To HOMMY DECOR</p>
             <div className="flex-center justify-end gap-4 text-xs">
               <span>
                 Currency: <strong>USD</strong>
@@ -41,7 +41,7 @@ const Header = () => {
       </div>
 
       {/* Main Header */}
-      <div className="flex-center">
+      <div className="flex-center shadow-md">
         <Container>
           <div className="flex-center justify-between sm:margin-lg">
             {/* Logo */}

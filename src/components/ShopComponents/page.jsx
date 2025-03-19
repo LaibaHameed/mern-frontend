@@ -5,7 +5,7 @@ import ProductsList from './ProductsList';
 
 const MainContent = () => {
   return (
-    <div className="flex-center mx-6 my-24">
+    <div className="flex-center mx-6 mb-12">
       <Container>
         <TopSection />
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">

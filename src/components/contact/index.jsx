@@ -28,12 +28,12 @@ const Contact = () => {
   };
 
   return (
-    <div className="flex-center w-full">
+    <div className="flex-center sm:mx-6">
       <Container>
-        <div className="flex-center w-full md:px-24 sm:px-10">
+        <div className="flex-center w-full">
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="bg-white px-10 py-12 shadow-md w-full rounded-3xl my-10"
+            className="bg-white py-12 px-6 sm:px-12 shadow-lg mb-24 w-full sm:w-xl"
           >
             <h2 className="text-xl text-secondary font-semibold text-left mb-5">
               Contact Form

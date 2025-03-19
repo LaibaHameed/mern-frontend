@@ -24,7 +24,7 @@ export const productsApiSlice = createApi({
       },
       providesTags: ['Product'],
       onQueryStarted: async (_, { queryFulfilled }) => {
-        handleApiResponse({ queryFulfilled });
+        await handleApiResponse({ queryFulfilled, toastMessage: { error: { show: false }, success: { show: false } } });
       },
     }),
 
@@ -35,7 +35,7 @@ export const productsApiSlice = createApi({
         method: 'GET',
       }),
       onQueryStarted: async (_, { queryFulfilled }) => {
-        await handleApiResponse({ queryFulfilled })
+        await handleApiResponse({ queryFulfilled, toastMessage: { error: { show: false }, success: { show: false } } })
       }
     }),
 

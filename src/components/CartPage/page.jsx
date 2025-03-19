@@ -18,9 +18,9 @@ const CartPage = () => {
   };
 
   return (
-    <div className="flex-center sm:m-12 mx-6">
+    <div className="flex-center sm:my-6 mx-6">
       <Container>
-        <div className="grid xl:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-6 ">
+        <div className="grid xl:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-6 mb-12">
 
           <div className="xl:col-span-3 md:grid-cols-2 grid-cols-1">
             <CartTable cartItems={cartItems} updateQuantity={updateQuantity} />
