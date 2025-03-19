@@ -1,19 +1,22 @@
 'use client';
-import { FiAlignJustify, FiX } from 'react-icons/fi';
-import { FiPhone } from 'react-icons/fi';
-import { BsCart3 } from 'react-icons/bs';
-import { GoSearch } from 'react-icons/go';
-import { LuCircleUser } from 'react-icons/lu';
+import {FiAlignJustify, FiX} from 'react-icons/fi';
+import {FiPhone} from 'react-icons/fi';
+import {BsCart3} from 'react-icons/bs';
+import {GoSearch} from 'react-icons/go';
+import {LuCircleUser} from 'react-icons/lu';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import {useState} from 'react';
 import Link from 'next/link';
-import { AUTH_ROUTES, NAV_LIST, PUBLIC_ROUTES } from '@/utils/PATHS';
+import {AUTH_ROUTES, NAV_LIST, PUBLIC_ROUTES} from '@/utils/PATHS';
 import Container from '../../shared/common/Container';
+import {useSelector} from 'react-redux';
+import {getCartItems} from '@/redux/slices/product/productsSlice';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [cartItems, setCartItems] = useState(3);
+
+  const cartItems = useSelector(getCartItems);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -68,7 +71,6 @@ const Header = () => {
             </nav>
 
             <div className="flex-center justify-between">
-
               {/* Mobile Menu Button */}
               <div
                 className="lg:hidden flex-center sm:mx-6"
@@ -106,19 +108,11 @@ const Header = () => {
                       size={20}
                     />
                   </Link>
-
-                  {cartItems > 0 && (
-                    <span className="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full w-4 h-4 flex-center cursor-pointer">
-                      {cartItems}
-                    </span>
-                  )}
+                  <span className="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full w-4 h-4 flex-center cursor-pointer">
+                    {cartItems.length}
+                  </span>
                 </div>
-
-
               </div>
-
-
-
             </div>
           </div>
         </Container>
@@ -126,8 +120,9 @@ const Header = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden ${isMenuOpen ? 'min-h-[180px] h-[180px]' : 'min-h-0 h-0'
-          } text-secondary overflow-hidden py-2 my-4 absolute top-20 left-0 w-full bg-white bg-opacity-90 z-40 animate`}
+        className={`lg:hidden ${
+          isMenuOpen ? 'min-h-[180px] h-[180px]' : 'min-h-0 h-0'
+        } text-secondary overflow-hidden py-2 my-4 absolute top-20 left-0 w-full bg-white bg-opacity-90 z-40 animate`}
       >
         <nav className="flex flex-col">
           {NAV_LIST.map((route) => (

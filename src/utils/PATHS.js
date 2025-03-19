@@ -21,7 +21,10 @@ export const API_ROUTES = {
   product: {
     addProduct: '/products/add-product',
     getProducts: '/products',
-    single : ({productId}) => `/products/${productId}`
+    single: ({productId}) => `/products/${productId}`,
+  },
+  order: {
+    createPaymentCheckout: '/orders/create-payment-checkout',
   },
   contact: '/contact',
 };
