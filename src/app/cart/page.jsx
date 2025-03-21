@@ -1,14 +1,13 @@
-import CartPage from '@/components/CartPage/page';
+import CartPage from '@/components/CartPage';
 import Footer from '@/components/layouts/footer';
 import Header from '@/components/layouts/header';
 import Breadcrumb from '@/components/shared/common/Breadcrumb';
-import React from 'react';
 
 const Cart = () => {
   return (
     <div>
       <Header />
-      <Breadcrumb title="Cart" />
+      <Breadcrumb/>
       <CartPage />
       <Footer />
     </div>

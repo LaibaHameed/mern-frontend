@@ -15,7 +15,7 @@ const TextareaField = ({label, placeholder, name, control}) => {
           </label>
           <textarea
             {...field}
-            className={`w-full p-2 outline-none text-sm bg-transparent resize-none ${
+            className={`w-full p-2 outline-none border-[1px] border-secondary text-sm bg-transparent resize-none ${
               error ? 'outline-error border-error' : 'outline-primary border'
             }`}
             placeholder={placeholder}

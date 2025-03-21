@@ -1,9 +1,6 @@
-import { BsGift, BsTruck } from 'react-icons/bs';
-import { GrPowerCycle } from 'react-icons/gr';
-import { FiPhone } from 'react-icons/fi';
-import { BsCart3, BsEye } from 'react-icons/bs';
-import { FiHeart } from 'react-icons/fi';
-import { TbSwitchHorizontal } from 'react-icons/tb';
+import {BsGift, BsTruck} from 'react-icons/bs';
+import {GrPowerCycle} from 'react-icons/gr';
+import {FiPhone} from 'react-icons/fi';
 
 // Carousel slides
 const SLIDES = [
@@ -73,48 +70,6 @@ export const BADGE_TYPES = {
 };
 
 // New Arrival Products List
-export const NEW_ARRIVAL = [
-  {
-    id: 1,
-    name: 'Sit voluptatem',
-    price: 68.0,
-    image: '/assets/img1.jpg',
-    badge: null,
-  },
-  {
-    id: 2,
-    name: 'Pellentesque aliquet',
-    price: 58.0,
-    image: '/assets/img2.jpg',
-    badge: null,
-  },
-  {
-    id: 3,
-    name: 'Pellentesque aliquet',
-    price: 60.0,
-    image: '/assets/img3.jpg',
-    badge: BADGE_TYPES.hot.value,
-  },
-  {
-    id: 4,
-    name: 'Pellentesque aliquet',
-    price: 65.0,
-    image: '/assets/img4.jpg',
-    badge: BADGE_TYPES.sale.value,
-  },
-];
-
-// Product card Icons
-const PRODUCT_ICONS = {
-  heart: { icon: <FiHeart size={20} />, name: 'heart' },
-  cart: { icon: <BsCart3 size={20} />, name: 'cart' },
-  eye: { icon: <BsEye size={20} />, name: 'eye' },
-  switch: { icon: <TbSwitchHorizontal size={20} />, name: 'switch' },
-};
-
-export const ICONS = Object.values(PRODUCT_ICONS);
-
-// New Arrival Products List
 export const BEST_SELLER = [
   {
     id: 1,
@@ -178,8 +133,8 @@ export const INFORMATION_ITEMS = {
     link: '#new-products',
     id: 'new-products',
   },
-  topSeller: { label: 'Top Seller', link: '#top-seller', id: 'top-seller' },
-  aboutUs: { label: 'About our shop', link: '#about-us', id: 'about-us' },
+  topSeller: {label: 'Top Seller', link: '#top-seller', id: 'top-seller'},
+  aboutUs: {label: 'About our shop', link: '#about-us', id: 'about-us'},
   privacyPolicy: {
     label: 'Privacy policy',
     link: '#privacy-policy',
@@ -188,8 +143,8 @@ export const INFORMATION_ITEMS = {
 };
 
 export const ACCOUNT_ITEMS = {
-  myAccount: { label: 'My account', link: '#my-account', id: 'my-account' },
-  discount: { label: 'Discount', link: '#discount', id: 'discount' },
+  myAccount: {label: 'My account', link: '#my-account', id: 'my-account'},
+  discount: {label: 'Discount', link: '#discount', id: 'discount'},
   ordersHistory: {
     label: 'Orders History',
     link: '#orders-history',
@@ -203,81 +158,98 @@ export const ACCOUNT_ITEMS = {
 };
 
 export const PRODUCT_ITEMS = {
-  delivery: { label: 'Delivery', link: '#delivery', id: 'delivery' },
+  delivery: {label: 'Delivery', link: '#delivery', id: 'delivery'},
   legalNotice: {
     label: 'Legal Notice',
     link: '#legal-notice',
     id: 'legal-notice',
   },
-  pricesDrop: { label: 'Prices Drop', link: '#prices-drop', id: 'prices-drop' },
+  pricesDrop: {label: 'Prices Drop', link: '#prices-drop', id: 'prices-drop'},
   newProducts: {
     label: 'New Products',
     link: '#new-products',
     id: 'new-products',
   },
-  bestSales: { label: 'Best Sales', link: '#best-sales', id: 'best-sales' },
+  bestSales: {label: 'Best Sales', link: '#best-sales', id: 'best-sales'},
 };
-
 
 // product Sorting options
 export const SORTING_OPRIONS = [
-  { value: 'default', label: 'Default Sorting' },
-  { value: 'low-price', label: 'Sort by Low Price' },
-  { value: 'high-price', label: 'Sort by High Price' },
-  { value: 'new', label: 'Sort by New Products' },
-  { value: 'old', label: 'Sort by Old Products' },
-]
+  {value: 'default', label: 'Default Sorting'},
+  {value: 'low-price', label: 'Sort by Low Price'},
+  {value: 'high-price', label: 'Sort by High Price'},
+  {value: 'new', label: 'Sort by New Products'},
+  {value: 'old', label: 'Sort by Old Products'},
+];
 
 // product Categories
 export const PRODUCT_CATEGORIES = [
-  { name: 'Dried', count: 6 },
-  { name: 'Vegetables', count: 8 },
-  { name: 'Fruits', count: 9 },
-  { name: 'Juice', count: 6 },
-  { name: 'Uncategorized', count: 2 },
+  {name: 'Dried', count: 6},
+  {name: 'Vegetables', count: 8},
+  {name: 'Fruits', count: 9},
+  {name: 'Juice', count: 6},
+  {name: 'Uncategorized', count: 2},
 ];
 
 // product tags
 export const PRODUCT_TAGS = [
-  { id: 1, name: "Plant" },
-  { id: 2, name: "Floor" },
-  { id: 3, name: "Indoor" },
-  { id: 4, name: "Green" },
-  { id: 5, name: "Healthy" },
-  { id: 6, name: "Cactus" },
-  { id: 7, name: "House plant" },
-  { id: 8, name: "Office tree" },
+  {id: 1, name: 'Plant'},
+  {id: 2, name: 'Floor'},
+  {id: 3, name: 'Indoor'},
+  {id: 4, name: 'Green'},
+  {id: 5, name: 'Healthy'},
+  {id: 6, name: 'Cactus'},
+  {id: 7, name: 'House plant'},
+  {id: 8, name: 'Office tree'},
 ];
-
-export const CART_ITEMS = [
-  { id: 1, name: 'Pellentesque aliquet', image: "/assets/bestSeller1.jpg", price: 20, quantity: 2 },
-  { id: 2, name: 'Neque Porro Quisquam', image: "/assets/bestSeller2.jpg", price: 15, quantity: 1 },
-  { id: 3, name: 'Aliquam Quaerat Voluptem', image: "/assets/bestSeller3.jpg", price: 30, quantity: 3 },
-]
 
 // dashboar Product headers
 export const PRODUCT_HEADER = [
   {
-    key: "product",
-    name: "Product",
+    key: 'product',
+    name: 'Product',
   },
   {
-    key: "productCode",
-    name: "Product Code",
+    key: 'productCode',
+    name: 'Product Code',
   },
   {
-    key: "stock",
-    name: "Stock",
+    key: 'stock',
+    name: 'Stock',
   },
   {
-    key: "actions",
-    name: "Actions",
+    key: 'actions',
+    name: 'Actions',
   },
   {
-    key: "empty",
-    name: " ",
+    key: 'empty',
+    name: ' ',
   },
 ];
 
 export const DEFAULT_LIMIT = 10;
 export const DEFAULT_PAGES = 1;
+
+export const PAYMENT_METHODS = {
+  cod: {
+    value: 'cod',
+    label: 'Cash on Delivery',
+  },
+  card: {
+    value: 'card',
+    label: 'Card Payment',
+  },
+};
+
+export const PAYMENT_OPTIONS = Object.values(PAYMENT_METHODS);
+
+export const ORDER_STATUSES = {
+  placed: {
+    value: 'placed',
+    label: 'Placed',
+  },
+  completed: {
+    value: 'completed',
+    label: 'Completed',
+  },
+};

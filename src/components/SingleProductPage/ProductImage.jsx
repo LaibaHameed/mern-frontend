@@ -6,19 +6,21 @@ const ProductImage = ({ product }) => {
     const [mainImage, setMainImage] = useState(product?.imageUrls?.[0] || null);
 
     useEffect(() => {
-        setMainImage(product?.imageUrls?.[0] || null);
+        setMainImage(product?.imageUrls?.[0]  || null);
     }, [product]);
 
+    
     return (
-        <div className="w-full flex-center flex-col">
+        <div className="w-full flex flex-col items-center">
             {mainImage && (
-                <Image 
-                    width={400} 
-                    height={100} 
-                    src={mainImage || '/assets/bestSeller1.jpg'} 
-                    alt={product?.name || 'Product image'} 
-                    className="w-xl"
-                />
+                <div className="relative w-[550px] h-[500px] overflow-hidden ">
+                    <Image 
+                        fill
+                        src={mainImage} 
+                        alt={product?.name || 'Product image'} 
+                        className="object-contain"
+                    />
+                </div>
             )}
             {mainImage && (
                 <ImageSlider images={product?.imageUrls || []} setMainImage={setMainImage} mainImage={mainImage} />

@@ -20,8 +20,8 @@ const PasswordField = ({label, placeholder, name, control}) => {
           <input
             type={showPassword ? 'text' : 'password'}
             {...field}
-            className={`w-full p-2 text-sm  bg-transparent ${
-              error ? 'outline-error border-error' : 'outline-primary border'
+            className={`w-full p-2 text-sm  bg-transparent border-[1px] border-secondary ${
+              error ? 'outline-error border-error' : 'outline-primary'
             }`}
             placeholder={placeholder}
             id={label}
