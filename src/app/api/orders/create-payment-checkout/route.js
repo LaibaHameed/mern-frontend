@@ -3,6 +3,7 @@ import {validateCreateOrderReq} from '@/schemas/orderSchema';
 import {GeneralErrors, OrdersErrors} from '@/factories/errors';
 import {StripeServices} from '../../services/stripe';
 import {OrderResponses} from '@/factories/success';
+import {ORDER_STATUSES} from '@/constants/general';
 
 export async function POST(request) {
   const data = await request.json();
@@ -23,8 +24,20 @@ export async function POST(request) {
     quantity: product.quantity,
   }));
 
+  const metadata = {
+    ...data,
+    orderStatus: ORDER_STATUSES.placed.value,
+    products: JSON.stringify(
+      data.products.map((product) => ({
+        productId: product._id.toString(),
+        quantity: product.quantity,
+      }))
+    ),
+  };
+
   const {error, session} = await StripeServices.createCheckoutPaymentSession({
     line_items,
+    metadata,
   });
 
   if (error) return OrdersErrors.checkoutSessionFailed();

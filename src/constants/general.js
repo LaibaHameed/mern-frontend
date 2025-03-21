@@ -242,3 +242,14 @@ export const PAYMENT_METHODS = {
 };
 
 export const PAYMENT_OPTIONS = Object.values(PAYMENT_METHODS);
+
+export const ORDER_STATUSES = {
+  placed: {
+    value: 'placed',
+    label: 'Placed',
+  },
+  completed: {
+    value: 'completed',
+    label: 'Completed',
+  },
+};

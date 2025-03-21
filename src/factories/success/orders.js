@@ -11,4 +11,22 @@ export default {
       },
     });
   },
+  orderCreatedSuccessfully: ({order}) => {
+    return AppResponse({
+      statusCode: StatusCodes.OK,
+      message: 'Order created successfully',
+      body: {
+        order,
+      },
+    });
+  },
+  paymentCompletedSuccessfully: () => {
+    return AppResponse({
+      statusCode: StatusCodes.OK,
+      message: 'Payment completed successfully',
+      body: {
+        order,
+      },
+    });
+  },
 };

@@ -40,6 +40,9 @@ const slice = createSlice({
         product.quantity -= 1;
       }
     },
+    clearCartItems: (state) => {
+      state.cartItems = [];
+    },
     resetProductState: () => defaultState,
   },
 });

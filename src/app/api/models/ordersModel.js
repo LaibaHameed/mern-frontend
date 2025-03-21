@@ -30,7 +30,7 @@ const ordersSchema = new Schema(
       required: true,
     },
     customerPhoneNo: {
-      type: Number,
+      type: String,
       required: true,
     },
     customerAddress: {

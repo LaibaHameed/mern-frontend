@@ -11,6 +11,8 @@ export const PUBLIC_ROUTES = {
   about: '/about',
   contact: '/contact',
   cart: '/cart',
+  paymentSuccessful: '/payment-successful',
+  paymentFailed: '/payment-failed',
 };
 
 export const API_ROUTES = {
@@ -25,6 +27,7 @@ export const API_ROUTES = {
   },
   order: {
     createPaymentCheckout: '/orders/create-payment-checkout',
+    createOrder: '/orders/create-order',
   },
   contact: '/contact',
 };

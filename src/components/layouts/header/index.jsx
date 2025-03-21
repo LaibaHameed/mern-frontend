@@ -8,7 +8,7 @@ import {LuCircleUser} from 'react-icons/lu';
 import Image from 'next/image';
 import {useState} from 'react';
 import Link from 'next/link';
-import {AUTH_ROUTES, NAV_LIST, PUBLIC_ROUTES} from '@/utils/PATHS';
+import {NAV_LIST, PUBLIC_ROUTES} from '@/utils/PATHS';
 import Container from '../../shared/common/Container';
 import {useSelector} from 'react-redux';
 import {getCartItems} from '@/redux/slices/product/productsSlice';
@@ -33,10 +33,7 @@ const Header = () => {
             <p className="text-xs mx-4">Welcome To HOMMY DECOR</p>
             <div className="flex-center justify-end gap-4 text-xs">
               <span>
-                Currency: <strong>USD</strong>
-              </span>
-              <span>
-                Languages: <strong>EN</strong>
+                Currency: <strong>PKR</strong>
               </span>
             </div>
           </div>
@@ -88,18 +85,6 @@ const Header = () => {
 
               {/* Icons Section */}
               <div className="flex items-center gap-3 mx-2">
-                <GoSearch
-                  className="hidden sm:block cursor-pointer hover:text-primary animate text-secondary"
-                  size={20}
-                />
-
-                <Link href={AUTH_ROUTES.login}>
-                  <LuCircleUser
-                    className="cursor-pointer hover:text-primary animate text-secondary"
-                    size={20}
-                  />
-                </Link>
-
                 {/* Cart Icon with Badge */}
                 <div className="relative">
                   <Link href={PUBLIC_ROUTES.cart}>

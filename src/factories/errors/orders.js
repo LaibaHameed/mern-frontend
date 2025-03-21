@@ -8,4 +8,10 @@ export default {
       message: 'Checkout redirection failed',
     });
   },
+  orderCreationFailed: () => {
+    return AppError({
+      statusCode: StatusCodes.BAD_REQUEST,
+      message: 'Order creation failed',
+    });
+  },
 };

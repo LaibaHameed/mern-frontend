@@ -4,7 +4,10 @@ import Container from '../shared/common/Container';
 import CartTable from './CartTable';
 import {useSelector} from 'react-redux';
 import {getCartItems} from '@/redux/slices/product/productsSlice';
-import {useCreateOrderMutation} from '@/redux/slices/order/ordersApi';
+import {
+  useCreateOrderMutation,
+  useCreatePaymentCheckoutMutation,
+} from '@/redux/slices/order/ordersApi';
 import {useForm} from 'react-hook-form';
 import InputField from '../shared/inputs/InputField';
 import TextareaField from '../shared/inputs/TextareaField';
@@ -12,9 +15,11 @@ import SubmitButton from '../shared/buttons/SubmitButton';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {createOrderSchema} from '@/schemas/orderSchema';
 import RadioInputField from '../shared/inputs/RadioInputField';
-import {PAYMENT_OPTIONS} from '@/constants/general';
+import {PAYMENT_METHODS, PAYMENT_OPTIONS} from '@/constants/general';
 import {useMemo} from 'react';
 import {useRouter} from 'next/navigation';
+import {PUBLIC_ROUTES} from '@/utils/PATHS';
+import Image from 'next/image';
 
 const CartPage = () => {
   const cartItems = useSelector(getCartItems);
@@ -30,7 +35,11 @@ const CartPage = () => {
       paymentMethod: '',
     },
   });
-  const [createOrder, {isLoading}] = useCreateOrderMutation();
+  const [createOrder, {isLoading: createOrderLoading}] =
+    useCreateOrderMutation();
+
+  const [createCheckoutPayment, {isLoading: checkoutLoading}] =
+    useCreatePaymentCheckoutMutation();
 
   const totalPrice = useMemo(() => {
     const price = cartItems
@@ -48,12 +57,38 @@ const CartPage = () => {
       customerEmail: data.email,
       customerPhoneNo: data.contact,
       customerAddress: data.address,
+      paymentMethod: data.paymentMethod,
     };
 
-    const res = await createOrder({data: finalData});
-
-    console.log(res);
+    if (data.paymentMethod === PAYMENT_METHODS.cod.value) {
+      const response = await createOrder({data: finalData});
+      if (response) router.push(PUBLIC_ROUTES.paymentSuccessful);
+    } else {
+      const response = await createCheckoutPayment({data: finalData});
+      if (response) router.push(response.data.body.checkout_url);
+      if (response.error) router.push(PUBLIC_ROUTES.paymentFailed);
+    }
   };
+
+  if (cartItems.length === 0)
+    return (
+      <div className="flex-center w-full h-[400px]">
+        <Container>
+          <div className="flex-center flex-col gap-4">
+            <Image
+              src="/assets/shopping.png"
+              alt="empty cart"
+              width={200}
+              height={200}
+            />
+            <p className="text-secondary text-center text-[20px]">
+              You cart is empty. Please continue your shopping to add products
+              in your cart
+            </p>
+          </div>
+        </Container>
+      </div>
+    );
 
   return (
     <div className="flex-center sm:m-12 mx-6">
@@ -113,7 +148,7 @@ const CartPage = () => {
               <SubmitButton
                 styles="w-full mb-6 text-sm bg-secondary hover:bg-primary-hover text-white font-semibold uppercase block animate cursor-pointer"
                 buttonText=" Proceed to Checkout"
-                loading={isLoading}
+                loading={createOrderLoading || checkoutLoading}
               />
             </div>
           </form>

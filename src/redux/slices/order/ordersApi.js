@@ -9,18 +9,37 @@ export const ordersApiSlice = createApi({
   baseQuery: fetchBaseQuery({baseUrl: API_SERVER_URL, credentials: 'include'}),
   tagTypes: ['Order'],
   endpoints: (builder) => ({
-    //create order api
-    createOrder: builder.mutation({
+    //create checkout api
+    createPaymentCheckout: builder.mutation({
       query: ({data}) => ({
         url: API_ROUTES.order.createPaymentCheckout,
         method: 'POST',
         body: data,
       }),
       onQueryStarted: async (_, {queryFulfilled}) => {
-        await handleApiResponse({queryFulfilled});
+        await handleApiResponse({
+          queryFulfilled,
+          toastMessage: {error: {show: false}, success: {show: false}},
+        });
+      },
+    }),
+
+    //create order api
+    createOrder: builder.mutation({
+      query: ({data}) => ({
+        url: API_ROUTES.order.createOrder,
+        method: 'POST',
+        body: data,
+      }),
+      onQueryStarted: async (_, {queryFulfilled}) => {
+        await handleApiResponse({
+          queryFulfilled,
+          toastMessage: {error: {show: false}, success: {show: false}},
+        });
       },
     }),
   }),
 });
 
-export const {useCreateOrderMutation} = ordersApiSlice;
+export const {useCreatePaymentCheckoutMutation, useCreateOrderMutation} =
+  ordersApiSlice;
