@@ -13,9 +13,9 @@ const MainContent = () => {
             <AllFilters />
           </div>
 
-          <div className="col-span-2 md:col-span-3">
+          {/* <div className="col-span-2 md:col-span-3">
             <ProductsList />
-          </div>
+          </div> */}
         </div>
       </Container>
     </div>
