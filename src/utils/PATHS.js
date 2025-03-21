@@ -13,6 +13,9 @@ export const PUBLIC_ROUTES = {
   cart: '/cart',
   paymentSuccessful: '/payment-successful',
   paymentFailed: '/payment-failed',
+  products: {
+    single: ({productId}) => `${PUBLIC_ROUTES.store}/${productId}`,
+  },
 };
 
 export const API_ROUTES = {

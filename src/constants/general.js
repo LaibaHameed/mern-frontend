@@ -235,10 +235,10 @@ export const PAYMENT_METHODS = {
     value: 'cod',
     label: 'Cash on Delivery',
   },
-  card: {
-    value: 'card',
-    label: 'Card Payment',
-  },
+  // card: {
+  //   value: 'card',
+  //   label: 'Card Payment',
+  // },
 };
 
 export const PAYMENT_OPTIONS = Object.values(PAYMENT_METHODS);

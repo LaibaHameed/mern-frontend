@@ -2,8 +2,6 @@
 import {FiAlignJustify, FiX} from 'react-icons/fi';
 import {FiPhone} from 'react-icons/fi';
 import {BsCart3} from 'react-icons/bs';
-import {GoSearch} from 'react-icons/go';
-import {LuCircleUser} from 'react-icons/lu';
 
 import Image from 'next/image';
 import {useState} from 'react';
@@ -21,27 +19,9 @@ const Header = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <div>
-      <div className="flex-center bg-secondary">
-        <Container>
-          {/* Top Bar */}
-          <div className="md:flex items-center justify-between py-6 text-white text-sm hidden">
-            <div className="flex-center gap-2 text-xs hover:text-primary animate font-semibold tracking-wider">
-              <FiPhone size={20} />
-              <span className="text-xs">Hotline: (602) 462 8889</span>
-            </div>
-            <p className="text-xs mx-4">Welcome To HOMMY DECOR</p>
-            <div className="flex-center justify-end gap-4 text-xs">
-              <span>
-                Currency: <strong>PKR</strong>
-              </span>
-            </div>
-          </div>
-        </Container>
-      </div>
-
+    <div className="sticky top-0 z-10 bg-white">
       {/* Main Header */}
-      <div className="flex-center shadow-md">
+      <div className="flex-center shadow-lg border-b-[1px] border-b-gray-200 sticky top-0">
         <Container>
           <div className="flex-center justify-between sm:margin-lg">
             {/* Logo */}

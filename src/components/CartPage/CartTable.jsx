@@ -38,7 +38,7 @@ const CartTable = ({cartItems}) => {
                     <p className="text-gray-600 font-light hover:text-primary text-sm animate">
                       {item.name}
                     </p>
-                    <h6 className="py-2 text-sm">${item.price}.00</h6>
+                    <h6 className="py-2 text-sm">Rs. {item.price}.00 PKR</h6>
                     <div className="flex items-center gap-2">
                       <div className="flex items-center border border-gray-300 w-fit">
                         <button
@@ -73,7 +73,7 @@ const CartTable = ({cartItems}) => {
                   </div>
                 </td>
                 <td className="px-2 py-6 text-sm font-semibold tracking-wider min-w-[100px] text-right">
-                  ${item.price * item.quantity}.00
+                  Rs. {item.price * item.quantity}.00 PKR
                 </td>
               </tr>
             ))}
