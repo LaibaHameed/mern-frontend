@@ -7,3 +7,8 @@ export const getCurrentDate = () => {
 export const getDateFromSeconds = ({date}) => {
   return DateTime.fromSeconds(date);
 };
+
+export const getMonthYearDate = ({date}) => {
+  console.log(date);
+  return DateTime.fromISO(date).toFormat('MMM d, yyyy');
+};
