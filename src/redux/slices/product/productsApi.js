@@ -12,10 +12,13 @@ export const productsApiSlice = createApi({
   endpoints: (builder) => ({
     // fetch all products
     getProducts: builder.query({
-      query: ({limit, page, search}) => {
+      query: ({limit, page, search, sort}) => {
         let url = `${API_ROUTES.product.getProducts}?limit=${limit}&page=${page}`;
         if (search) {
           url += `&search=${encodeURIComponent(search)}`;
+        }
+        if (sort) {
+          url += `&sort=${sort}`;  
         }
         return {
           url,
@@ -37,6 +40,7 @@ export const productsApiSlice = createApi({
         url: API_ROUTES.product.single({productId}),
         method: 'GET',
       }),
+      providesTags: ['ProductById'],
       onQueryStarted: async (_, {queryFulfilled}) => {
         await handleApiResponse({
           queryFulfilled,
@@ -69,6 +73,19 @@ export const productsApiSlice = createApi({
         await handleApiResponse({queryFulfilled});
       },
     }),
+
+    //add rating api
+    addRating: builder.mutation({
+      query: ({data}) => ({
+        url: API_ROUTES.product.ratings.addRating,
+        method: 'POST',
+        body: data,
+      }),
+      invalidatesTags: ['ProductById'],
+      onQueryStarted: async (_, {queryFulfilled}) => {
+        await handleApiResponse({queryFulfilled});
+      },
+    }),
   }),
 });
 
@@ -77,4 +94,5 @@ export const {
   useGetProductByIdQuery,
   useAddProductMutation,
   useDeleteProductMutation,
+  useAddRatingMutation,
 } = productsApiSlice;

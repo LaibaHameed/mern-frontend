@@ -1,9 +1,9 @@
 import {GeneralErrors} from '@/factories/errors';
 import {dbConnect} from '../databases/config';
 import {MongoFactoryServices} from '../services/mongoFactory';
-import {ProductResponses} from '@/factories/success';
+import {FeedbackResponses} from '@/factories/success';
 import {DEFAULT_LIMIT, DEFAULT_PAGES} from '@/constants/general';
-import {ProductsModel} from '../models';
+import {FeedbacksModel} from '../models';
 
 export async function GET(req) {
   await dbConnect();
@@ -12,7 +12,6 @@ export async function GET(req) {
   const limit = parseInt(searchParams.get('limit')) || DEFAULT_LIMIT;
   const page = parseInt(searchParams.get('page')) || DEFAULT_PAGES;
   const search = searchParams.get('search') || '';
-  const sortOption = searchParams.get('sort') || 'default';
 
   const skip = (page - 1) * limit;
 
@@ -26,20 +25,19 @@ export async function GET(req) {
     : {};
 
   const {success, error, response} = await MongoFactoryServices.findAll({
-    model: ProductsModel,
+    model: FeedbacksModel,
     query,
     options: {skip, limit},
-    sortOption,
   });
 
   if (!success) {
     return GeneralErrors.internalServerErr({customMessage: error});
   }
 
-  const {docs: products, total} = response;
+  const {docs: feedbacks, total} = response;
 
-  return ProductResponses.productsFetchedSuccessfully({
-    products,
+  return FeedbackResponses.feedbacksFetchedSuccessfully({
+    feedbacks,
     pagination: {
       total,
       currentPage: page,

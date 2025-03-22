@@ -10,7 +10,7 @@ const SLIDES = [
     title2: ' Live Beautifully.',
     description:
       'Explore a range of premium properties tailored to your needs.',
-    image: '/assets/carousel2.jpg',
+    image: '/assets/sample-banner.jpg',
     buttonText1: 'shop now',
   },
   {
@@ -18,7 +18,7 @@ const SLIDES = [
     title: 'Plants:',
     title2: ' Your Daily Dose of Calm.',
     description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit!',
-    image: '/assets/carousel1.jpg',
+    image: '/assets/sample-banner-2.jpg',
     buttonText1: 'shop now',
   },
 ];
@@ -101,31 +101,6 @@ export const BEST_SELLER = [
   },
 ];
 
-// customer reviews
-export const CUSTOMER_REVIEWS = [
-  {
-    id: 0,
-    name: 'Emily Johnson',
-    review:
-      'I absolutely love the quality of the products! The materials feel premium, and the attention to detail is outstanding. Customer support was also very responsive and helpful. I will definitely be coming back for more purchases in the future!',
-    title: 'BTV-Designer',
-  },
-  {
-    id: 1,
-    name: 'David Williams',
-    review:
-      'This was my first time ordering, and I was impressed. The website was easy to navigate, the checkout process was seamless, and the delivery was on time. The product exceeded my expectations, and I appreciate the effort put into packaging as well.',
-    title: 'Marketing Specialist',
-  },
-  {
-    id: 2,
-    name: 'Sophia Martinez',
-    review:
-      "I've been using these products for a while now, and I can confidently say they are worth every penny. The durability, functionality, and sleek design make them stand out from other brands. I highly recommend this to anyone looking for high-quality items!",
-    title: 'Tech Enthusiast',
-  },
-];
-
 // footer sections
 export const INFORMATION_ITEMS = {
   newProducts: {
@@ -182,6 +157,14 @@ export const SORTING_OPRIONS = [
   {value: 'old', label: 'Sort by Old Products'},
 ];
 
+export const SORT_OPTIONS = {
+  'low-price': {price: 1},
+  'high-price': {price: -1},
+  new: {createdAt: -1},
+  old: {createdAt: 1},
+  default: {createdAt: -1},
+};
+
 // product Categories
 export const PRODUCT_CATEGORIES = [
   {name: 'Dried', count: 6},
@@ -227,7 +210,7 @@ export const PRODUCT_HEADER = [
   },
 ];
 
-export const DEFAULT_LIMIT = 10;
+export const DEFAULT_LIMIT = 6;
 export const DEFAULT_PAGES = 1;
 
 export const PAYMENT_METHODS = {

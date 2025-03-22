@@ -1,43 +1,54 @@
-import React from "react";
+import React, {useState} from 'react';
+import ReviewForm from './ReviewForm';
+import {getMonthYearDate} from '@/utils/dateUtils';
 
-const Reviews = () => {
-    return (
-        <div className="bg-white  p-6 mx-auto">
+const Reviews = ({ratings}) => {
+  const [showReviewForm, setShowReviewForm] = useState(false);
 
-            {/* Review 1 */}
-            <div className="pb-4 mb-4">
-                <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-gray-300 rounded-full"></div>
-                    <div>
-                        <p className="font-semibold text-gray-700">John Doe</p>
-                        <p className="text-sm text-gray-500">Jan 5, 2025</p>
-                    </div>
+  return (
+    <div className="bg-white  p-6 mx-auto">
+      <h2 className="text-2xl text-secondary font-bold mb-8">Reviews</h2>
+      {ratings.length > 0 ? (
+        <>
+          {ratings.map((rating) => (
+            <div className="pb-4 mb-4" key={rating._id}>
+              <div className="flex items-center space-x-3">
+                <div className="avatar avatar-placeholder">
+                  <div className="bg-primary text-white w-10 rounded-full">
+                    <span className="text-lg">{rating.name.charAt(0)}</span>
+                  </div>
                 </div>
-                <p className="mt-2 text-gray-600 text-sm">
-                    "Great product! The quality is amazing, and the delivery was super fast."
-                </p>
-            </div>
-
-            {/* Review 2 */}
-            <div className="pb-4 mb-4">
-                <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-gray-300 rounded-full"></div>
-                    <div>
-                        <p className="font-semibold text-gray-700">Jane Smith</p>
-                        <p className="text-sm text-gray-500">Dec 22, 2024</p>
-                    </div>
+                <div>
+                  <p className="font-semibold text-gray-700">{rating.name}</p>
+                  <p className="text-sm text-gray-500">
+                    {getMonthYearDate({date: rating.createdAt})}
+                  </p>
                 </div>
-                <p className="mt-2 text-gray-600 text-sm">
-                    "Loved it! Would definitely recommend to others. Five stars!"
-                </p>
+              </div>
+              <p className="text-gray-600 text-sm mt-5">"{rating.message}"</p>
             </div>
+          ))}
+        </>
+      ) : (
+        <p className="text-secondary text-lg">
+          Currently, this product has no reviews
+        </p>
+      )}
 
-            {/* Add Review Button */}
-            <button className=" cursor-pointer mt-4 bg-primary text-white py-3 px-7 rounded-full hover:bg-opacity-90 animate hover:bg-primary-hover">
-                Add a Review
-            </button>
+      <button
+        onClick={() => setShowReviewForm(true)}
+        className=" cursor-pointer mt-4 bg-primary text-white py-3 px-7 rounded-full hover:bg-opacity-90 animate hover:bg-primary-hover"
+      >
+        Add a Review
+      </button>
+
+      {showReviewForm && (
+        <div className="shadow-lg border-[1px] border-gray-300 rounded-[4px] p-5 mt-5">
+          <ReviewForm setShowReviewForm={setShowReviewForm} />
         </div>
-    );
+      )}
+    </div>
+  );
 };
 
 export default Reviews;

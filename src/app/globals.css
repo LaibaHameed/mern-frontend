@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 @plugin "daisyui" {
   themes: false;
 }
@@ -8,11 +8,11 @@
 
   /* Primary Colors */
   --color-primary: #0097b2;
-  --color-primary-hover: #0086a0; 
+  --color-primary-hover: #0086a0;
 
   /* Secondary Colors */
   --color-secondary: #18171d;
-  --color-secondary-hover: #24232b; 
+  --color-secondary-hover: #24232b;
 
   /* Error Colors */
   --color-error: #c53038;
@@ -50,4 +50,44 @@
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+.rr--box.rr--hf-svg-on,
+.rr--box.rr--hf-svg-off,
+.rr--box.rr--off {
+  stroke: #0097b2 !important;
+}
+
+.rr--box.rr--hf-svg-on {
+  fill: #0097b2 !important;
+  width: 45px !important;
+}
+
+.rr--box.rr--hf-svg-off {
+  fill: none;
+  width: 45px !important;
+}
+
+.stars-rating {
+  --rr--fill-on-color: #0097b2 !important;
+  --rr--stroke-off-color: #0097b2 !important;
+  --rr--stroke-on-color: #0097b2 !important;
+  --rr--fill-off-color: white !important;
+}
+
+.dimming-effect {
+  font-size: 80px;
+  animation: dimAnimation 1.2s infinite;
+}
+
+@keyframes dimAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }

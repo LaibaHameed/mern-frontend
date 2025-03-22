@@ -27,12 +27,19 @@ export const API_ROUTES = {
     addProduct: '/products/add-product',
     getProducts: '/products',
     single: ({productId}) => `/products/${productId}`,
+    ratings: {
+      addRating: '/products/ratings/add-rating',
+    },
   },
   order: {
     createPaymentCheckout: '/orders/create-payment-checkout',
     createOrder: '/orders/create-order',
   },
   contact: '/contact',
+  feedback: {
+    all: '/feedback',
+    createFeedback: '/feedback/create-feedback',
+  },
 };
 
 export const AUTH_ROUTES = {
@@ -68,7 +75,6 @@ export const DASHBOARD_TABS = Object.values(DASHBOARD_NAV_LIST);
 const NAV_ROUTES = {
   home: {value: 'home', label: 'HOME', path: PUBLIC_ROUTES.home},
   store: {value: 'products', label: 'SHOP', path: PUBLIC_ROUTES.store},
-  about: {value: 'about', label: 'ABOUT', path: PUBLIC_ROUTES.about},
   contact: {value: 'contact', label: 'CONTACT', path: PUBLIC_ROUTES.contact},
 };
 

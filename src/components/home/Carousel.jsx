@@ -1,15 +1,16 @@
 'use client';
 
-import {FaArrowRight} from 'react-icons/fa';
-import {ROOT_ROUTE} from '@/utils/PATHS';
+// import {FaArrowRight} from 'react-icons/fa';
+// import {ROOT_ROUTE} from '@/utils/PATHS';
 import SLIDES from '@/constants/general';
-import Link from 'next/link';
-import Container from '../shared/common/Container';
+// import Link from 'next/link';
+// import Container from '../shared/common/Container';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Navigation, Pagination, Autoplay} from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import Image from 'next/image';
 
 const Carousel = () => {
   return (
@@ -17,11 +18,11 @@ const Carousel = () => {
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         autoplay={{delay: 5000, disableOnInteraction: false}}
-        navigation={{
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        }}
-        pagination={{clickable: true}}
+        // navigation={{
+        //   nextEl: '.swiper-button-next',
+        //   prevEl: '.swiper-button-prev',
+        // }}
+        // pagination={{clickable: true}}
         loop={true}
         speed={1000}
         className="w-full h-auto"
@@ -32,7 +33,7 @@ const Carousel = () => {
               className=" relative bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-in-out"
               style={{backgroundImage: `url(${slide.image})`}}
             >
-              <Container>
+              {/* <Container>
                 <div className="relative mx-auto max-w-screen-xl py-32 lg:mx-6 lg:flex lg:h-screen lg:items-center">
                   <div className="max-w-xxl text-secondary text-left">
                     <h2 className="text-md lg:text-2xl md:text-xl sm:text-lg font-serif font-bold text-secondary mb-6 uppercase">
@@ -62,7 +63,14 @@ const Carousel = () => {
                     </div>
                   </div>
                 </div>
-              </Container>
+              </Container> */}
+              <Image
+                src={slide.image}
+                alt="slide"
+                width={1300}
+                height={700}
+                className="w-full h-screen"
+              />
             </div>
           </SwiperSlide>
         ))}

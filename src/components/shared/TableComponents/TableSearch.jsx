@@ -31,7 +31,7 @@ const TableSearch = ({ setSearchQuery }) => {
                 placeholder="Search Product..."
                 value={inputValue}
                 onChange={handleChange}
-                className="w-full bg-transparent outline-none text-gray-600 border-none text-sm"
+                className="w-full bg-transparent outline-none text-gray-600 border-none text-xs sm:text-sm"
             />
             <div className="flex items-center gap-1">
                 {inputValue && (

@@ -36,6 +36,7 @@ export const usersApiSlice = createApi({
           );
       },
     }),
+
     //contact form api
     contactSubmission: builder.mutation({
       query: ({data}) => ({
@@ -47,8 +48,46 @@ export const usersApiSlice = createApi({
         await handleApiResponse({queryFulfilled});
       },
     }),
+
+    //feedback form api
+    feedbackSubmission: builder.mutation({
+      query: ({data}) => ({
+        url: API_ROUTES.feedback.createFeedback,
+        method: 'POST',
+        body: data,
+      }),
+      invalidatesTags: ['Feedbacks'],
+      onQueryStarted: async (_, {queryFulfilled}) => {
+        await handleApiResponse({queryFulfilled});
+      },
+    }),
+
+    // fetch all feedbacks
+    getFeedbacks: builder.query({
+      query: ({limit, page, search}) => {
+        let url = `${API_ROUTES.feedback.all}?limit=${limit}&page=${page}`;
+        if (search) {
+          url += `&search=${encodeURIComponent(search)}`;
+        }
+        return {
+          url,
+          method: 'GET',
+        };
+      },
+      providesTags: ['Feedbacks'],
+      onQueryStarted: async (_, {queryFulfilled}) => {
+        handleApiResponse({
+          queryFulfilled,
+          toastMessage: {error: {show: false}, success: {show: false}},
+        });
+      },
+    }),
   }),
 });
 
-export const {useLoginUserMutation, useContactSubmissionMutation} =
-  usersApiSlice;
+export const {
+  useLoginUserMutation,
+  useContactSubmissionMutation,
+  useFeedbackSubmissionMutation,
+  useGetFeedbacksQuery,
+} = usersApiSlice;

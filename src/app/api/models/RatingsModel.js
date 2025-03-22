@@ -2,8 +2,13 @@ import mongoose from 'mongoose';
 
 const {Schema, models, model} = mongoose;
 
-const contactSchema = new Schema(
+const ratingsSchema = new Schema(
   {
+    productId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Products',
+      required: true,
+    },
     name: {
       type: String,
       required: true,
@@ -12,8 +17,8 @@ const contactSchema = new Schema(
       type: String,
       required: true,
     },
-    subject: {
-      type: String,
+    rating: {
+      type: Number,
       required: true,
     },
     message: {
@@ -26,6 +31,6 @@ const contactSchema = new Schema(
   }
 );
 
-const Contact = models.Contacts || model('Contacts', contactSchema);
+const Rating = models.Ratings || model('Ratings', ratingsSchema);
 
-export default Contact;
+export default Rating;
