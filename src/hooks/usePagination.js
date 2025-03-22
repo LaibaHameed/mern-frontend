@@ -1,7 +1,7 @@
 import { DEFAULT_LIMIT } from "@/constants/general";
 import { useState, useEffect, useMemo } from "react";
 
-export const usePagination = (fetchFunction, searchQuery, sortOption, limit = DEFAULT_LIMIT, setTotalProducts) => {
+export const usePagination = (fetchFunction, searchQuery, sortOption, limit = DEFAULT_LIMIT) => {
     const [page, setPage] = useState(1);
     const [allItems, setAllItems] = useState([]);
     const [isSearching, setIsSearching] = useState(false);
@@ -15,7 +15,6 @@ export const usePagination = (fetchFunction, searchQuery, sortOption, limit = DE
 
     const items = data?.body?.products ?? [];
     const totalPages = data?.body?.pagination?.totalPages ?? 1;
-    const total = data?.body?.pagination?.total ?? 1;
 
     useEffect(() => {
         setAllItems([]);
@@ -39,10 +38,7 @@ export const usePagination = (fetchFunction, searchQuery, sortOption, limit = DE
             setIsSearching(false);
         }
 
-        if (typeof setTotalProducts === "function") {
-            setTotalProducts(total);
-        }
-    }, [items, isFetching, setTotalProducts]); 
+    }, [items, isFetching]); 
 
     const shouldShowLoader = useMemo(
         () => (isLoading || isSearching) && allItems.length === 0,
@@ -58,7 +54,5 @@ export const usePagination = (fetchFunction, searchQuery, sortOption, limit = DE
         page,
         setPage,
         totalPages,
-        total,
-        limit
     };
 };

@@ -2,13 +2,28 @@
 import { useState } from 'react';
 import { SORTING_OPRIONS } from '@/constants/general';
 
-const SortingOptions = ({ setSortOption }) => {
-    const [selectedOption, setSelectedOption] = useState('default');
+const SortingOptions = ({ setSortOption, sortOption, setIsModalOpen }) => {
+
+    const [selectedOption, setSelectedOption] = useState(sortOption);
 
     const handleSortChange = (value) => {
         setSelectedOption(value);
-        setSortOption(value); 
     };
+
+    const applySorting = () => {
+        setSortOption(selectedOption);
+        if (setIsModalOpen) {
+            setIsModalOpen(false);
+        }
+    }
+
+    const ResetAllFilters = () => {
+        setSortOption("default");
+        setSelectedOption("default");
+        if (setIsModalOpen) {
+            setIsModalOpen(false);
+        }
+    }
 
     return (
         <>
@@ -20,14 +35,30 @@ const SortingOptions = ({ setSortOption }) => {
                             type="radio"
                             name="sortOption"
                             value={option.value}
-                            checked={selectedOption === option.value}
+                            checked={selectedOption === option?.value}
                             onChange={() => handleSortChange(option.value)}
                             className="accent-primary"
+                            key={option.value} // Force re-render
                         />
+
                         {option.label}
                     </label>
                 ))}
             </div>
+
+            {/* Apply Button */}
+            <button
+                className="px-4 py-2 mt-4 bg-primary hover:bg-primary-hover text-white text-sm rounded-full animate cursor-pointer"
+                onClick={applySorting}
+            >
+                Apply Filter
+            </button>
+            <button
+                className="block px-4 py-2 mt-4 bg-primary hover:bg-primary-hover text-white text-sm rounded-full animate cursor-pointer"
+                onClick={ResetAllFilters}
+            >
+                Reset All Filters
+            </button>
         </>
     );
 };

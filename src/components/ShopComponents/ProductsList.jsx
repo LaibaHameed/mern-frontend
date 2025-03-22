@@ -3,9 +3,11 @@ import { usePagination } from "@/hooks/usePagination";
 import { useGetProductsQuery } from "@/redux/slices/product/productsApi";
 import Loader from "../shared/common/Loader";
 import ProductCard from "../shared/common/ProductCard";
+import { DEFAULT_LIMIT } from "@/constants/general";
 
 
-const ProductsList = ({ searchQuery, sortOption, setTotalProducts }) => {
+const ProductsList = ({ searchQuery, sortOption }) => {
+  const productsPerPage = DEFAULT_LIMIT;
   const {
     allItems: products,
     shouldShowLoader,
@@ -14,7 +16,7 @@ const ProductsList = ({ searchQuery, sortOption, setTotalProducts }) => {
     page,
     setPage,
     totalPages,    
-  } = usePagination(useGetProductsQuery, searchQuery, sortOption, 3, setTotalProducts); 
+  } = usePagination(useGetProductsQuery, searchQuery, sortOption, productsPerPage); 
 
   if (shouldShowLoader) return <Loader />;  
   if (isError) return <p className="py-10 flex-center gap-2">Error loading products.</p>;

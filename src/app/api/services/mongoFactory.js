@@ -1,3 +1,4 @@
+import { SORT_OPTIONS } from '@/constants/general';
 import { asyncTryCatch } from '@/utils/tryCatchUtils';
 
 export const MongoFactoryServices = {
@@ -31,17 +32,9 @@ export const MongoFactoryServices = {
     return { success, error, response };
   },
   findAll: async ({ model, query = {}, options, sortOption = "default" }) => {
-    const sortOptions = {
-      "low-price": { price: 1 }, 
-      "high-price": { price: -1 },
-      new: { createdAt: -1 },
-      old: { createdAt: 1 }, 
-      default: { createdAt: -1 }, 
-    };
-  
-    const sort = sortOptions[sortOption] || sortOptions.default;
-  
+    const sort = SORT_OPTIONS[sortOption] || SORT_OPTIONS.default;
     const { success, error, response: data } = await asyncTryCatch(async () => {
+
       const [products, total] = await Promise.all([
         model.find(query, null, options).sort(sort),
         model.countDocuments(query),
