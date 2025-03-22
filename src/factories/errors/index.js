@@ -3,6 +3,7 @@ import GeneralErrors from './general';
 import ProductsErrors from './products';
 import OrdersErrors from './orders';
 import FeedbackErrors from './feedbacks';
+import RatingsErrors from './ratings';
 
 export {
   UsersErrors,
@@ -10,4 +11,5 @@ export {
   ProductsErrors,
   OrdersErrors,
   FeedbackErrors,
+  RatingsErrors,
 };

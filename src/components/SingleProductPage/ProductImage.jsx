@@ -12,7 +12,7 @@ const ProductImage = ({product}) => {
   return (
     <div className="w-full flex flex-col items-center">
       {mainImage && (
-        <div className="relative w-[550px] h-[500px] overflow-hidden mb-2 shadow-md border-gray-200 rounded-md">
+        <div className="relative w-full  h-[500px] overflow-hidden mb-2 shadow-md border-gray-200 rounded-md">
           <Image
             fill
             src={mainImage}

@@ -5,6 +5,7 @@ import {
   getCartItems,
   actions as productActions,
 } from '@/redux/slices/product/productsSlice';
+import Ratings from '@/components/shared/common/Ratings';
 
 const ProductDetails = ({product}) => {
   const [quantity, setQuantity] = useState(1);
@@ -19,7 +20,16 @@ const ProductDetails = ({product}) => {
     <div>
       <div className="space-y-4">
         <h2 className="md:text-3xl text-xl font-bold">{product.name}</h2>
-
+        <div className="flex items-center justify-start gap-2">
+          <Ratings
+            rating={product.averageRating || 0}
+            isDisabled={true}
+            maxWidth={130}
+          />
+          <p className="text-base text-secondary">
+            {product.averageRating || 0}
+          </p>
+        </div>
         <p className="md:text-2xl text-xl font-semibold text-primary">
           Rs. {product.price.toFixed(2)} PKR
         </p>

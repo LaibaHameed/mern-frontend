@@ -1,13 +1,12 @@
 'use client';
 import ProductImage from './ProductImage';
 import Loader from '../shared/common/Loader';
-import RelatedProducts from './RelatedProducts';
 import Container from '../shared/common/Container';
-import ProductTabs from './ProductTabs/ProductTabs';
 import {IoCloudOfflineOutline} from 'react-icons/io5';
 import ProductDetails from './ProductDetails/ProductDetails';
 import {useGetProductByIdQuery} from '@/redux/slices/product/productsApi';
 import Breadcrumb from '../shared/common/Breadcrumb';
+import Reviews from './ProductTabs/Reviews';
 
 const SingleProductPage = ({productId}) => {
   const {data, isLoading, error} = useGetProductByIdQuery(productId);
@@ -35,8 +34,8 @@ const SingleProductPage = ({productId}) => {
               <ProductImage product={product} />
               <ProductDetails product={product} />
             </div>
-            {/* <ProductTabs product={product} /> */}
-            {/* <RelatedProducts /> */}
+            <div className="h-[1px] w-full bg-gray-300 mt-10"></div>
+            <Reviews ratings={product.ratings} />
           </div>
         </Container>
       </div>

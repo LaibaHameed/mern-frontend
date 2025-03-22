@@ -37,6 +37,7 @@ export const productsApiSlice = createApi({
         url: API_ROUTES.product.single({productId}),
         method: 'GET',
       }),
+      providesTags: ['ProductById'],
       onQueryStarted: async (_, {queryFulfilled}) => {
         await handleApiResponse({
           queryFulfilled,
@@ -69,6 +70,19 @@ export const productsApiSlice = createApi({
         await handleApiResponse({queryFulfilled});
       },
     }),
+
+    //add rating api
+    addRating: builder.mutation({
+      query: ({data}) => ({
+        url: API_ROUTES.product.ratings.addRating,
+        method: 'POST',
+        body: data,
+      }),
+      invalidatesTags: ['ProductById'],
+      onQueryStarted: async (_, {queryFulfilled}) => {
+        await handleApiResponse({queryFulfilled});
+      },
+    }),
   }),
 });
 
@@ -77,4 +91,5 @@ export const {
   useGetProductByIdQuery,
   useAddProductMutation,
   useDeleteProductMutation,
+  useAddRatingMutation,
 } = productsApiSlice;
