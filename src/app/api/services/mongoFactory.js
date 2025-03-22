@@ -35,15 +35,15 @@ export const MongoFactoryServices = {
     const sort = SORT_OPTIONS[sortOption] || SORT_OPTIONS.default;
     const { success, error, response: data } = await asyncTryCatch(async () => {
 
-      const [products, total] = await Promise.all([
+      const [docs, total] = await Promise.all([
         model.find(query, null, options).sort(sort),
         model.countDocuments(query),
       ]);
-      return { products, total };
+      return { docs, total };
     });
-  
+
     return { success, error, response: data };
-  },  
+  },
   deleteById: async ({ model, id }) => {
     const { success, error, response } = await asyncTryCatch(
       async () => await model.findByIdAndDelete(id)

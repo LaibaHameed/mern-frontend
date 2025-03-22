@@ -38,7 +38,7 @@ export async function GET(req) {
         return GeneralErrors.internalServerErr({ customMessage: error });
     }
 
-    const { products, total } = response;
+    const {docs: products, total} = response;
 
     return ProductResponses.productsFetchedSuccessfully({
         products,
