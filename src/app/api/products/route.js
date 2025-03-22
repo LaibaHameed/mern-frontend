@@ -14,6 +14,7 @@ export async function GET(req) {
     const limit = parseInt(searchParams.get("limit")) || DEFAULT_LIMIT;
     const page = parseInt(searchParams.get("page")) || DEFAULT_PAGES;
     const search = searchParams.get("search") || "";
+    const sortOption = searchParams.get("sort") || "default";
 
     const skip = (page - 1) * limit;
 
@@ -30,6 +31,7 @@ export async function GET(req) {
         model: Product,
         query,
         options: { skip, limit },
+        sortOption,
     });
 
     if (!success) {

@@ -12,10 +12,13 @@ export const productsApiSlice = createApi({
   endpoints: (builder) => ({
     // fetch all products
     getProducts: builder.query({
-      query: ({limit, page, search}) => {
+      query: ({limit, page, search, sort}) => {
         let url = `${API_ROUTES.product.getProducts}?limit=${limit}&page=${page}`;
         if (search) {
           url += `&search=${encodeURIComponent(search)}`;
+        }
+        if (sort) {
+          url += `&sort=${sort}`;  
         }
         return {
           url,

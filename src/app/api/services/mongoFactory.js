@@ -30,18 +30,27 @@ export const MongoFactoryServices = {
     );
     return { success, error, response };
   },
-  findAll: async ({ model, query = {}, options, sort = { createdAt: -1 } }) => {
-    const { success, error, response: data } = await asyncTryCatch(
-      async () => {
-        const [products, total] = await Promise.all([
-          model.find(query, null, options).sort(sort),
-          model.countDocuments(query),
-        ]);
-        return { products, total };
-      }
-    );
+  findAll: async ({ model, query = {}, options, sortOption = "default" }) => {
+    const sortOptions = {
+      "low-price": { price: 1 }, 
+      "high-price": { price: -1 },
+      new: { createdAt: -1 },
+      old: { createdAt: 1 }, 
+      default: { createdAt: -1 }, 
+    };
+  
+    const sort = sortOptions[sortOption] || sortOptions.default;
+  
+    const { success, error, response: data } = await asyncTryCatch(async () => {
+      const [products, total] = await Promise.all([
+        model.find(query, null, options).sort(sort),
+        model.countDocuments(query),
+      ]);
+      return { products, total };
+    });
+  
     return { success, error, response: data };
-  },
+  },  
   deleteById: async ({ model, id }) => {
     const { success, error, response } = await asyncTryCatch(
       async () => await model.findByIdAndDelete(id)

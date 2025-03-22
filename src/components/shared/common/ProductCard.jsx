@@ -1,18 +1,18 @@
 'use client';
 
 import Image from 'next/image';
-import {BsCartDash, BsCartPlus, BsEye} from 'react-icons/bs';
-import {FiHeart} from 'react-icons/fi';
+import { BsCartDash, BsCartPlus, BsEye } from 'react-icons/bs';
+import { FiHeart } from 'react-icons/fi';
 import {
   getCartItems,
   actions as productActions,
 } from '@/redux/slices/product/productsSlice';
-import {useDispatch, useSelector} from 'react-redux';
-import {useRouter} from 'next/navigation';
-import {PUBLIC_ROUTES} from '@/utils/PATHS';
-import {showToast} from '@/utils/toasts';
+import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/navigation';
+import { PUBLIC_ROUTES } from '@/utils/PATHS';
+import { showToast } from '@/utils/toasts';
 
-const ProductCard = ({product}) => {
+const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
   const cartItems = useSelector(getCartItems);
   const router = useRouter();
@@ -20,13 +20,17 @@ const ProductCard = ({product}) => {
   return (
     <div className="relative group border border-gray-300 overflow-hidden w-full  mx-auto sm:max-w-none">
       {/* Image */}
-      <Image
-        src={product.imageUrls[0]}
-        width={400}
-        height={370}
-        alt={product.name}
-        className="w-full h-[370px] bg-cover"
-      />
+      <div className="relative w-full h-[200px] sm:h-[250px]">
+        <Image
+          src={product.imageUrls[0]}
+          // width={200}
+          // height={270}
+          alt={product.name}
+          // className="w-full h-[370px] object-cover"
+          layout="fill"
+          objectFit="cover"
+        />
+      </div>
 
       {/* Hover Buttons */}
       <div className="absolute bottom-24 left-0 w-full opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 animate">
@@ -57,7 +61,7 @@ const ProductCard = ({product}) => {
           ) : (
             <button
               onClick={() =>
-                dispatch(productActions.addToCart({...product, quantity: 1}))
+                dispatch(productActions.addToCart({ ...product, quantity: 1 }))
               }
               className="cursor-pointer px-3 py-3 bg-white shadow-md text-secondary hover:bg-primary hover:text-white animate"
               aria-label="cart"
@@ -71,7 +75,7 @@ const ProductCard = ({product}) => {
             aria-label="eye"
             onClick={() =>
               router.push(
-                PUBLIC_ROUTES.products.single({productId: product._id})
+                PUBLIC_ROUTES.products.single({ productId: product._id })
               )
             }
           >
@@ -82,9 +86,9 @@ const ProductCard = ({product}) => {
 
       {/* Text Content */}
       <div className="flex flex-col items-center justify-center py-6">
-        <p className="text-gray-600">{product.name}</p>
-        <h3 className="font-extrabold text-gray-700 font-serif">
-          Rs. {product.price} PKR
+        <p className="sm:text-sm text-xs uppercase text-secondary">{product.name}</p>
+        <h3 className=" text-primary font-serif sm:text-sm text-xs">
+          Rs. {product.price}
         </h3>
       </div>
     </div>
