@@ -1,9 +1,9 @@
 import {GeneralErrors} from '@/factories/errors';
 import {dbConnect} from '../databases/config';
 import {MongoFactoryServices} from '../services/mongoFactory';
-import {OrderResponses, ProductResponses} from '@/factories/success';
+import {FeedbackResponses} from '@/factories/success';
 import {DEFAULT_LIMIT, DEFAULT_PAGES} from '@/constants/general';
-import {OrdersModel} from '../models';
+import {FeedbacksModel} from '../models';
 
 export async function GET(req) {
   await dbConnect();
@@ -18,15 +18,14 @@ export async function GET(req) {
   const query = search
     ? {
         $or: [
-          {customerName: {$regex: search, $options: 'i'}},
-          {customerEmail: {$regex: search, $options: 'i'}},
-          {_id: {$regex: search, $options: 'i'}},
+          {name: {$regex: search, $options: 'i'}},
+          {code: {$regex: search, $options: 'i'}},
         ],
       }
     : {};
 
   const {success, error, response} = await MongoFactoryServices.findAll({
-    model: OrdersModel,
+    model: FeedbacksModel,
     query,
     options: {skip, limit},
   });
@@ -35,10 +34,10 @@ export async function GET(req) {
     return GeneralErrors.internalServerErr({customMessage: error});
   }
 
-  const {docs: orders, total} = response;
+  const {docs: feedbacks, total} = response;
 
-  return OrderResponses.ordersFetchedSuccessfully({
-    orders,
+  return FeedbackResponses.feedbacksFetchedSuccessfully({
+    feedbacks,
     pagination: {
       total,
       currentPage: page,

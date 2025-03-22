@@ -33,6 +33,10 @@ export const API_ROUTES = {
     createOrder: '/orders/create-order',
   },
   contact: '/contact',
+  feedback: {
+    all: '/feedback',
+    createFeedback: '/feedback/create-feedback',
+  },
 };
 
 export const AUTH_ROUTES = {

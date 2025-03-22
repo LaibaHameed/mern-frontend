@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const {Schema, models, model} = mongoose;
 
-const contactSchema = new Schema(
+const feedbackSchema = new Schema(
   {
     name: {
       type: String,
@@ -12,7 +12,7 @@ const contactSchema = new Schema(
       type: String,
       required: true,
     },
-    subject: {
+    designation: {
       type: String,
       required: true,
     },
@@ -26,6 +26,6 @@ const contactSchema = new Schema(
   }
 );
 
-const Contact = models.Contacts || model('Contacts', contactSchema);
+const Feedback = models.Feedbacks || model('Feedbacks', feedbackSchema);
 
-export default Contact;
+export default Feedback;

@@ -29,4 +29,14 @@ export default {
       },
     });
   },
+  ordersFetchedSuccessfully: ({orders, pagination}) => {
+    return AppResponse({
+      statusCode: StatusCodes.OK,
+      message: 'Orders fetched successfully',
+      body: {
+        orders,
+        pagination,
+      },
+    });
+  },
 };

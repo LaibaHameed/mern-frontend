@@ -1,11 +1,9 @@
-
-import { GeneralErrors } from "@/factories/errors";
-import { dbConnect } from "../databases/config";
-import Product from "../models/productsModel";
-import { MongoFactoryServices } from "../services/mongoFactory";
-import { ProductResponses } from "@/factories/success";
-import { DEFAULT_LIMIT, DEFAULT_PAGES } from "@/constants/general";
-
+import {GeneralErrors} from '@/factories/errors';
+import {dbConnect} from '../databases/config';
+import {MongoFactoryServices} from '../services/mongoFactory';
+import {ProductResponses} from '@/factories/success';
+import {DEFAULT_LIMIT, DEFAULT_PAGES} from '@/constants/general';
+import {ProductsModel} from '../models';
 
 export async function GET(req) {
     await dbConnect();
@@ -45,4 +43,3 @@ export async function GET(req) {
         pagination: { total, currentPage: page, totalPages: Math.ceil(total / limit) },
     });
 }
-
