@@ -74,3 +74,20 @@
   --rr--stroke-on-color: #0097b2 !important;
   --rr--fill-off-color: white !important;
 }
+
+.dimming-effect {
+  font-size: 80px;
+  animation: dimAnimation 1.2s infinite;
+}
+
+@keyframes dimAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}

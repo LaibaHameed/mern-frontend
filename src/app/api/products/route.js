@@ -6,40 +6,44 @@ import {DEFAULT_LIMIT, DEFAULT_PAGES} from '@/constants/general';
 import {ProductsModel} from '../models';
 
 export async function GET(req) {
-    await dbConnect();
-    
-    const { searchParams } = new URL(req.url);
-    const limit = parseInt(searchParams.get("limit")) || DEFAULT_LIMIT;
-    const page = parseInt(searchParams.get("page")) || DEFAULT_PAGES;
-    const search = searchParams.get("search") || "";
-    const sortOption = searchParams.get("sort") || "default";
+  await dbConnect();
 
-    const skip = (page - 1) * limit;
+  const {searchParams} = new URL(req.url);
+  const limit = parseInt(searchParams.get('limit')) || DEFAULT_LIMIT;
+  const page = parseInt(searchParams.get('page')) || DEFAULT_PAGES;
+  const search = searchParams.get('search') || '';
+  const sortOption = searchParams.get('sort') || 'default';
 
-    const query = search
-        ? {
-            $or: [
-                { name: { $regex: search, $options: "i" } },
-                { code: { $regex: search, $options: "i" } },
-            ],
-        }
-        : {};
+  const skip = (page - 1) * limit;
 
-    const { success, error, response } = await MongoFactoryServices.findAll({
-        model: Product,
-        query,
-        options: { skip, limit },
-        sortOption,
-    });
+  const query = search
+    ? {
+        $or: [
+          {name: {$regex: search, $options: 'i'}},
+          {code: {$regex: search, $options: 'i'}},
+        ],
+      }
+    : {};
 
-    if (!success) {
-        return GeneralErrors.internalServerErr({ customMessage: error });
-    }
+  const {success, error, response} = await MongoFactoryServices.findAll({
+    model: ProductsModel,
+    query,
+    options: {skip, limit},
+    sortOption,
+  });
 
-    const {docs: products, total} = response;
+  if (!success) {
+    return GeneralErrors.internalServerErr({customMessage: error});
+  }
 
-    return ProductResponses.productsFetchedSuccessfully({
-        products,
-        pagination: { total, currentPage: page, totalPages: Math.ceil(total / limit) },
-    });
+  const {docs: products, total} = response;
+
+  return ProductResponses.productsFetchedSuccessfully({
+    products,
+    pagination: {
+      total,
+      currentPage: page,
+      totalPages: Math.ceil(total / limit),
+    },
+  });
 }

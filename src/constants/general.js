@@ -10,7 +10,7 @@ const SLIDES = [
     title2: ' Live Beautifully.',
     description:
       'Explore a range of premium properties tailored to your needs.',
-    image: '/assets/carousel2.jpg',
+    image: '/assets/sample-banner.jpg',
     buttonText1: 'shop now',
   },
   {
@@ -18,7 +18,7 @@ const SLIDES = [
     title: 'Plants:',
     title2: ' Your Daily Dose of Calm.',
     description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit!',
-    image: '/assets/carousel1.jpg',
+    image: '/assets/sample-banner-2.jpg',
     buttonText1: 'shop now',
   },
 ];
@@ -158,12 +158,12 @@ export const SORTING_OPRIONS = [
 ];
 
 export const SORT_OPTIONS = {
-  "low-price": { price: 1 },
-  "high-price": { price: -1 },
-  new: { createdAt: -1 },
-  old: { createdAt: 1 },
-  default: { createdAt: -1 },
-}; 
+  'low-price': {price: 1},
+  'high-price': {price: -1},
+  new: {createdAt: -1},
+  old: {createdAt: 1},
+  default: {createdAt: -1},
+};
 
 // product Categories
 export const PRODUCT_CATEGORIES = [

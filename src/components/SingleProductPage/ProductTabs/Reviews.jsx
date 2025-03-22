@@ -10,7 +10,6 @@ const Reviews = ({ratings}) => {
       <h2 className="text-2xl text-secondary font-bold mb-8">Reviews</h2>
       {ratings.length > 0 ? (
         <>
-          {' '}
           {ratings.map((rating) => (
             <div className="pb-4 mb-4" key={rating._id}>
               <div className="flex items-center space-x-3">
@@ -23,7 +22,6 @@ const Reviews = ({ratings}) => {
                   <p className="font-semibold text-gray-700">{rating.name}</p>
                   <p className="text-sm text-gray-500">
                     {getMonthYearDate({date: rating.createdAt})}
-                    {/* {rating.createdAt} */}
                   </p>
                 </div>
               </div>
