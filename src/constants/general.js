@@ -157,6 +157,14 @@ export const SORTING_OPRIONS = [
   {value: 'old', label: 'Sort by Old Products'},
 ];
 
+export const SORT_OPTIONS = {
+  "low-price": { price: 1 },
+  "high-price": { price: -1 },
+  new: { createdAt: -1 },
+  old: { createdAt: 1 },
+  default: { createdAt: -1 },
+}; 
+
 // product Categories
 export const PRODUCT_CATEGORIES = [
   {name: 'Dried', count: 6},
@@ -202,7 +210,7 @@ export const PRODUCT_HEADER = [
   },
 ];
 
-export const DEFAULT_LIMIT = 10;
+export const DEFAULT_LIMIT = 6;
 export const DEFAULT_PAGES = 1;
 
 export const PAYMENT_METHODS = {

@@ -1,4 +1,5 @@
-import {asyncTryCatch} from '@/utils/tryCatchUtils';
+import { SORT_OPTIONS } from '@/constants/general';
+import { asyncTryCatch } from '@/utils/tryCatchUtils';
 
 export const MongoFactoryServices = {
   create: async ({model, data, session = null}) => {
@@ -30,19 +31,19 @@ export const MongoFactoryServices = {
     );
     return {success, error, response};
   },
-  findAll: async ({model, query = {}, options, sort = {createdAt: -1}}) => {
-    const {
-      success,
-      error,
-      response: data,
-    } = await asyncTryCatch(async () => {
+  findAll: async ({ model, query = {}, options, sortOption = "default" }) => {
+    const sort = SORT_OPTIONS[sortOption] || SORT_OPTIONS.default;
+    const { success, error, response: data } = await asyncTryCatch(async () => {
+
       const [docs, total] = await Promise.all([
         model.find(query, null, options).sort(sort),
         model.countDocuments(query),
       ]);
-      return {docs, total};
+      return { docs, total };
     });
-    return {success, error, response: data};
+
+    return { success, error, response: data };
+
   },
   deleteById: async ({model, id}) => {
     const {success, error, response} = await asyncTryCatch(
