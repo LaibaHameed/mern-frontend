@@ -5,10 +5,10 @@ import Container from '../shared/common/Container';
 
 const AboutInfo = () => {
   return (
-    <div className="flex-center">
+    <div className="flex-center my-12">
       <Container>
-        <div className=" flex-col flex-center sm:margin-lg margin-sm mb-24 mt-6">
-          <div className="my-28 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 w-full">
+        <div className=" flex-col flex-center sm:margin-lg margin-sm">
+          <div className="mt-12 mb-28 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 w-full">
             {INFO.map((item) => (
               <div
                 className="flex-center flex-col sm:flex-row sm:items-center gap-3 border rounded-full bg-gray-100 sm:py-6 py-3 px-4"
@@ -37,12 +37,10 @@ const AboutInfo = () => {
             className="mt-8 mb-6"
           />
           <p className="font-bold text-xl">
-            {' '}
-            Sarah Jefferson{' '}
+            Sarah Jefferson
             <span className="text-gray-700 text-xs font-extrabold tracking-wider">
-              {' '}
               - CEO
-            </span>{' '}
+            </span>
           </p>
         </div>
       </Container>

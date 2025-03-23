@@ -15,18 +15,18 @@ const NewArrival = () => {
 
   if (products.length > 0)
     return (
-      <div className="flex-center sm:margin-lg margin-sm">
+      <div className="flex-center sm:margin-lg margin-sm my-24">
         <Container>
           <div className="flex-center flex-col">
             <h1 className="text-4xl font-semibold font-serif my-4 tracking-tighter">
               New Arrival
             </h1>
-            <Image
+            {/* <Image
               src="/assets/HeadingImg.png"
               width={350}
               height={100}
               alt="Heading"
-            />
+            /> */}
             <p className="m-5 text-gray-600 text-center">
               There are many variations of passages of lorem ipsum available
             </p>

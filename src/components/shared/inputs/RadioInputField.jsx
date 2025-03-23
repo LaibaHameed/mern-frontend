@@ -10,7 +10,7 @@ const RadioInputField = ({label, name, control, options}) => {
           <label className="text-sm font-semibold text-secondary py-1">
             {label}
           </label>
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-col flex-wrap gap-3">
             {options.map((option) => (
               <label key={option.value} className="flex items-center gap-2">
                 <input
@@ -18,7 +18,7 @@ const RadioInputField = ({label, name, control, options}) => {
                   {...field}
                   value={option.value}
                   checked={field.value === option.value}
-                  className={`border-[1px] border-secondary w-4 h-4 cursor-pointer ${
+                  className={`border-[1px] border-secondary w-4 h-4 cursor-pointer block ${
                     error ? 'outline-error border-error' : 'outline-primary'
                   }`}
                 />

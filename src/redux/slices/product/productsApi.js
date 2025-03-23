@@ -8,7 +8,7 @@ export const API_SERVER_URL = process.env.NEXT_PUBLIC_API_URL;
 export const productsApiSlice = createApi({
   reducerPath: 'productsApi',
   baseQuery: fetchBaseQuery({baseUrl: API_SERVER_URL, credentials: 'include'}),
-  tagTypes: ['Product'],
+  tagTypes: ['Product',  'ProductById'],
   endpoints: (builder) => ({
     // fetch all products
     getProducts: builder.query({

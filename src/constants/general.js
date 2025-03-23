@@ -31,7 +31,7 @@ const INFO_LIST = {
     value: 'shipping',
     logo: <BsTruck />,
     title: 'Free shipping order',
-    discreption: 'On orders over $100',
+    discreption: 'On orders over Rs.5000',
   },
   gift: {
     value: 'gift',
