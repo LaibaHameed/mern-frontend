@@ -81,7 +81,7 @@ const CartPage = () => {
               width={200}
               height={200}
             />
-            <p className="text-secondary text-center text-[20px]">
+            <p className="text-secondary text-center sm:text-sm">
               You cart is empty. Please continue your shopping to add products
               in your cart
             </p>
@@ -91,13 +91,13 @@ const CartPage = () => {
     );
 
   return (
-    <div className="flex-center sm:m-12 mx-6">
+    <div className="flex-center  mx-6">
       <Container>
         <div className="flex flex-col gap-6 ">
           <div className="w-full">
             <CartTable cartItems={cartItems} />
           </div>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={handleSubmit(onSubmit)} className='max-w-2xl'>
             <div className="flex flex-col gap-3">
               <h2 className="font-semibold mb-4 uppercase py-6 border-b border-gray-300">
                 Order Details
@@ -141,12 +141,12 @@ const CartPage = () => {
               {/* Subtotal */}
               <div className="flex justify-between font-medium mb-6">
                 <span>Subtotal:</span>
-                <span>Rs. {totalPrice} PKR</span>
+                <span>Rs. {totalPrice} </span>
               </div>
 
               {/* Checkout Button */}
               <SubmitButton
-                styles="w-full mb-6 text-sm bg-secondary hover:bg-primary-hover text-white font-semibold uppercase block animate cursor-pointer"
+                styles="w-fit rounded-full px-12 mb-6 text-sm bg-secondary hover:bg-primary-hover text-white font-semibold uppercase block animate cursor-pointer"
                 buttonText=" Proceed to Checkout"
                 loading={createOrderLoading || checkoutLoading}
               />

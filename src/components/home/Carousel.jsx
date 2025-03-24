@@ -5,8 +5,8 @@
 import SLIDES from '@/constants/general';
 // import Link from 'next/link';
 // import Container from '../shared/common/Container';
-import {Swiper, SwiperSlide} from 'swiper/react';
-import {Navigation, Pagination, Autoplay} from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -17,7 +17,7 @@ const Carousel = () => {
     <section className="relative bg-cover bg-center bg-no-repeat">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
-        autoplay={{delay: 5000, disableOnInteraction: false}}
+        autoplay={{ delay: 5000, disableOnInteraction: false }}
         // navigation={{
         //   nextEl: '.swiper-button-next',
         //   prevEl: '.swiper-button-prev',
@@ -31,7 +31,7 @@ const Carousel = () => {
           <SwiperSlide key={slide.id}>
             <div
               className=" relative bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-in-out"
-              style={{backgroundImage: `url(${slide.image})`}}
+            // style={{backgroundImage: `url(${slide.image})`}}
             >
               {/* <Container>
                 <div className="relative mx-auto max-w-screen-xl py-32 lg:mx-6 lg:flex lg:h-screen lg:items-center">
@@ -66,10 +66,10 @@ const Carousel = () => {
               </Container> */}
               <Image
                 src={slide.image}
-                alt="slide"
-                width={1300}
-                height={700}
-                className="w-full h-screen"
+                alt={`Slide ${slide.id}`}
+                width={1920}
+                height={1080}
+                className="w-full h-auto object-cover"
               />
             </div>
           </SwiperSlide>

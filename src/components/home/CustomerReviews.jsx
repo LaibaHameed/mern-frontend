@@ -17,9 +17,9 @@ const CustomerReviews = () => {
 
   if (feedbacks.length > 0)
     return (
-      <div className="bg-gray-100 flex-center mb-24">
+      <div className="bg-gray-100 flex-center my-12">
         <Container>
-          <div className="py-20">
+          <div className="py-20 sm:margin-lg margin-sm">
             <div className="flex-center flex-col md:px-20 sm:px-10 md:py-10">
               <h1 className="sm:text-4xl text-2xl font-semibold font-serif my-4 tracking-tighter">
                 What Say Client
