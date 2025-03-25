@@ -1,13 +1,13 @@
-import {ProductsModel, RatingsModel} from '../../models';
-import {dbConnect} from '../../databases/config';
-import {ProductResponses} from '@/factories/success';
-import {MongoFactoryServices} from '../../services/mongoFactory';
-import {GeneralErrors, ProductsErrors} from '@/factories/errors';
+import { ProductsModel, RatingsModel } from '../../models';
+import { dbConnect } from '../../databases/config';
+import { ProductResponses } from '@/factories/success';
+import { MongoFactoryServices } from '../../services/mongoFactory';
+import { GeneralErrors, ProductsErrors } from '@/factories/errors';
 
-export async function GET(req, {params}) {
+export async function GET(req, { params }) {
   await dbConnect();
 
-  const {productId} = await params;
+  const { productId } = await params;
 
   if (!productId) {
     return GeneralErrors.badRequestErr({
@@ -15,14 +15,14 @@ export async function GET(req, {params}) {
     });
   }
 
-  const {error, response: product} = await MongoFactoryServices.findById({
+  const { error, response: product } = await MongoFactoryServices.findById({
     model: ProductsModel,
     id: productId,
   });
 
   const formattedProduct = product.toObject();
 
-  const ratings = (await RatingsModel.find({productId})) || [];
+  const ratings = (await RatingsModel.find({ productId })) || [];
 
   const total = ratings.reduce((sum, item) => sum + item.rating, 0);
 
@@ -38,13 +38,13 @@ export async function GET(req, {params}) {
     return ProductsErrors.productNotFoundErr();
   }
 
-  return ProductResponses.productFetchedSuccessfully({product: finalProduct});
+  return ProductResponses.productFetchedSuccessfully({ product: finalProduct });
 }
 
-export async function DELETE(req, {params}) {
+export async function DELETE(req, { params }) {
   await dbConnect();
 
-  const {productId} = params;
+  const { productId } = await params;
 
   if (!productId) {
     return GeneralErrors.badRequestErr({
@@ -52,7 +52,7 @@ export async function DELETE(req, {params}) {
     });
   }
 
-  const {error} = await MongoFactoryServices.deleteById({
+  const { error } = await MongoFactoryServices.deleteById({
     model: ProductsModel,
     id: productId,
   });
@@ -62,4 +62,36 @@ export async function DELETE(req, {params}) {
   }
 
   return ProductResponses.productDeletedSuccessfully();
+}
+
+export async function PUT(req, { params }) {
+  await dbConnect();
+
+  const { productId } = await params;
+
+  if (!productId) {
+    return GeneralErrors.badRequestErr({
+      customMessage: 'Product ID is required',
+    });
+  }
+
+  const updatedData = await req.json();
+
+  const { error, response: updatedProduct } = await MongoFactoryServices.updateById({
+    model: ProductsModel,
+    id: productId,
+    updateData: updatedData,
+  });
+
+  if (error) {
+    return GeneralErrors.serverErr({
+      customMessage: 'Failed to update product',
+    });
+  }
+
+  if (!updatedProduct) {
+    return ProductsErrors.productNotFoundErr();
+  }
+
+  return ProductResponses.productUpdatedSuccessfully({ product: updatedProduct });
 }

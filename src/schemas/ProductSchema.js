@@ -10,11 +10,6 @@ export const productSchema = yup.object({
     .required('Price is required'),
   description: yup.string().required('Description is required'),
   code: yup.string().required('Product Code is required'),
-  availableQty: yup
-    .number()
-    .typeError('Available Quantity must be a number')
-    .min(0, 'Available Quantity cannot be negative')
-    .required('Available Quantity is required'),
   tax: yup
     .number()
     .typeError('Shipping Tax must be a number')
@@ -34,11 +29,6 @@ export const validateAddProductReq = (data) => {
       .required('Price is required'),
     description: yup.string().required('Description is required'),
     code: yup.string().required('Product Code is required'),
-    availableQty: yup
-      .number()
-      .typeError('Available Quantity must be a number')
-      .min(0, 'Available Quantity cannot be negative')
-      .required('Available Quantity is required'),
     tax: yup
       .number()
       .typeError('Shipping Tax must be a number')

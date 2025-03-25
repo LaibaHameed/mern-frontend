@@ -51,4 +51,10 @@ export const MongoFactoryServices = {
     );
     return {success, error, response};
   },
+  updateById: async ({ model, id, updateData }) => {
+    const { success, error, response } = await asyncTryCatch(
+      async () => await model.findByIdAndUpdate(id, updateData, { new: true })
+    );
+    return { success, error, response };
+  },
 };

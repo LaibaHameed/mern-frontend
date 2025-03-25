@@ -31,7 +31,6 @@ const AddProductForm = () => {
       tax: '',
       color: '',
       brand: '',
-      availableQty: '',
       productImages: [],
     },
   });
@@ -129,12 +128,6 @@ const AddProductForm = () => {
             placeholder="Brand of Product"
             control={control}
             name="brand"
-          />
-          <NumberField
-            label="Available Quantity"
-            placeholder="Add Product Available Quantity"
-            control={control}
-            name="availableQty"
           />
           <div className="col-span-2">
             <TextareaField
