@@ -197,10 +197,6 @@ export const PRODUCT_HEADER = [
     name: 'Product Code',
   },
   {
-    key: 'stock',
-    name: 'Stock',
-  },
-  {
     key: 'actions',
     name: 'Actions',
   },

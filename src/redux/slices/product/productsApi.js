@@ -75,9 +75,9 @@ export const productsApiSlice = createApi({
     }),
 
     updateProduct: builder.mutation({
-      query: ({ id, data }) => ({
-        url: `/products/${id}`,
-        method: "PUT",
+      query: ({ productId, data }) => ({
+        url: API_ROUTES.product.single({ productId }),
+        method: "PATCH",
         body: data,
       }),
       invalidatesTags: ['Product', 'ProductById'],

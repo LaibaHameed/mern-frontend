@@ -20,23 +20,23 @@ export async function GET(req, { params }) {
     id: productId,
   });
 
+  if (error || !product) {
+    return ProductsErrors.productNotFoundErr();
+  }
+
   const formattedProduct = product.toObject();
 
   const ratings = (await RatingsModel.find({ productId })) || [];
 
   const total = ratings.reduce((sum, item) => sum + item.rating, 0);
 
-  const average = total / ratings.length;
+  const average = ratings.length > 0 ? total / ratings.length : 0; 
 
   let finalProduct = {
     ...formattedProduct,
     ratings,
     averageRating: average,
   };
-
-  if (error || !product) {
-    return ProductsErrors.productNotFoundErr();
-  }
 
   return ProductResponses.productFetchedSuccessfully({ product: finalProduct });
 }
@@ -64,7 +64,7 @@ export async function DELETE(req, { params }) {
   return ProductResponses.productDeletedSuccessfully();
 }
 
-export async function PUT(req, { params }) {
+export async function PATCH(req, { params }) {
   await dbConnect();
 
   const { productId } = await params;

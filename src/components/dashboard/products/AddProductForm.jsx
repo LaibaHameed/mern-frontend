@@ -85,7 +85,7 @@ const AddProductForm = () => {
     <div className="flex-center w-full md:px-24 sm:px-10">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-white px-10 py-12 shadow-md w-full rounded-3xl my-10"
+        className="bg-white px-10 py-12 shadow-md w-full my-10"
       >
         <h2 className="text-xl text-secondary font-semibold text-left mb-5">
           Add Product

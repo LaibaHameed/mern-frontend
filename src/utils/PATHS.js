@@ -52,6 +52,7 @@ export const DASHBOARD_ROUTES = {
   products: {
     all: `${DASHBOARD_ROOT}/products`,
     addProduct: `${DASHBOARD_ROOT}/products/add-product`,
+    editProduct: ({productId}) => `${DASHBOARD_ROOT}/products/update-product/${productId}`,
   },
 };
 
