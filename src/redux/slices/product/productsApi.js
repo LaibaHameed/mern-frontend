@@ -82,10 +82,7 @@ export const productsApiSlice = createApi({
       }),
       invalidatesTags: ['Product', 'ProductById'],
       onQueryStarted: async (_, { queryFulfilled }) => {
-        await handleApiResponse({
-          queryFulfilled,
-          toastMessage: { error: { show: false }, success: { show: false } },
-        });
+        await handleApiResponse({ queryFulfilled });
       },
     }),
 

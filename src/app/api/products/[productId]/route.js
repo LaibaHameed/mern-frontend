@@ -3,6 +3,7 @@ import { dbConnect } from '../../databases/config';
 import { ProductResponses } from '@/factories/success';
 import { MongoFactoryServices } from '../../services/mongoFactory';
 import { GeneralErrors, ProductsErrors } from '@/factories/errors';
+import { FilesServices } from '../../services/files';
 
 export async function GET(req, { params }) {
   await dbConnect();
@@ -30,7 +31,7 @@ export async function GET(req, { params }) {
 
   const total = ratings.reduce((sum, item) => sum + item.rating, 0);
 
-  const average = ratings.length > 0 ? total / ratings.length : 0; 
+  const average = ratings.length > 0 ? total / ratings.length : 0;
 
   let finalProduct = {
     ...formattedProduct,
@@ -75,12 +76,36 @@ export async function PATCH(req, { params }) {
     });
   }
 
-  const updatedData = await req.json();
+  const formData = await req.formData();
+  const jsonData = JSON.parse(formData.get("data"));
+  const files = formData.getAll('files');
+  const removedImages = jsonData.removedImages || [];
+
+  let imageUrls = jsonData.imageUrls || [];
+
+  imageUrls = imageUrls.filter(img => !removedImages.includes(img));
+
+  if (files.length > 0) {
+    let uploadedImageUrls = [];
+
+    for (const file of files) {
+      const { success, imageUrl } = await FilesServices.upload({ file });
+      if (success) uploadedImageUrls.push(imageUrl);
+    }
+
+    imageUrls = [...imageUrls, ...uploadedImageUrls];
+  }
+
+  const finalData = {
+    ...jsonData,
+    imageUrls,
+  };
+
 
   const { error, response: updatedProduct } = await MongoFactoryServices.updateById({
     model: ProductsModel,
     id: productId,
-    updateData: updatedData,
+    updateData: finalData,
   });
 
   if (error) {

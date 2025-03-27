@@ -14,18 +14,21 @@ import SubmitButton from '@/components/shared/buttons/SubmitButton';
 import SwitchInput from '@/components/shared/inputs/SwitchInput';
 import { DASHBOARD_ROUTES } from '@/utils/PATHS';
 import Loader from '@/components/shared/common/Loader';
+import { FaTimes } from 'react-icons/fa';
 
 const UpdateProductForm = () => {
-    const { id: productId  } = useParams();
+    const { id: productId } = useParams();
     const router = useRouter();
 
     const { data: product, isLoading } = useGetProductByIdQuery(productId);
     const [updateProduct, { isLoading: isUpdating }] = useUpdateProductMutation();
-    const [imagePreviews, setImagePreviews] = useState([]);
 
-    const { control, handleSubmit, reset, watch, setValue } = useForm({
+    const [imageItems, setImageItems] = useState([]);
+    const [removedImages, setRemovedImages] = useState([]);
+
+    const { control, handleSubmit, reset, watch, setValue, setError } = useForm({
         resolver: yupResolver(productSchema),
-        defaultValues: { 
+        defaultValues: {
             name: '',
             price: '',
             description: '',
@@ -40,7 +43,9 @@ const UpdateProductForm = () => {
 
     useEffect(() => {
         if (product && product.body && product.body.product) {
-            const productData = product.body.product; 
+            const productData = product.body.product;
+            const filteredImages = productData.imageUrls?.filter(img => !removedImages.includes(img)) || [];
+
             reset({
                 name: productData.name || '',
                 price: productData.price || '',
@@ -50,22 +55,63 @@ const UpdateProductForm = () => {
                 color: productData.color || '',
                 brand: productData.brand || '',
                 isOutOfStock: productData.isOutOfStock ?? false,
-                productImages: [], 
+                productImages: [],
             });
-            setImagePreviews(productData?.imageUrls?.map((img) => img) || []);
+
+            setImageItems(filteredImages.map(url => ({ url }))); 
         }
-    }, [product, reset]);
+    }, [product, reset, removedImages]);
+
+    const productImages = watch('productImages');
+
+    useEffect(() => {
+        if (productImages && productImages.length > 0) {
+            const newFiles = Array.from(productImages);
+
+            const uniqueFiles = newFiles.filter(
+                (file) => !imageItems.some((item) => item.file?.name === file.name)
+            );
+
+            const newItems = uniqueFiles.map((file) => ({
+                file,
+                preview: URL.createObjectURL(file), 
+            }));
+
+            setImageItems((prevItems) => [...prevItems, ...newItems]);
+
+            return () => newItems.forEach((item) => item.preview && URL.revokeObjectURL(item.preview));
+        }
+    }, [productImages]);
+
+    const removeImage = (index) => {
+        const removedItem = imageItems[index];
+
+        setImageItems((prevItems) => prevItems.filter((_, i) => i !== index));
+
+        if (removedItem.url && product?.body?.product?.imageUrls?.includes(removedItem.url)) {
+            setRemovedImages((prev) => [...prev, removedItem.url]);
+        }
+    };
 
     const onSubmit = async (data) => {
         const formData = new FormData();
-        formData.append('data', JSON.stringify({ ...data, productImages: undefined }));
 
-        if (data.productImages) {
-            data.productImages.forEach((file) => formData.append('files', file));
+        if (imageItems.length === 0) {
+            setError("productImages", {
+                type: "manual",
+                message: "At least one image is required!",
+            });
+            return;
         }
 
+        const imageUrls = imageItems.filter(item => item.url).map(item => item.url);
+        const filesToUpload = imageItems.filter(item => item.file).map(item => item.file);
+
+        formData.append("data", JSON.stringify({ ...data, imageUrls, removedImages }));
+        filesToUpload.forEach((file) => formData.append("files", file));
+
         await updateProduct({ productId, data: formData });
-        router.push(DASHBOARD_ROUTES.products.all)
+        router.push(DASHBOARD_ROUTES.products.all);
     };
 
     return (
@@ -74,7 +120,7 @@ const UpdateProductForm = () => {
                 <h2 className="text-xl text-secondary font-semibold text-left mb-5">Update Product</h2>
 
                 {isLoading ? (
-                    <Loader/>
+                    <Loader />
                 ) : (
                     <div className="md:grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="col-span-2">
@@ -93,11 +139,18 @@ const UpdateProductForm = () => {
                             <FileInputField label="Product Images" control={control} name="productImages" multiple />
                         </div>
 
-                        {imagePreviews.length > 0 && (
+                        {imageItems.length > 0 && (
                             <div className="col-span-2 flex flex-wrap gap-2 mt-4">
-                                {imagePreviews.map((src, index) => (
+                                {imageItems.map((item, index) => (
                                     <div key={index} className="relative w-[150px] h-[150px] border overflow-hidden">
-                                        <img src={src} alt={`preview-${index}`} className="w-full h-full object-cover" />
+                                        <img src={item.preview || item.url} alt={`preview-${index}`} className="w-full h-full object-cover" />
+                                        <button
+                                            type="button"
+                                            onClick={() => removeImage(index)}
+                                            className="absolute top-2 right-2 shadow-lg bg-white h-5 w-5 flex-center"
+                                        >
+                                            <FaTimes className="text-secondary" size={14} />
+                                        </button>
                                     </div>
                                 ))}
                             </div>

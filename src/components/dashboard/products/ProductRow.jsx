@@ -24,7 +24,7 @@ const ProductRow = ({ product }) => {
         await deleteProduct(productId);
         setShowModal(false);
     };
-    const handleEdit = () => router.push(DASHBOARD_ROUTES.products.editProduct({productId}));
+    const handleEdit = () => router.push(DASHBOARD_ROUTES.products.editProduct({ productId }));
 
     return (
         <>
@@ -41,7 +41,7 @@ const ProductRow = ({ product }) => {
                         </div>
                         <div>
                             <div className="font-semibold text-sm max-w-48">{product.name}</div>
-                            <div className="text-sm opacity-70">$ {product.price}.00</div>
+                            <div className="text-sm opacity-70">RS. {product.price}</div>
                         </div>
                     </div>
                 </td>
@@ -75,7 +75,11 @@ const ProductRow = ({ product }) => {
                     </div>
                 </td>
                 <td className="px-4 py-2">
-                    <Link href={`/products/${product._id}`} className="underline text-sm hover:text-primary transition-all">
+                    <Link
+                        href={`/products/${product._id}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline text-sm hover:text-primary transition-all">
                         View Product
                     </Link>
                 </td>

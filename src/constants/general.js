@@ -162,7 +162,7 @@ export const SORT_OPTIONS = {
   'high-price': {price: -1},
   new: {createdAt: -1},
   old: {createdAt: 1},
-  default: {createdAt: -1},
+  default: {updatedAt: -1},
 };
 
 // product Categories
