@@ -38,10 +38,10 @@ const productsSchema = new Schema(
         required: true,
       },
     ],
-    availableQty: {
-      type: Number,
-      required: true,
-    },
+    isOutOfStock : {
+      type: Boolean,
+      default: false,
+    }
   },
   {
     timestamps: true,

@@ -31,7 +31,6 @@ const AddProductForm = () => {
       tax: '',
       color: '',
       brand: '',
-      availableQty: '',
       productImages: [],
     },
   });
@@ -86,7 +85,7 @@ const AddProductForm = () => {
     <div className="flex-center w-full md:px-24 sm:px-10">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-white px-10 py-12 shadow-md w-full rounded-3xl my-10"
+        className="bg-white px-10 py-12 shadow-md w-full my-10"
       >
         <h2 className="text-xl text-secondary font-semibold text-left mb-5">
           Add Product
@@ -129,12 +128,6 @@ const AddProductForm = () => {
             placeholder="Brand of Product"
             control={control}
             name="brand"
-          />
-          <NumberField
-            label="Available Quantity"
-            placeholder="Add Product Available Quantity"
-            control={control}
-            name="availableQty"
           />
           <div className="col-span-2">
             <TextareaField
