@@ -2,27 +2,6 @@ import {BsGift, BsTruck} from 'react-icons/bs';
 import {GrPowerCycle} from 'react-icons/gr';
 import {FiPhone} from 'react-icons/fi';
 
-// Carousel slides
-const SLIDES = [
-  {
-    id: 1,
-    title: 'Decorate Naturally,',
-    title2: ' Live Beautifully.',
-    description:
-      'Explore a range of premium properties tailored to your needs.',
-    image: '/assets/sample-banner.jpg',
-    buttonText1: 'shop now',
-  },
-  {
-    id: 2,
-    title: 'Plants:',
-    title2: ' Your Daily Dose of Calm.',
-    description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit!',
-    image: '/assets/sample-banner-2.jpg',
-    buttonText1: 'shop now',
-  },
-];
-
 export default SLIDES;
 
 // About section cards
@@ -232,3 +211,14 @@ export const ORDER_STATUSES = {
     label: 'Completed',
   },
 };
+
+export const BANNER_HEADER = [
+  {
+    key: 'bannerImage',
+    name: 'Banner Image',
+  },
+  {
+    key: 'actions',
+    name: 'Actions',
+  },
+];

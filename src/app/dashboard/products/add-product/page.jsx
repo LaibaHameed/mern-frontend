@@ -3,9 +3,9 @@ import Container from '@/components/shared/common/Container';
 
 const AddProduct = () => {
   return (
-    <div className="flex-center w-full">
+    <div className='flex-center w-full'>
       <Container>
-        <AddProductForm/>
+        <AddProductForm />
       </Container>
     </div>
   );

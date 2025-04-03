@@ -30,7 +30,10 @@ export async function POST(request) {
   let imageUrls = [];
 
   for (const file of files) {
-    const {success, imageUrl} = await FilesServices.upload({file});
+    const {success, imageUrl} = await FilesServices.upload({
+      file,
+      folder: 'products',
+    });
     if (success) imageUrls.push(imageUrl);
   }
 

@@ -4,6 +4,7 @@ import GeneralResponses from './general';
 import OrderResponses from './orders';
 import FeedbackResponses from './feedbacks';
 import RatingsResponses from './ratings';
+import BannersResponses from './banners';
 
 export {
   UsersResponses,
@@ -12,4 +13,5 @@ export {
   OrderResponses,
   FeedbackResponses,
   RatingsResponses,
+  BannersResponses,
 };

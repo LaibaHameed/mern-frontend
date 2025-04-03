@@ -1,15 +1,14 @@
-'use client';
+import BannersList from '@/components/dashboard/banners';
 import Container from '@/components/shared/common/Container';
-import ProductsPage from '../../../components/dashboard/products/ProductsPage';
 
-const Products = () => {
+const page = () => {
   return (
     <div className='flex-center w-full'>
       <Container>
-        <ProductsPage />
+        <BannersList />
       </Container>
     </div>
   );
 };
 
-export default Products;
+export default page;
