@@ -9,14 +9,8 @@ export const usersApiSlice = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: API_SERVER_URL,
     credentials: 'include',
-    // prepareHeaders: (headers, {getState}) => {
-    //   const token = getState().user.authToken;
-    //   if (token) {
-    //     headers.set('authorization', `Bearer ${token}`);
-    //   }
-    // },
   }),
-  tagTypes: ['User'],
+  tagTypes: ['User', 'Feedbacks', 'Banners'],
   endpoints: (builder) => ({
     //login user api
     loginUser: builder.mutation({
@@ -49,19 +43,6 @@ export const usersApiSlice = createApi({
       },
     }),
 
-    //feedback form api
-    feedbackSubmission: builder.mutation({
-      query: ({data}) => ({
-        url: API_ROUTES.feedback.createFeedback,
-        method: 'POST',
-        body: data,
-      }),
-      invalidatesTags: ['Feedbacks'],
-      onQueryStarted: async (_, {queryFulfilled}) => {
-        await handleApiResponse({queryFulfilled});
-      },
-    }),
-
     // fetch all feedbacks
     getFeedbacks: builder.query({
       query: ({limit, page, search}) => {
@@ -76,10 +57,66 @@ export const usersApiSlice = createApi({
       },
       providesTags: ['Feedbacks'],
       onQueryStarted: async (_, {queryFulfilled}) => {
-        handleApiResponse({
+        await handleApiResponse({
           queryFulfilled,
           toastMessage: {error: {show: false}, success: {show: false}},
         });
+      },
+    }),
+
+    //feedback form api
+    feedbackSubmission: builder.mutation({
+      query: ({data}) => ({
+        url: API_ROUTES.feedback.createFeedback,
+        method: 'POST',
+        body: data,
+      }),
+      invalidatesTags: ['Feedbacks'],
+      onQueryStarted: async (_, {queryFulfilled}) => {
+        await handleApiResponse({queryFulfilled});
+      },
+    }),
+
+    //add product api
+    addBanner: builder.mutation({
+      query: ({data}) => ({
+        url: API_ROUTES.banners.addBanner,
+        method: 'POST',
+        body: data,
+      }),
+      invalidatesTags: ['Banners'],
+      onQueryStarted: async (_, {queryFulfilled}) => {
+        await handleApiResponse({queryFulfilled});
+      },
+    }),
+
+    // fetch all banners
+    getBanners: builder.query({
+      query: ({limit, page}) => {
+        let url = `${API_ROUTES.banners.all}?limit=${limit}&page=${page}`;
+        return {
+          url,
+          method: 'GET',
+        };
+      },
+      providesTags: ['Banners'],
+      onQueryStarted: async (_, {queryFulfilled}) => {
+        await handleApiResponse({
+          queryFulfilled,
+          toastMessage: {error: {show: false}, success: {show: false}},
+        });
+      },
+    }),
+
+    // delete banner api
+    deleteBanner: builder.mutation({
+      query: (bannerId) => ({
+        url: API_ROUTES.banners.single({bannerId}),
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['Banners'],
+      onQueryStarted: async (_, {queryFulfilled}) => {
+        await handleApiResponse({queryFulfilled});
       },
     }),
   }),
@@ -90,4 +127,7 @@ export const {
   useContactSubmissionMutation,
   useFeedbackSubmissionMutation,
   useGetFeedbacksQuery,
+  useAddBannerMutation,
+  useGetBannersQuery,
+  useDeleteBannerMutation,
 } = usersApiSlice;

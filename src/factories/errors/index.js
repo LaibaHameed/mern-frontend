@@ -4,6 +4,7 @@ import ProductsErrors from './products';
 import OrdersErrors from './orders';
 import FeedbackErrors from './feedbacks';
 import RatingsErrors from './ratings';
+import BannersErrors from './banners';
 
 export {
   UsersErrors,
@@ -12,4 +13,5 @@ export {
   OrdersErrors,
   FeedbackErrors,
   RatingsErrors,
+  BannersErrors,
 };

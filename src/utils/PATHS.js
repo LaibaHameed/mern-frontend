@@ -1,5 +1,6 @@
 import {FiPackage} from 'react-icons/fi';
 import {LuLayoutDashboard} from 'react-icons/lu';
+import {TfiLayoutSliderAlt} from 'react-icons/tfi';
 
 export const ROOT_ROUTE = '/';
 export const DASHBOARD_ROOT = '/dashboard';
@@ -40,6 +41,11 @@ export const API_ROUTES = {
     all: '/feedback',
     createFeedback: '/feedback/create-feedback',
   },
+  banners: {
+    all: '/banners',
+    addBanner: '/banners/add-banner',
+    single: ({bannerId}) => `/banners/${bannerId}`,
+  },
 };
 
 export const AUTH_ROUTES = {
@@ -52,6 +58,11 @@ export const DASHBOARD_ROUTES = {
   products: {
     all: `${DASHBOARD_ROOT}/products`,
     addProduct: `${DASHBOARD_ROOT}/products/add-product`,
+    editProduct: ({productId}) => `${DASHBOARD_ROOT}/products/update-product/${productId}`,
+  },
+  banners: {
+    all: `${DASHBOARD_ROOT}/banners`,
+    addBanner: `${DASHBOARD_ROOT}/banners/add-banner`,
   },
 };
 
@@ -67,6 +78,12 @@ const DASHBOARD_NAV_LIST = {
     label: 'Products',
     path: DASHBOARD_ROUTES.products.all,
     icon: <FiPackage size={20} />,
+  },
+  banners: {
+    value: 'banners',
+    label: 'Banners',
+    path: DASHBOARD_ROUTES.banners.all,
+    icon: <TfiLayoutSliderAlt size={20} />,
   },
 };
 

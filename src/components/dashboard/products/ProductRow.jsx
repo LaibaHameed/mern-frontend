@@ -5,25 +5,30 @@ import { useState } from "react";
 import { FaRegEdit } from "react-icons/fa";
 import { MdOutlineDeleteForever } from "react-icons/md";
 import { useDeleteProductMutation } from "@/redux/slices/product/productsApi";
+import { DASHBOARD_ROUTES } from "@/utils/PATHS";
 import ThemeButton from "@/components/shared/buttons/ThemeButton";
 import ConfirmationModal from "@/components/shared/common/ConfirmationModal";
+import { useRouter } from "next/navigation";
 
 const ProductRow = ({ product }) => {
+    const productId = product._id;
     const [deleteProduct, { isLoading: isDeleting }] = useDeleteProductMutation();
     const [showModal, setShowModal] = useState(false);
+    const router = useRouter()
 
     const handleDeleteConfirm = () => {
         setShowModal(true);
     };
 
     const handleDelete = async () => {
-        await deleteProduct(product._id);
+        await deleteProduct(productId);
         setShowModal(false);
     };
+    const handleEdit = () => router.push(DASHBOARD_ROUTES.products.editProduct({ productId }));
 
     return (
         <>
-            <tr key={product._id} className="border-b border-gray-300">
+            <tr key={productId} className="border-b border-gray-300">
                 <td className="px-4 py-2">
                     <div className="flex items-center gap-3">
                         <div className="relative">
@@ -36,24 +41,45 @@ const ProductRow = ({ product }) => {
                         </div>
                         <div>
                             <div className="font-semibold text-sm max-w-48">{product.name}</div>
-                            <div className="text-sm opacity-70">$ {product.price}.00</div>
+                            <div className="text-sm opacity-70">RS. {product.price}</div>
                         </div>
                     </div>
                 </td>
                 <td className="px-4 py-2 text-sm">{product.code}</td>
-                <td className="px-4 py-2 text-sm">
-                    {product.availableQty > 0 ? <p className="text-primary">In Stock</p> : <p className="text-red-700">Out of Stock</p>}
-                </td>
                 <td className="px-4 py-2">
                     <div className="flex items-center gap-3">
                         {/* Edit Button */}
-                        <ThemeButton buttonText={<FaRegEdit size={20} />} styles={'text-white bg-primary hover:bg-primary-hover'} />
+                        <div className="relative group">
+                            <ThemeButton
+                                buttonText={<FaRegEdit size={20} />}
+                                styles={'text-white bg-primary hover:bg-primary-hover'}
+                                handleClick={handleEdit}
+                            />
+                            <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-700 text-white text-[10px] px-2 py-1 opacity-0 group-hover:opacity-100 animate">
+                                Update
+                            </span>
+                        </div>
+
                         {/* Delete Button */}
-                        <ThemeButton buttonText={<MdOutlineDeleteForever size={20} />} styles={'text-white bg-error hover:bg-error-hover'} handleClick={handleDeleteConfirm} />
+                        <div className="relative group">
+                            <ThemeButton
+                                buttonText={<MdOutlineDeleteForever size={20} />}
+                                styles={'text-white bg-error hover:bg-error-hover'}
+                                handleClick={handleDeleteConfirm}
+                            />
+                            <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-700 text-white text-xs px-2 py-1 opacity-0 group-hover:opacity-100 animate">
+                                Delete
+                            </span>
+                        </div>
+
                     </div>
                 </td>
                 <td className="px-4 py-2">
-                    <Link href={`/products/${product._id}`} className="underline text-sm hover:text-primary transition-all">
+                    <Link
+                        href={`/products/${product._id}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline text-sm hover:text-primary transition-all">
                         View Product
                     </Link>
                 </td>

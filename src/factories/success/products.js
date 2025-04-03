@@ -36,4 +36,10 @@ export default {
       message: 'Product Deleted successfully',
     });
   },
+  productUpdatedSuccessfully: () => {
+    return AppResponse({
+      statusCode: StatusCodes.OK,
+      message: 'Product updated successfully',
+    });
+  }
 };

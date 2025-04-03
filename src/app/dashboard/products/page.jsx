@@ -1,11 +1,13 @@
 'use client';
-import ProductsPage from '../../../components/dashboard/products/ProductsPage'
+import Container from '@/components/shared/common/Container';
+import ProductsPage from '../../../components/dashboard/products/ProductsPage';
 
 const Products = () => {
-
   return (
-    <div>
-      <ProductsPage/>
+    <div className='flex-center w-full'>
+      <Container>
+        <ProductsPage />
+      </Container>
     </div>
   );
 };

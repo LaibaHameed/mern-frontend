@@ -1,13 +1,13 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import ProductQuantity from './ProductQuantity';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   getCartItems,
   actions as productActions,
 } from '@/redux/slices/product/productsSlice';
 import Ratings from '@/components/shared/common/Ratings';
 
-const ProductDetails = ({product}) => {
+const ProductDetails = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
   const cartItems = useSelector(getCartItems);
   const dispatch = useDispatch();
@@ -27,14 +27,16 @@ const ProductDetails = ({product}) => {
             maxWidth={130}
           />
           <p className="text-base text-secondary">
-            {product.averageRating || 0}
+            {product.averageRating || 0} <span className='text-sm'>Ratings</span>
           </p>
         </div>
         <p className="md:text-2xl text-xl font-semibold text-primary">
-          Rs. {product.price.toFixed(2)} PKR
+          Rs. {product.price.toFixed(2)}
         </p>
 
-        <p className="text-gray-500 my-5">{product.description}</p>
+        <p className="text-gray-500 my-5">
+          {product.description?.split('\n').slice(0, 2).join(' ')}
+        </p>
 
         <div className="text-sm space-y-1">
           <p>
@@ -61,7 +63,7 @@ const ProductDetails = ({product}) => {
         ) : (
           <button
             onClick={() =>
-              dispatch(productActions.addToCart({...product, quantity}))
+              dispatch(productActions.addToCart({ ...product, quantity }))
             }
             className="rounded-full cursor-pointer bg-primary sm:px-7 px-10 py-3 tracking-wider text-white shadow hover:bg-primary-hover focus:outline-none sm:w-auto flex-center gap-2 animate"
           >
