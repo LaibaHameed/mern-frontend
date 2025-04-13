@@ -77,7 +77,19 @@ export const usersApiSlice = createApi({
       },
     }),
 
-    //add product api
+    // delete feedback api
+    deleteFeedback: builder.mutation({
+      query: (feedbackId) => ({
+        url: API_ROUTES.feedback.single({feedbackId}),
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['Feedbacks'],
+      onQueryStarted: async (_, {queryFulfilled}) => {
+        await handleApiResponse({queryFulfilled});
+      },
+    }),
+
+    //add banner api
     addBanner: builder.mutation({
       query: ({data}) => ({
         url: API_ROUTES.banners.addBanner,
@@ -130,4 +142,5 @@ export const {
   useAddBannerMutation,
   useGetBannersQuery,
   useDeleteBannerMutation,
+  useDeleteFeedbackMutation,
 } = usersApiSlice;

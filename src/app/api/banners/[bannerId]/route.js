@@ -7,7 +7,7 @@ import {BannersResponses} from '@/factories/success';
 export async function DELETE(req, {params}) {
   await dbConnect();
 
-  const {bannerId} = params;
+  const {bannerId} = await params;
 
   if (!bannerId) {
     return GeneralErrors.badRequestErr({
