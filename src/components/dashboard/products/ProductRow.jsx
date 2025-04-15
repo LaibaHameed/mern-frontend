@@ -79,7 +79,7 @@ const ProductRow = ({ product }) => {
                         href={`/products/${product._id}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="underline text-sm hover:text-primary transition-all">
+                        className="underline text-sm hover:text-primary animate cursor-pointer">
                         View Product
                     </Link>
                 </td>

@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const {Schema, models, model} = mongoose;
+const { Schema, models, model } = mongoose;
 
 const ordersSchema = new Schema(
   {
@@ -11,6 +11,14 @@ const ordersSchema = new Schema(
           ref: 'Products',
           required: true,
         },
+        // productName: {
+        //   type: String,
+        //   required: true,
+        // },
+        // productPrice: {
+        //   type: Number,
+        //   required: true,
+        // },
         quantity: {
           type: Number,
           required: true,

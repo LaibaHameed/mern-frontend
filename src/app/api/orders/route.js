@@ -18,9 +18,7 @@ export async function GET(req) {
   const query = search
     ? {
         $or: [
-          {customerName: {$regex: search, $options: 'i'}},
-          {customerEmail: {$regex: search, $options: 'i'}},
-          {_id: {$regex: search, $options: 'i'}},
+          {customerName: {$regex: search, $options: 'i'}}
         ],
       }
     : {};
