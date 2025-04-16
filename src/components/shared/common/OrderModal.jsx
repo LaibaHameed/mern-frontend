@@ -4,8 +4,8 @@ import { IoClose } from 'react-icons/io5';
 
 const OrderModal = ({ order, onClose }) => {
     return (
-        <div className="fixed inset-0 bg-[rgba(0,0,0,0.51)] flex flex-center z-50">
-            <div className="bg-white w-[90%] md:w-[600px] shadow-xl p-6 relative">
+        <div className="fixed inset-0 bg-[rgba(0,0,0,0.51)] flex-center z-50">
+            <div className="bg-white w-[90%] md:w-[600px] max-h-[80vh] overflow-y-auto shadow-xl p-6 relative">
                 <button
                     onClick={onClose}
                     className="absolute top-3 right-3 text-gray-600 hover:text-black cursor-pointer"
@@ -34,15 +34,25 @@ const OrderModal = ({ order, onClose }) => {
                 </div>
 
                 <div className="mt-4">
-                    <h3 className="font-semibold mb-2">Products:</h3>
-                    <ul className="list-disc list-inside text-sm">
-                        {/* {order.products.map((product, index) => (
-                            <li key={index}>
-                                {product.name} - Qty: {product.quantity} - Rs. {product.price}
+                    <h2 className="text-xl font-semibold my-8 text-center">Ordered Products</h2>
+                    <ul className="space-y-4 text-sm">
+                        {order.products.map((product, index) => (
+                            <li key={index} className="flex items-center gap-4">
+                                <img
+                                    src={product.productId?.imageUrls?.[0]}
+                                    alt={product.productId?.name}
+                                    className="w-24 h-24 object-cover"
+                                />
+                                <div>
+                                    <p className="font-medium capitalize">{product.productId?.name}</p>
+                                    <p>Qty: {product.quantity}</p>
+                                    <p>Price: Rs. {product.productId?.price}</p>
+                                </div>
                             </li>
-                        ))} */}
+                        ))}
                     </ul>
                 </div>
+
             </div>
         </div>
     );

@@ -7,14 +7,14 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import Image from 'next/image';
 import {useGetBannersQuery} from '@/redux/slices/user/usersApi';
-import Loader from '@/components/shared/common/Loader';
+import GlobalLoader from '../shared/common/GlobalLoader';
 
 const Carousel = () => {
   const {data, isLoading, isError} = useGetBannersQuery({limit: 6, page: 1});
 
   const banners = data?.body?.banners ?? [];
 
-  if (isLoading) return <Loader />;
+  if (isLoading) return <GlobalLoader/>;
 
   return (
     <section className='relative bg-cover bg-center bg-no-repeat'>

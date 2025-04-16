@@ -41,7 +41,7 @@ export const ordersApiSlice = createApi({
         });
       },
     }),
-
+    // get all products api
     getOrders: builder.query({
       query: ({ limit, page, search }) => {
         let url = `${API_ROUTES.order.getAllOrders}?limit=${limit}&page=${page}`;

@@ -1,7 +1,7 @@
 import { IoCloudOfflineOutline } from "react-icons/io5";
 import { usePagination } from "@/hooks/usePagination";
 import { useGetProductsQuery } from "@/redux/slices/product/productsApi";
-import Loader from "../shared/common/Loader";
+import GlobalLoader from "../shared/common/GlobalLoader";
 import ProductCard from "../shared/common/ProductCard";
 import { DEFAULT_LIMIT } from "@/constants/general";
 
@@ -18,7 +18,7 @@ const ProductsList = ({ searchQuery, sortOption }) => {
     totalPages,    
   } = usePagination(useGetProductsQuery, searchQuery, sortOption, productsPerPage); 
 
-  if (shouldShowLoader) return <Loader />;  
+  if (shouldShowLoader) return <GlobalLoader/>;  
   if (isError) return <p className="py-10 flex-center gap-2">Error loading products.</p>;
   if (products.length === 0)
     return (

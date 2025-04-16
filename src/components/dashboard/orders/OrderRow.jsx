@@ -83,7 +83,7 @@ const OrderRow = ({ order }) => {
                     ) : orderStatus === 'cancelled' ? (
                         <span className="px-10"><FaRegCircleXmark className="text-error" size={25} title="Order Cancelled" /></span>
                     ) : (
-                        <div className="flex items-center gap-3">
+                        <span className="flex items-center gap-3">
                             <ThemeButton
                                 buttonText={<FaCheck size={15} />}
                                 styles={'text-white bg-primary hover:bg-primary-hover'}
@@ -94,7 +94,7 @@ const OrderRow = ({ order }) => {
                                 styles={'text-white bg-error hover:bg-error-hover'}
                                 handleClick={handleCancelConfirm}
                             />
-                        </div>
+                        </span>
                     )}
                 </td>
 
