@@ -239,3 +239,22 @@ export const FEEDBACK_HEADER = [
     name: 'Actions',
   },
 ];
+
+export const ORDERS_HEADER = [
+  {
+    key: 'name',
+    name: 'Customer Name',
+  },
+  {
+    key: 'created',
+    name: 'Order Place date',
+  },
+  {
+    key: 'status',
+    name: 'Order Status',
+  },
+  {
+    key: 'actions',
+    name: 'Complete Order',
+  },
+];

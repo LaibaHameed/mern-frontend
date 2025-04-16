@@ -14,4 +14,10 @@ export default {
       message: 'Order creation failed',
     });
   },
+  orderUpdationFailed: () => {
+    return AppError({
+      statusCode: StatusCodes.NOT_MODIFIED,
+      message: 'Order updation failed',
+    });
+  },
 };

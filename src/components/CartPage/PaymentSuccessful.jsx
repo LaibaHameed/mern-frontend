@@ -34,7 +34,7 @@ const PaymentSuccessful = () => {
             </p>
             <ThemeButton
               buttonText="Continue Shopping"
-              styles="bg-primary hover:bg-primary-hover w-full"
+              styles="bg-primary hover:bg-primary-hover "
               handleClick={() => router.push(PUBLIC_ROUTES.home)}
             />
           </div>

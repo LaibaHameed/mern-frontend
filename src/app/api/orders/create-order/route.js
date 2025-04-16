@@ -15,6 +15,8 @@ export async function POST(request) {
     orderStatus: ORDER_STATUSES.placed.value,
     products: data.products.map((product) => ({
       productId: product._id,
+      // productName: product.name,
+      // productPrice: product.price,
       quantity: product.quantity,
     })),
   };

@@ -39,4 +39,10 @@ export default {
       },
     });
   },
+  orderUpdatedSuccessfully: () => {
+    return AppResponse({
+      statusCode: StatusCodes.OK,
+      message: 'Order Updated successfully',
+    });
+  },
 };
