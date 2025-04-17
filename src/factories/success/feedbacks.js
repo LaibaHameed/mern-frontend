@@ -28,4 +28,11 @@ export default {
       body: {},
     });
   },
+  feedbackUpdatedSuccessfully: () => {
+    return AppResponse({
+      statusCode: StatusCodes.OK,
+      message: 'Feedback Updated successfully',
+      body: {},
+    });
+  },
 };

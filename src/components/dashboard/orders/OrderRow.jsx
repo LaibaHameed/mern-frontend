@@ -8,26 +8,19 @@ import ConfirmationModal from "@/components/shared/common/ConfirmationModal";
 import { useUpdateOrderStatusMutation } from "@/redux/slices/order/ordersApi";
 
 const OrderRow = ({ order }) => {
-    const [updateOrderStatus] = useUpdateOrderStatusMutation();
-
+    
+    const [updateOrderStatus, { isLoading: isUpdating }] = useUpdateOrderStatusMutation();
     const [orderStatus, setOrderStatus] = useState(order.orderStatus);
-    const [showModal, setShowModal] = useState(false);
-    const [showCompleteModal, setShowCompleteModal] = useState(false);
-    const [showCancelModal, setShowCancelModal] = useState(false);
 
-    const handleViewDetails = () => {
-        setShowModal(true);
-    };
-    const handleCloseModal = () => {
-        setShowModal(false);
-    };
+    const [modals, setModals] = useState({
+        view: false,
+        complete: false,
+        cancel: false
+    });
 
-    const handleCompleteConfirm = () => {
-        setShowCompleteModal(true);
-    };
-    const handleCancelConfirm = () => {
-        setShowCancelModal(true);
-    };
+    const handleViewDetails = () => setModals(prev => ({ ...prev, view: true }));
+    const handleCompleteConfirm = () => setModals(prev => ({ ...prev, complete: true }));
+    const handleCancelConfirm = () => setModals(prev => ({ ...prev, cancel: true }));
 
     const handleCompleteOrder = async () => {
         await updateOrderStatus({
@@ -35,8 +28,7 @@ const OrderRow = ({ order }) => {
             data: { orderStatus: 'completed' },
         }).unwrap();
         setOrderStatus('completed');
-        setShowCompleteModal(false);
-
+        setModals(prev => ({ ...prev, complete: false }));
     };
 
     const handleCancelOrder = async () => {
@@ -45,9 +37,8 @@ const OrderRow = ({ order }) => {
             data: { orderStatus: 'cancelled' },
         }).unwrap();
         setOrderStatus('cancelled');
-        setShowCancelModal(false);
+        setModals(prev => ({ ...prev, cancel: false }));
     };
-
 
     return (
         <>
@@ -74,7 +65,7 @@ const OrderRow = ({ order }) => {
                                     : 'text-secondary'
                             }`}
                     >
-                        {order.orderStatus}
+                        {orderStatus}
                     </span>
                 </td>
                 <td className="p-4 flex gap-3">
@@ -107,29 +98,30 @@ const OrderRow = ({ order }) => {
                 </td>
             </tr>
 
-            {showModal && (
-                <OrderModal order={order} onClose={handleCloseModal} />
+            {modals.view && (
+                <OrderModal order={order} onClose={() => setModals(prev => ({ ...prev, view: false }))} />
             )}
 
-            {/* Complete Confirmation Modal */}
-            {showCompleteModal && (
+            {modals.complete && (
                 <ConfirmationModal
                     message={`Are you sure you want to Complete ${order.customerName}'s Order?`}
-                    onCancel={() => setShowCompleteModal(false)}
+                    onCancel={() => setModals(prev => ({ ...prev, complete: false }))}
                     onConfirm={handleCompleteOrder}
                     confirmText="Complete Order"
                     cancelText="Cancel"
-                    styles = {'bg-primary hover:bg-primary-hover'}
+                    styles={'bg-primary hover:bg-primary-hover'}
+                    isLoading={isUpdating}
                 />
             )}
-            {/* Cancel Confirmation Modal */}
-            {showCancelModal && (
+
+            {modals.cancel && (
                 <ConfirmationModal
                     message={`Are you sure you want to cancel ${order.customerName}'s order?`}
-                    onCancel={() => setShowCancelModal(false)}
+                    onCancel={() => setModals(prev => ({ ...prev, cancel: false }))}
                     onConfirm={handleCancelOrder}
                     confirmText="Cancel order"
                     cancelText="No"
+                    isLoading={isUpdating}
                 />
             )}
         </>

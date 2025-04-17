@@ -14,4 +14,10 @@ export default {
       message: 'Feedback deletion failed',
     });
   },
+  feedbackUpdationFailed: () => {
+    return AppError({
+      statusCode: StatusCodes.BAD_REQUEST,
+      message: 'Feedback updation failed',
+    });
+  },
 };
