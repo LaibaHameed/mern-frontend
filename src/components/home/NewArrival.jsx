@@ -1,9 +1,10 @@
 'use client';
 
-import ProductCard from '../shared/common/ProductCard';
-import Container from '../shared/common/Container';
+import Link from 'next/link';
 import {useGetProductsQuery} from '@/redux/slices/product/productsApi';
 import Loader from '@/components/shared/common/Loader';
+import Container from '../shared/common/Container';
+import ProductCard from '../shared/common/ProductCard';
 
 const NewArrival = () => {
   const { data, isLoading } = useGetProductsQuery({ limit: 4, page: 1 });
