@@ -3,6 +3,8 @@ import { dbConnect } from '../../databases/config';
 import { OrderResponses } from '@/factories/success';
 import { MongoFactoryServices } from '../../services/mongoFactory';
 import { GeneralErrors, OrdersErrors } from '@/factories/errors';
+import { sendOrderCompletionEmailToCustomer } from '@/utils/emailSender/sendOrderCompleteEmailToCustomer';
+import { sendOrderCancelledEmailToCustomer } from '@/utils/emailSender/sendOrderCancelledEmailToCustomer';
 
 export async function PATCH(req, { params }) {
     await dbConnect();
@@ -15,7 +17,7 @@ export async function PATCH(req, { params }) {
         });
     }
 
-    const updateData = await req.json(); 
+    const updateData = await req.json();
 
     const { error, response: updatedOrder } = await MongoFactoryServices.updateById({
         model: OrdersModel,
@@ -28,6 +30,17 @@ export async function PATCH(req, { params }) {
             customMessage: 'Failed to update Order',
         });
     }
+
+    const populatedOrder = await OrdersModel.findById(updatedOrder._id).populate('products.productId');
+
+    if (updatedOrder && updatedOrder.orderStatus === 'completed') {
+        sendOrderCompletionEmailToCustomer({ data: populatedOrder });
+    }
+
+    if (updatedOrder && updatedOrder.orderStatus === 'cancelled') {
+        sendOrderCancelledEmailToCustomer({ data: populatedOrder });
+    }
+
 
     if (!updatedOrder) {
         return OrdersErrors.orderUpdationFailed();
