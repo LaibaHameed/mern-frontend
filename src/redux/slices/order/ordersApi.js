@@ -62,7 +62,7 @@ export const ordersApiSlice = createApi({
       },
     }),
 
-    // updateOrderStatus
+    // update Order Status
     updateOrderStatus: builder.mutation({
       query: ({ orderId, data }) => ({
         url: API_ROUTES.order.updateOrderStatus({ orderId }),

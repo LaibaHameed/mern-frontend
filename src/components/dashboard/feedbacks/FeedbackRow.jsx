@@ -1,32 +1,45 @@
 'use client';
-import Link from 'next/link';
-import Image from 'next/image';
-import {useState} from 'react';
-import {FaRegEdit} from 'react-icons/fa';
-import {MdOutlineDeleteForever} from 'react-icons/md';
-import {DASHBOARD_ROUTES} from '@/utils/PATHS';
+
+import { useState } from 'react';
+import { FaCheck, FaRegCircleCheck, FaXmark } from "react-icons/fa6";
 import ThemeButton from '@/components/shared/buttons/ThemeButton';
 import ConfirmationModal from '@/components/shared/common/ConfirmationModal';
-import {useRouter} from 'next/navigation';
-import {useDeleteFeedbackMutation} from '@/redux/slices/user/usersApi';
-import {FaCheck} from 'react-icons/fa6';
+import FeedbackModal from '@/components/shared/common/FeedbackModal';
+import { useDeleteFeedbackMutation, useUpdateFeedbackStatusMutation } from '@/redux/slices/user/usersApi';
 
-const FeedbackRow = ({feedback}) => {
+const FeedbackRow = ({ feedback }) => {
   const feedbackId = feedback._id;
-  const [deleteFeedback, {isLoading: isDeleting}] = useDeleteFeedbackMutation();
-  const [showModal, setShowModal] = useState(false);
-  const router = useRouter();
+  const [feedbackStatus, setFeedbackStatus] = useState(feedback.isApproved);
 
-  const handleDeleteConfirm = () => {
-    setShowModal(true);
-  };
+  const [updateFeedbackStatus, { isLoading: isUpdating }] = useUpdateFeedbackStatusMutation();
+  const [deleteFeedback, { isLoading: isDeleting }] = useDeleteFeedbackMutation();
+    
+  const [modals, setModals] = useState({
+    view: false,
+    delete: false,
+    approve: false
+  });
+
+  const handleViewFeedback = () => setModals(prev => ({ ...prev, view: true }));
+  const handleDeleteConfirm = () => setModals(prev => ({ ...prev, delete: true }));
+  const handleApprovalConfirm = () => setModals(prev => ({ ...prev, approve: true }));
+  
 
   const handleDelete = async () => {
     await deleteFeedback(feedbackId);
-    setShowModal(false);
+    setModals(prev => ({ ...prev, delete: false, view: false }));
   };
-  const handleApproval = () =>
-    router.push(DASHBOARD_ROUTES.products.editProduct({feedbackId}));
+
+
+
+  const handleApproval = async () => {
+    await updateFeedbackStatus({
+      feedbackId,
+      data: { isApproved: true }
+    }).unwrap();
+    setFeedbackStatus(true);
+    setModals(prev => ({ ...prev, approve: false }));
+  };
 
   return (
     <>
@@ -34,46 +47,63 @@ const FeedbackRow = ({feedback}) => {
         <td className='px-4 py-2 text-sm'>{feedback.name}</td>
         <td className='px-4 py-2 text-sm'>{feedback.email}</td>
         <td className='px-4 py-2 text-sm'>
-          {feedback.isApproved ? 'Approved' : 'Need Approval'}
+          {feedbackStatus ? 'Approved' : 'Need Approval'}
         </td>
-        <td className='px-4 py-2'>
-          <div className='flex items-center gap-3'>
-            {/* Edit Button */}
-            <div className='relative group'>
+        <td className="p-4 flex gap-3">
+          {feedbackStatus ? (
+            <span><FaRegCircleCheck className="text-primary" size={25} title="Feedback Approved" /></span>
+          ) : (
+            <span className="flex items-center gap-3">
               <ThemeButton
-                buttonText={<FaCheck size={20} />}
+                buttonText={<FaCheck size={15} />}
                 styles={'text-white bg-primary hover:bg-primary-hover'}
-                handleClick={handleApproval}
+                handleClick={handleApprovalConfirm}
               />
-              <span className='absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-700 text-white text-[10px] px-2 py-1 opacity-0 group-hover:opacity-100 animate'>
-                Approve
-              </span>
-            </div>
-
-            {/* Delete Button */}
-            <div className='relative group'>
               <ThemeButton
-                buttonText={<MdOutlineDeleteForever size={20} />}
+                buttonText={<FaXmark size={15} />}
                 styles={'text-white bg-error hover:bg-error-hover'}
                 handleClick={handleDeleteConfirm}
               />
-              <span className='absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-700 text-white text-xs px-2 py-1 opacity-0 group-hover:opacity-100 animate'>
-                Delete
-              </span>
-            </div>
-          </div>
+            </span>
+          )}
+        </td>
+
+        <td className='p-4'>
+          <button
+            onClick={handleViewFeedback}
+            className="underline text-sm hover:text-primary animate cursor-pointer text-secondary">
+            View Feedback
+          </button>
         </td>
       </tr>
 
-      {/* Delete Confirmation Modal */}
-      {showModal && (
+      {modals.delete && (
         <ConfirmationModal
           message={`Are you sure you want to delete this feedback?`}
-          onCancel={() => setShowModal(false)}
+          onCancel={() => setModals(prev => ({ ...prev, delete: false }))}
           onConfirm={handleDelete}
           confirmText='Delete'
           cancelText='Cancel'
           isLoading={isDeleting}
+        />
+      )}
+
+      {modals.approve && (
+        <ConfirmationModal
+          message={`Are you sure you want to Approve this feedback?`}
+          onCancel={() => setModals(prev => ({ ...prev, approve: false }))}
+          onConfirm={handleApproval}
+          confirmText='Approve'
+          cancelText='Cancel'
+          isLoading={isUpdating}
+          styles={'bg-primary hover:bg-primary-hover'}
+        />
+      )}
+
+      {modals.view && (
+        <FeedbackModal
+          feedback={feedback}
+          onClose={() => setModals(prev => ({ ...prev, view: false }))}
         />
       )}
     </>
