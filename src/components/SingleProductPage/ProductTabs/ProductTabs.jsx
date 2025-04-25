@@ -10,7 +10,7 @@ const ProductTabs = ({ product }) => {
       <div className="flex-center tracking-tighter">
         {/* Description Tab */}
         <h1
-          className={`group relative sm:text-3xl text-2xl font-semibold font-serif my-4 tracking-tighter cursor-pointer sm:mx-6 mx-2 transition-colors duration-500 ${activeTab === "description" ? "text-primary" : "text-secondary"
+          className={`group relative sm:text-3xl text-xl font-semibold font-serif my-4 tracking-tighter cursor-pointer sm:mx-6 mx-2 transition-colors duration-500 ${activeTab === "description" ? "text-primary" : "text-secondary"
             }`}
           onClick={() => setActiveTab("description")}
         >
@@ -23,7 +23,7 @@ const ProductTabs = ({ product }) => {
 
         {/* Reviews Tab */}
         <h1
-          className={`group relative sm:text-3xl text-2xl font-semibold font-serif my-4 tracking-tighter cursor-pointer sm:mx-6 mx-2 transition-colors duration-500 ${activeTab === "reviews" ? "text-primary" : "text-secondary"
+          className={`group relative sm:text-3xl text-xl font-semibold font-serif my-4 tracking-tighter cursor-pointer sm:mx-6 mx-2 transition-colors duration-500 ${activeTab === "reviews" ? "text-primary" : "text-secondary"
             }`}
           onClick={() => setActiveTab("reviews")}
         >

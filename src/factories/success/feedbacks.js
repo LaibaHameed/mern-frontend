@@ -21,4 +21,18 @@ export default {
       },
     });
   },
+  feedbackDeletedSuccessfully: () => {
+    return AppResponse({
+      statusCode: StatusCodes.OK,
+      message: 'Feedback deleted successfully',
+      body: {},
+    });
+  },
+  feedbackUpdatedSuccessfully: () => {
+    return AppResponse({
+      statusCode: StatusCodes.OK,
+      message: 'Feedback Updated successfully',
+      body: {},
+    });
+  },
 };

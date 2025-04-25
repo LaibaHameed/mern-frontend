@@ -25,7 +25,7 @@ const PaymentFailed = () => {
             </p>
             <ThemeButton
               buttonText="Go Back To Cart"
-              styles="bg-primary hover:bg-primary-hover w-full"
+              styles="bg-primary hover:bg-primary-hover "
               handleClick={() => router.push(PUBLIC_ROUTES.cart)}
             />
           </div>

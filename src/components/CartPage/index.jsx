@@ -91,7 +91,7 @@ const CartPage = () => {
     );
 
   return (
-    <div className="flex-center  mx-6">
+    <div className="flex-center mx-0 sm:mx-6">
       <Container>
         <div className="flex flex-col gap-6 ">
           <div className="w-full">
@@ -146,7 +146,7 @@ const CartPage = () => {
 
               {/* Checkout Button */}
               <SubmitButton
-                styles="w-fit rounded-full px-12 mb-6 text-sm bg-secondary hover:bg-primary-hover text-white font-semibold uppercase block animate cursor-pointer"
+                styles="w-fit rounded-full sm:px-6 px-12 mb-6 text-sm bg-secondary hover:bg-primary-hover text-white font-semibold uppercase block animate cursor-pointer"
                 buttonText=" Proceed to Checkout"
                 loading={createOrderLoading || checkoutLoading}
               />

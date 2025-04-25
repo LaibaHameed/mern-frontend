@@ -5,6 +5,7 @@ import {FeedbackErrors, GeneralErrors} from '@/factories/errors';
 import {MongoFactoryServices} from '../../services/mongoFactory';
 import {FeedbacksModel} from '../../models';
 import {FeedbackResponses} from '@/factories/success';
+import {sendFeedbackEmailToAdmin} from '@/utils/emailSender/sendFeedbackEmailToAdmin';
 
 export async function POST(request) {
   await dbConnect();
@@ -17,10 +18,19 @@ export async function POST(request) {
 
   const {error, response: feedback} = await MongoFactoryServices.create({
     model: FeedbacksModel,
-    data,
+    data: {...data, isApproved: false},
   });
 
   if (error) return FeedbackErrors.feedbackCreationFailed();
+
+  sendFeedbackEmailToAdmin({
+    data: {
+      _id: feedback._id,
+      userName: feedback.name,
+      userEmail: feedback.email,
+      feedbackMessage: feedback.message,
+    },
+  });
 
   return FeedbackResponses.feedbackSubmittedSuccessfully({feedback});
 }

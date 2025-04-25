@@ -2,8 +2,6 @@ import {BsGift, BsTruck} from 'react-icons/bs';
 import {GrPowerCycle} from 'react-icons/gr';
 import {FiPhone} from 'react-icons/fi';
 
-export default SLIDES;
-
 // About section cards
 const INFO_LIST = {
   shipping: {
@@ -165,7 +163,7 @@ export const PRODUCT_TAGS = [
   {id: 8, name: 'Office tree'},
 ];
 
-// dashboar Product headers
+// dashboard Product headers
 export const PRODUCT_HEADER = [
   {
     key: 'product',
@@ -220,5 +218,43 @@ export const BANNER_HEADER = [
   {
     key: 'actions',
     name: 'Actions',
+  },
+];
+
+export const FEEDBACK_HEADER = [
+  {
+    key: 'name',
+    name: 'Name',
+  },
+  {
+    key: 'email',
+    name: 'Email',
+  },
+  {
+    key: 'status',
+    name: 'Status',
+  },
+  {
+    key: 'actions',
+    name: 'Actions',
+  },
+];
+
+export const ORDERS_HEADER = [
+  {
+    key: 'name',
+    name: 'Customer Name',
+  },
+  {
+    key: 'created',
+    name: 'Order Place date',
+  },
+  {
+    key: 'status',
+    name: 'Order Status',
+  },
+  {
+    key: 'actions',
+    name: 'Complete Order',
   },
 ];

@@ -12,10 +12,11 @@ const CustomerReviews = () => {
   const {data, isLoading} = useGetFeedbacksQuery({limit: 4, page: 1});
 
   const feedbacks = data?.body?.feedbacks ?? [];
+  const approvedFeedbacks = feedbacks.filter(f => f.isApproved);
 
   if (isLoading) return <Loader />;
 
-  if (feedbacks.length > 0)
+  if (approvedFeedbacks.length > 0)
     return (
       <div className="bg-gray-100 flex-center my-12">
         <Container>
@@ -38,7 +39,7 @@ const CustomerReviews = () => {
                 speed={1000}
                 className="w-full max-w-3xl h-auto"
               >
-                {feedbacks.map((feedback) => (
+                {approvedFeedbacks.map((feedback) => (
                   <SwiperSlide key={feedback._id} className="text-center">
                     <p className="text-sm sm:text-lg mx-12 sm:font-normal text-gray-500 font-serif font-thin tracking-wide">
                       {feedback.message}

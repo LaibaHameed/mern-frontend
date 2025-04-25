@@ -1,6 +1,6 @@
 'use client';
 import ProductImage from './ProductImage';
-import Loader from '../shared/common/Loader';
+import GlobalLoader from '../shared/common/GlobalLoader';
 import Container from '../shared/common/Container';
 import {IoCloudOfflineOutline} from 'react-icons/io5';
 import ProductDetails from './ProductDetails/ProductDetails';
@@ -11,7 +11,7 @@ import ProductTabs from './ProductTabs/ProductTabs';
 const SingleProductPage = ({productId}) => {
   const {data, isLoading, error} = useGetProductByIdQuery(productId);
 
-  if (isLoading) return <Loader />;
+  if (isLoading) return <GlobalLoader/>;
   if (error)
     return (
       <p className="py-20 flex-center gap-2">

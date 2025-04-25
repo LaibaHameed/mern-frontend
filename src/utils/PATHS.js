@@ -1,6 +1,8 @@
 import {FiPackage} from 'react-icons/fi';
 import {LuLayoutDashboard} from 'react-icons/lu';
 import {TfiLayoutSliderAlt} from 'react-icons/tfi';
+import {VscFeedback} from 'react-icons/vsc';
+import { HiOutlineDocumentText } from 'react-icons/hi';
 
 export const ROOT_ROUTE = '/';
 export const DASHBOARD_ROOT = '/dashboard';
@@ -33,13 +35,16 @@ export const API_ROUTES = {
     },
   },
   order: {
-    createPaymentCheckout: '/orders/create-payment-checkout',
+    getAllOrders: '/orders',
     createOrder: '/orders/create-order',
+    updateOrderStatus : ({orderId}) => `/orders/${orderId}`,
+    createPaymentCheckout: '/orders/create-payment-checkout',
   },
   contact: '/contact',
   feedback: {
     all: '/feedback',
     createFeedback: '/feedback/create-feedback',
+    single: ({feedbackId}) => `/feedback/${feedbackId}/`,
   },
   banners: {
     all: '/banners',
@@ -58,11 +63,18 @@ export const DASHBOARD_ROUTES = {
   products: {
     all: `${DASHBOARD_ROOT}/products`,
     addProduct: `${DASHBOARD_ROOT}/products/add-product`,
-    editProduct: ({productId}) => `${DASHBOARD_ROOT}/products/update-product/${productId}`,
+    editProduct: ({productId}) =>
+      `${DASHBOARD_ROOT}/products/update-product/${productId}`,
   },
   banners: {
     all: `${DASHBOARD_ROOT}/banners`,
     addBanner: `${DASHBOARD_ROOT}/banners/add-banner`,
+  },
+  feedbacks: {
+    all: `${DASHBOARD_ROOT}/feedbacks`,
+  },
+  orders: {
+    all: `${DASHBOARD_ROOT}/orders`,
   },
 };
 
@@ -84,6 +96,18 @@ const DASHBOARD_NAV_LIST = {
     label: 'Banners',
     path: DASHBOARD_ROUTES.banners.all,
     icon: <TfiLayoutSliderAlt size={20} />,
+  },
+  feedbacks: {
+    value: 'feedbacks',
+    label: 'Feedbacks',
+    path: DASHBOARD_ROUTES.feedbacks.all,
+    icon: <VscFeedback size={20} />,
+  },
+  orders: {
+    value: 'orders',
+    label: 'Orders',
+    path: DASHBOARD_ROUTES.orders.all,
+    icon: <HiOutlineDocumentText size={20} />,
   },
 };
 

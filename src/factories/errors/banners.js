@@ -11,7 +11,7 @@ export default {
   bannerDeleteFailed: () => {
     return AppError({
       statusCode: StatusCodes.BAD_REQUEST,
-      message: 'Banners deletion failed',
+      message: 'Banner deletion failed',
     });
   },
 };
