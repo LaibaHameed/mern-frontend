@@ -27,9 +27,8 @@ export default function RootLayout({ children }) {
               draggable
               pauseOnHover
             />
-            <WhatsAppButton>
               {children}
-            </WhatsAppButton>
+            <WhatsAppButton/>
           </AuthGuard>
         </ReduxProvider>
       </body>
